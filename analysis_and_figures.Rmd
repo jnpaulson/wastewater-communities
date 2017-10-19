@@ -1,0 +1,853 @@
+---
+title: "Waterwater Communities Manuscript Analysis"
+author: "Nate Olson"
+date: '`r Sys.Date()`'
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+
+```{r warning=FALSE, message=FALSE, echo = FALSE}
+source("joe_diversity_functions.R")
+library(readr)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(magrittr)
+library(tibble)
+library(knitr)
+library(devtools)
+library(metagenomeSeq)
+library(phyloseq)
+library(vegan)
+library(broom)
+library(ggplot2)
+library(iNEXT)
+library(ggExtra)
+library(plotly)
+library(DT)
+library(purrr)
+library(ggfortify)
+library(ggpubr)
+opts_chunk$set(cache=TRUE, message=FALSE, warning = FALSE)
+```
+
+
+### Loading Data 
+```{r warning=FALSE, message=FALSE}
+### Delete if runs
+# project_dir <- file.path("/Users/nolson/Projects/sapkota_wastewater/wastewater16S/")
+# metadata_dir <- file.path(project_dir, "metadata/")
+# 
+# dat_files <- c(
+#    env_meta = file.path(metadata_dir, "env_meta.csv"),
+#    seq_meta = file.path(metadata_dir, "seq_meta.csv"),
+#    id_key = file.path(metadata_dir, "id_keys.csv"),
+#    merge_id = file.path(metadata_dir, "merge_id_key.csv"),
+#    key_meta = file.path(metadata_dir, "key_meta.csv"),
+#    mr_blast_file = file.path(project_dir, "wastewater_blast.rdata")
+# )
+# 
+# # metadata
+# meta_env_src <- read_csv(dat_files['env_meta'])
+# 
+# 
+# # Loading blast based OTU count data.
+# load(dat_files['mr_blast_file'])
+# 
+# # Only including spray irrigation and treatment plant data in analysis.
+# plantObj <- which((pData(wastewaterMRobj_blast)$study_type == "plant" &
+#                   pData(wastewaterMRobj_blast)$Stage_name != "Influent post screening") |
+#                       pData(wastewaterMRobj_blast)$Region_Site == "MA_SI1") %>% 
+#     {wastewaterMRobj_blast[,.]} %>% cumNorm(p = 0.75)
+# 
+# ww_meta <- plantObj %>% pData() %>% 
+#       as.data.frame %>% mutate(Seq_ID = row.names(.)) %>% 
+#       separate(Env_ID,c("Region","TP","Date","Stage"), sep = "_") %>% 
+#       unite("WW_TP", Region,TP, sep = "_", remove = F)  %>%
+#       mutate(plant_name = paste(ifelse(Region == "MA", 
+#                                        "Mid-Atlantic",
+#                                        "Midwest"),
+#                                 ifelse(TP %in% c("TP1","TP2"),
+#                                        paste0("WW",TP),TP))) %>% 
+#       select(Seq_ID, WW_TP, plant_name, Region, TP, Date, Stage, Stage_name, 
+#              study_type, Season, StageID, StageID_all_plants)
+# rownames(ww_meta) <- ww_meta$Seq_ID
+
+plantObj <- readRDS("plantObj.rds")
+ww_meta <- pData(plantObj) 
+```
+
+## Results Seq Data 
+```{r}
+count_dat <- metagenomeSeq::expSummary(plantObj)
+count_dat$Seq_ID <- rownames(count_dat)
+count_df <- left_join(ww_meta, count_dat)
+```
+
+## Seq count info
+```{r}
+count_tbl <- plantObj@assayData$counts %>% as_tibble() 
+count_tbl$OTU <- plantObj@featureData@data$OTU
+count_tbl <- count_tbl %>% gather("sam","count",-OTU) %>% 
+    mutate(count = if_else(count != 0, 1,0)) %>% 
+    group_by(OTU) %>% summarise(n_sam = sum(count)) %>% 
+    filter(n_sam == 1)
+assigned_un_df <- count_tbl %>% left_join(plantObj@featureData@data) %>% 
+    mutate(assinged_un = if_else(grepl("OTU_",Taxonomy), "unassigned","assigned")) %>% 
+    group_by(assinged_un) %>% summarise(count = n())
+
+# total seq count
+count_total <- sum(count_df$libSize)
+# total number of samples
+num_samples <- nrow(count_df)
+
+# average seq count per sample
+avg_seq_sample <- count_total/num_samples
+
+# number of unique assigned species level OTUs
+n_unique_assigned_otus <- assigned_un_df$count[assigned_un_df$assinged_un == "assigned"]
+# number of unique unassigned species level OTUs
+n_unique_unassigned_otus <- assigned_un_df$count[assigned_un_df$assinged_un == "unassigned"]
+```
+
+Total sequence count: `r round(count_total,2)`   
+Total number of samples: `r num_samples`  
+Average sequence count per sample : `r round(avg_seq_sample,2)`  
+Unique OTUs are defined as OTUs only present in one sample.  
+Total number of unique assigned species OTUs: `r n_unique_assigned_otus`
+Total number of unique unassigned species OTUs: `r n_unique_unassigned_otus`
+
+
+```{r}
+sample_count_summary <- count_df %>% select(WW_TP, Stage) %>% 
+    group_by(WW_TP, Stage) %>% 
+    summarize(count = n())
+sample_count_summary$count %>% sum()
+sample_count_summary %>% kable()
+```
+
+
+
+### Supplemental Figure 1 - Coverage Analysis
+
+SC- Hill number based coverage estimate, extrapolated rarefaction curve, considering the singleton to tentons (not sure this is a real word)?
+Coverage is the estimated OTU coverage calculated by dividing the number of observed OTUs by the Chao1 diversity estimate.  
+Chao1, is based on singletons and likely overestimates species diversity for 16S data. 
+Therefore Chao1 based coverage estimates are conservative. 
+Filtering samples with less than 100 sequences.  
+
+```{r fig.cap= "Number of observed sequences compared to the estimated coverage. The vertical dotted line indicates the cut off for sample excluded from the analysis. Histogram at the top show the distribution of samples relative to the number of sequences per sample.", message=FALSE}
+div_est <- plantObj  %>% MRcounts()  %>% DataInfo()
+div_est$StageID <- factor(count_df$StageID)
+p <- ggplot(div_est, aes(x = n, y = SC)) +
+      geom_point(aes(color = StageID)) + scale_x_log10() + 
+      geom_vline(aes(xintercept = 100), linetype = 2, color = "grey 60") + 
+      theme_bw() +
+      labs(x = "Number of Sequences",y = "Coverage") +
+      theme(legend.position = "bottom") 
+ggMarginal(p, type = "histogram", margins = "x")
+```
+
+Excluding samples with less than 100 counts.    
+
+```{r phylo_obj}
+plantObj <- which(colSums(plantObj) > 100) %>% {plantObj[, .]} 
+## creating phyloseq object
+plant_phy <-plantObj %>% MRexperiment2biom(norm = TRUE,log = TRUE) %>% 
+    import_biom2()
+colnames(plant_phy@tax_table) <- c("taxa_OTU","Taxonomy","Kingdom",
+                                   "Phylum","Class","Order",
+                                   "Family","Genus","Species")
+plant_phy@tax_table <- plant_phy@tax_table[,-2]
+```
+
+
+## Alpha Diversity Calculations
+__Calculating Diversity Metrics__
+Diversity metrics were calculated using OTU level count data.
+
+* Specnumber: number of observed taxa at the specified taxonomy level, in this case family.   
+* Shannon: $H = −\sum_{i=1}^S p_i \log_{b} p_i$   
+* Simpson: $D1 = 1 −\sum_{i=1}^S p^2_i$   
+https://cran.r-project.org/web/packages/vegan/vignettes/diversity-vegan.pdf
+
+```{r}
+waste_counts <- plantObj %>% MRcounts(norm =TRUE, log = TRUE)
+ww_div <- data_frame(sampleID = colnames(waste_counts),
+                     shannon = diversity(waste_counts, MARGIN = 2),
+                     simpson = diversity(waste_counts, MARGIN = 2, index = "simpson"),
+                     specnumber = specnumber(waste_counts,MARGIN = 2)) %>% 
+    gather(diversity, metric, -sampleID)
+
+
+ww_div_df <- ww_meta %>% 
+    mutate(Stage = ifelse(Stage %in% c("RawInfluent","PostScreeningInfluent"), 
+                          "Influent",Stage)) %>% 
+    right_join(ww_div, by = c("Seq_ID" ="sampleID"))
+```
+
+
+## Influents
+
+### Supplemental Figure 2 - Alpha diversity
+```{r}
+ww_div_df %>% filter(Stage == "Influent") %>% 
+    ggplot() + geom_point(aes(x = plant_name, y = metric, color = plant_name)) + 
+        facet_wrap(~diversity, scale = "free_y") + 
+        theme_bw() + theme(axis.text.x = element_blank(), legend.position = "bottom") +
+        labs(x = "Wastewater Treatment Plant", y = "Diversity Metric", color = "")
+```
+
+#### Testing for Differences
+Initially using a parametric model, ANOVA, to test for differences in alpha diversity by wastewater treatment plants. 
+Based on the diagnostic plots the the residuals are not normally distributed with long tails. 
+Due to the non-normally distributed residuals the non-parametric Kruskal-Wallis test was also used to test for statistically significant differences. 
+The alpha diversity is not statistically significant when comparing influents among treatment plants.
+
+```{r}
+ww_inf_df <- ww_div_df %>% filter(Stage == "Influent")
+
+fit_aov <- function(df) aov(metric~WW_TP, data = df)
+test_kruskal <- function(df) kruskal.test(df$metric,factor(df$WW_TP))
+
+
+inf_div_test <- ww_inf_df %>% group_by(diversity) %>% nest() %>% 
+    mutate(aov_mod = map(data, fit_aov), krusk = map(data, test_kruskal))
+
+aov_summary <- inf_div_test$aov_mod %>% map_df(glance) %>% 
+    rename(f_stat = statistic, f_p = p.value) 
+aov_summary$diversity <- inf_div_test$diversity
+
+krusk_summary <- inf_div_test$krusk %>% map_df(glance) %>% 
+    rename(kruskal = statistic, kruk_p = p.value) %>% 
+    select(-parameter, -method)
+krusk_summary$diversity <- inf_div_test$diversity
+
+inf_div_test_tbl <- aov_summary %>% 
+    select(diversity, logLik, AIC,BIC, f_stat, f_p) %>% left_join(krusk_summary)
+
+inf_div_test_tbl %>% kable()
+```
+
+ANOVA Diagnostic plots
+```{r}
+div_metrics <- c("shannon","simpson","specnumber")
+for(i in 1:3){
+    print(autoplot(inf_div_test$aov_mod[[i]]) + 
+              ggtitle(paste0(div_metrics[i])))
+}
+```
+
+
+### Figure 1 - Relative Abundance
+```{r}
+mrexp_inf <- plantObj[, which(pData(plantObj)$Stage_name %in% 
+                                  c("Raw influent", 
+                                    "Influent post screening"))]
+mrexp_inf <- aggregateByTaxonomy(mrexp_inf, 
+                                 lvl = "genus", 
+                                 alternate = TRUE, 
+                                 norm = TRUE, log = TRUE)
+
+pData(mrexp_inf)$plant_name <- pData(mrexp_inf)$plant_name %>% factor()
+
+mrexp_inf <- cumNorm(mrexp_inf, p = 0.75)
+mrexp_inf <- filterData(mrexp_inf, present = 7, depth = 1)
+# mrexp_inf <- cumNorm(mrexp_inf, p = 0.75)
+s <- normFactors(mrexp_inf)
+pd <- pData(mrexp_inf)
+
+settings <- zigControl(maxit = 1, verbose = FALSE)
+mod <- model.matrix(~plant_name, data = pd)
+colnames(mod) <- levels(pd$plant_name)
+res = fitZig(obj <- mrexp_inf, mod = mod, control = settings)
+zigFit = res$fit
+fit2 = eBayes(zigFit)
+top_tbl <- topTableF(fit2,p.value = 0.075) 
+top_feat <- top_tbl %>% rownames()
+```
+
+```{r}
+count_tbl <- MRcounts(mrexp_inf)
+count_tbl <- count_tbl[rownames(count_tbl) %in% top_feat,]
+count_df <- count_tbl %>% as.data.frame() %>% 
+    rownames_to_column(var = "genus") %>% 
+    gather("Seq_ID", "Count",-genus) %>% left_join(pd)
+```
+
+Differentially abundance genus between treatment plant influent samples.  Might want to exclude MW_TP2 since there is only one sample.
+
+```{r}
+kable(top_tbl)
+```
+
+```{r }
+count_df %>% 
+    # mutate(plant_name = str_replace(plant_name, "Mid-Atlantic ", "MA-"),
+    #        plant_name = str_replace(plant_name, "Midwest ", "MW-")) %>% 
+ggplot() + 
+    geom_point(aes(x = plant_name, y = Count, color = plant_name)) + 
+    geom_line(aes(x = plant_name, y = Count, color = plant_name)) + 
+    facet_wrap(~genus,nrow = 2) +
+    theme_bw() + scale_y_log10() + labs(y = "Relative Abundance", 
+                                        color = "Treatment Plant",
+                                        x = "Treatment Plant") + 
+    theme(legend.position = "bottom", 
+          axis.text.x = element_text(angle = 90),
+          strip.text =element_text(face = "italic"))
+```
+
+
+## Influent-Effluent Pairs
+Need to check regarding limited number of effluent samples ....
+
+### Supplemental Figure 3 - Alpha diversity
+```{r}
+ww_div_inf_eff <- ww_div_df %>% filter(Stage %in% c("Influent","Effluent")) %>% 
+    group_by(plant_name, Stage, Date, diversity) %>% 
+    summarise(metric = median(metric))
+```
+
+```{r}
+ww_div_inf_eff %>% ungroup() %>% 
+    mutate(Stage = factor(Stage, levels = c("Influent","Effluent")),
+           Date = paste(plant_name, Date)) %>% 
+    ggplot(aes(x = Stage, y = metric)) +
+        geom_path(aes(group = Date), color = "grey60") +
+        geom_point(aes(x = Stage, y = metric, color = plant_name)) +
+        facet_wrap(~diversity, scale = "free_y") +
+        labs(y = "Diversity Metric", color = "WWTP") + theme_bw() +
+      theme(legend.position = "bottom")
+```
+
+### Testing for differences
+Using a paired t-test to compared the alpha diversity between influent and effluent samples, specnumber (number of observed OTUs)  and shannon's diversity index were significantly higher for influent compared to effluent. 
+Shannon's diversity index is close to the significance threshold of 0.05, and when accounting for multiple comparisons Shannon's diversity index is no longer significant. 
+The number of observed OTUs is biased by sequencing depth, as the effluent samples consistently have fewer reads than influent samples the observed difference is likely at least partially due to differences in sequencing depth.
+
+```{r}
+inf_eff_paired <- ww_div_inf_eff %>% group_by(plant_name, Date, Stage, diversity) %>% 
+    summarize(metric = median(metric)) %>% spread(Stage, metric) %>%
+    filter(!is.na(Influent), !is.na(Effluent))
+
+inf_v_ef_test_df <- data_frame()
+for(i in c("shannon","simpson","specnumber")){
+    inf_v_ef_test_df <- inf_eff_paired %>% 
+        filter(diversity == i) %>% 
+        {t.test(.$Influent, .$Effluent, paired = TRUE, alternative = "greater")} %>% 
+        tidy() %>% mutate(diversity = i) %>% bind_rows(inf_v_ef_test_df)
+}
+inf_v_ef_test_df %>% select(diversity, estimate, statistic, p.value, parameter, conf.low, conf.high) %>% kable()
+```
+
+
+### Relative Abundance
+```{r}
+mrexp_inf_eff <- plantObj[, which(pData(plantObj)$Stage_name %in% 
+                                  c("Raw influent", 
+                                    "Influent post screening","Effluent"))]
+mrexp_inf_eff <- aggregateByTaxonomy(mrexp_inf_eff, 
+                                 lvl = "genus", 
+                                 alternate = TRUE, 
+                                 norm = TRUE, log = TRUE)
+
+pData(mrexp_inf_eff)$plant_name <- pData(mrexp_inf_eff)$plant_name %>% factor()
+pData(mrexp_inf_eff)$Stage_name <- pData(mrexp_inf_eff)$Stage_name %>% 
+      ifelse(. %in% c("Raw influent","Influent post screening"),"Influent",.) %>% 
+      factor(levels = c("Influent","Effluent"))
+
+mrexp_inf_eff <- cumNorm(mrexp_inf_eff, p = 0.75)
+mrexp_inf_eff <- filterData(mrexp_inf_eff, present = 7, depth = 1)
+# mrexp_inf_eff <- cumNorm(mrexp_inf_eff, p = 0.75)
+s <- normFactors(mrexp_inf_eff)
+pd <- pData(mrexp_inf_eff)
+
+settings = zigControl(maxit = 1, verbose = FALSE)
+mod = model.matrix(~Stage_name, data = pd)
+colnames(mod) = levels(pd$Stage_name)
+res = fitZig(obj = mrexp_inf_eff, mod = mod, control = settings)
+zigFit = res$fit
+fit2 <- eBayes(zigFit)
+top_tbl <- topTableF(fit2,p.value = 0.075) 
+top_feat <- top_tbl %>% rownames()
+```
+
+```{r}
+count_tbl <- MRcounts(mrexp_inf_eff)
+count_tbl <- count_tbl[rownames(count_tbl) %in% top_feat,]
+count_df <- count_tbl %>% as.data.frame() %>% 
+    rownames_to_column(var = "genus") %>% 
+    gather("Seq_ID", "Count",-genus) %>% left_join(pd) %>% 
+    mutate(plant_date = paste0(Date, plant_name))
+```
+
+```{r}
+kable(top_tbl)
+```
+
+### Figure 2
+```{r}
+ggplot(count_df) + 
+    geom_path(aes(x = Stage_name, y = Count, group = plant_date), 
+              color = "grey60") + 
+    geom_point(aes(x = Stage_name, y = Count, color = plant_name)) + 
+    facet_wrap(~genus, nrow = 2) +
+    theme_bw() + scale_y_log10() + 
+    labs(y = "Relative Abundance", x = "Stage Name", color = "Treatment Plant") +
+    theme(legend.position = "bottom", 
+          strip.text = element_text(face = "italic"))
+```
+
+ 
+
+
+## Beta Diversity
+Description of metrics based on _Biological Diversity frontiers in measurement and assessment._ Edited by Anne E. Magurran and Brian McGill  
+
+$\Beta$ diversity was calculated using two different metrics.  
+
+__Bray Curtis__ $S_{BC}$  
+
+* Bray Curtis is an abundance based similarity measure.   
+
+$$ 
+S_{BC} = 1 - \frac{\sum_{i=1}^S |M_{i1} - M_{i2}|}{\sum_{i=1}^S (M_{i1} + M_{i2})}
+$$  
+
+* $M_{i1}$ and $M_{i2}$ are the abundance of OTU $i$ in sample 1 and 2 respectively.    
+* $S$ is the total number of OTUs in samples 1 and 2.  
+
+* Confounds diversity with compositional similarity  
+* Impact of different sample sizes  
+    - metric approaches 0 with increasingly different sample sizes even for samples with the same or different composition    
+    - Normalization should address this issue     
+* Impact of different coverage (sampling fraction)  
+    - for different coverage samples the metric "becomes meaningless and performs erratically" (Chao et al 2006)  
+
+Chao et al. 2006 _Abundance-based similarity indices and their estimatation when there are unseen species in samples._ Biometrics, 62, 361-371  
+
+
+__Jaccard__ $S_J$  
+* Jaccard is an incidence based (presence/absence) $\Beta$ diversity measure.  
+
+$$
+S_J = \frac{S_{12}}{(S_1 + S_2 - S_{12})}
+$$  
+
+* $S_{1}$ - total observed OTUs in sample 1  
+* $S_{2}$ - total observed OTUs in sample 2  
+* $S_{12}$ - total observed OTUs in samples 1 and 2    
+* Incidence based measures assume nearly complete coverage   
+
+__Section Objective__  
+Look at all the samples together. Then look for interesting results and for these interesting results look at statistically significant differences.  
+
+For post-hoc comaprison most differences are spray irrigation stages.    
+
+__Ordination Methods__  
+
+* Both nMDS and PCoA do not require the input distances in euclidean space.   
+* nMDS obtains a euclidean representation of input non-euclidean data using a non-linear function.  
+* PCoA is only able to provide a euclidean representation of the Euclidean part of the distance matric. 
+The non-Euclidean part of the distance matric is not represented in the ordination.  
+
+Notes from _Numerical Ecology_ Legendre and Legendra 3rd Edition p. 493  
+
+Summary of NMDS https://jonlefcheck.net/2012/10/24/nmds-tutorial-in-r/  
+
+__Statistical Tests__  
+ANOSIM - analysis of similarities, testing for similarities between groups, rank order of dissimilarity value based statistical test.  
+No post-hoc test for ANOSIM, testing for pairwise differences using betadisper.  
+Betadisper is an implementation of PERMDISP2, multivariate analgoue to Levene's test for variance homogeneity.  
+Evaluates the variance or distance of samples from group centroid.  
+
+
+```{r}
+dist_methods <- unlist(distanceMethodList)[c(8,10)]
+```
+
+
+### Treatment Process Comparison
+```{r results='hide'}
+pl <- subset_samples(plant_phy, study_type == "plant")
+
+pl_pcoa_list <- list()
+pl_nmds_list <- list()
+for (i in dist_methods) {
+    # Calculate distance matrix
+    iDist <- distance(pl, method = i)
+    # Calculate ordination
+    pl_pcoa_list[[i]] <- ordinate(pl, method = "PCoA", distance = iDist)
+    pl_nmds_list[[i]] <- ordinate(pl, method = "NMDS", distance = iDist)
+}
+```
+
+
+### Figure 3 - Ordination Plots
+
+```{r}
+plot_ordination(pl, pl_pcoa_list[[1]], color= "Stage", title = "Bray Curtis PCoA") + theme_bw() + stat_ellipse()
+plot_ordination(pl, pl_nmds_list[[1]], color= "Stage", title = "Bray Curtis NMDS") + theme_bw() + stat_ellipse()
+stressplot(pl_nmds_list[[1]])
+```
+
+
+#### Jaccard
+```{r}
+plot_ordination(pl, pl_pcoa_list[[2]], color= "Stage", title = "Jaccard PCoA") + theme_bw()
+plot_ordination(pl, pl_nmds_list[[2]], color= "Stage", title = "Jaccard NMDS") + theme_bw()
+stressplot(pl_nmds_list[[2]])
+```
+
+
+### Testing for Differences
+
+```{r}
+iDist <- distance(pl, method = "bray")
+anosim(iDist,grouping = factor(pl@sam_data$Stage))
+```
+
+
+Treatment plant stages are significantly different testing for pairwise differences
+
+```{r}
+## betadisper has a post-hoc test
+iDist <- distance(pl, method = "bray")
+beta_fit <- betadisper(iDist,group = factor(pl@sam_data$Stage))
+```
+
+
+```{r}
+anova(beta_fit) %>% tidy() %>% kable()
+```
+
+
+```{r}
+TukeyHSD(beta_fit)$group %>% as.data.frame() %>% 
+    rownames_to_column(var = "comparison") %>% 
+    filter(`p adj` < 0.075) %>% kable(digits = 3)
+```
+
+
+
+### Spray Irrigation Stage Comparison
+```{r message = FALSE}
+si <- subset_samples(plant_phy, study_type == "spray")
+si_pcoa_list <- list()
+si_nmds_list <- list()
+for (i in dist_methods) {
+    print(i)
+    # Calculate distance matrix
+    iDist <- distance(si, method = i)
+    # Calculate ordination
+    si_pcoa_list[[i]] <- ordinate(si, method = "PCoA", distance = iDist)
+    si_nmds_list[[i]] <- ordinate(si, method = "NMDS", distance = iDist)
+}
+```
+
+
+### Ordination Plots
+#### Bray Curtis
+```{r}
+plot_ordination(si, si_pcoa_list[[1]], color= "Stage", title = "Bray Curtis PCoA") + theme_bw()
+plot_ordination(si, si_nmds_list[[1]], color= "Stage", title = "Bray Curtis NMDS") + theme_bw()
+stressplot(si_nmds_list[[1]])
+```
+
+
+#### Jaccard
+```{r}
+plot_ordination(si, si_pcoa_list[[2]], color= "Stage", title = "Jaccard PCoA") + theme_bw()
+plot_ordination(si, si_nmds_list[[2]], color= "Stage", title = "Jaccard NMDS") + theme_bw()
+stressplot(si_nmds_list[[2]])
+```
+
+
+### Testing for Differences by Stage
+Spray irrigation stages are significantly different. 
+
+```{r}
+## betadisper has a post-hoc test
+iDist <- distance(pl, method = "bray")
+beta_fit <- betadisper(iDist,group = factor(pl@sam_data$Stage))
+```
+
+
+```{r}
+anova(beta_fit) %>% tidy() %>% kable()
+```
+
+
+```{r}
+TukeyHSD(beta_fit)$group %>% as.data.frame() %>% 
+    rownames_to_column(var = "comparison") %>% 
+    filter(`p adj` < 0.075) %>% kable(digits = 3)
+```
+
+
+
+## Treatment Processes
+### Supplemental Figure 4 - Alpha diversity
+```{r}
+ww_div_treat <- ww_div_df %>% filter(study_type == "plant") %>% 
+    group_by(plant_name, Stage, StageID, Date, diversity) %>% 
+    summarise(metric = median(metric))
+```
+
+
+```{r}
+ww_div_treat %>% ungroup() %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","ActivatedSludgeReactor", 
+                                           "PostAeration","SecondaryClarifier",
+                                           "CellB","Effluent")), 
+           Date = paste(plant_name, Date)) %>% 
+    ggplot(aes(x = Stage, y = metric)) +
+        geom_line(aes(group = Date), color = "grey60") +
+        geom_point(aes(x = Stage, y = metric)) +
+        facet_grid(diversity~plant_name, scale = "free") +
+        labs(y = "Diversity Metric", color = "WWTP") + theme_bw() +
+        theme(axis.text.x = element_text(angle = 90))
+```
+
+
+#### Testing for Differences
+Test for stage differences only performed for Mid-Atlantic WWTP1, only treatment plant with replicates at each stage. 
+None of the stages are significantly different from each other. 
+
+```{r}
+fit_aov <- function(df) aov(metric~Stage, data = df)
+treat_div_test <- ww_div_treat %>% filter(plant_name == "Mid-Atlantic WWTP1") %>% 
+    group_by(diversity) %>% nest() %>% mutate(aov_mod = map(data, fit_aov))
+
+aov_summary <- treat_div_test$aov_mod %>% map_df(glance) %>% 
+    rename(f_stat = statistic, f_p = p.value) 
+aov_summary$diversity <- inf_div_test$diversity
+
+aov_summary %>% select(diversity, logLik, AIC,BIC, f_stat, f_p) %>% kable()
+```
+
+
+ANOVA Diagnostic plots
+```{r}
+div_metrics <- c("shannon","simpson","specnumber")
+for(i in 1:3){
+    print(autoplot(treat_div_test$aov_mod[[i]]) + 
+              ggtitle(paste0(div_metrics[i])))
+}
+```
+
+
+### Relative Abundance
+```{r}
+mrexp <- aggregateByTaxonomy(plantObj, 
+                                 lvl = "genus", 
+                                 alternate = TRUE, 
+                                 norm = TRUE, log = TRUE)
+pData(mrexp)$plant_name <- pData(mrexp)$plant_name %>% factor()
+pData(mrexp)$Stage_name <- pData(mrexp)$Stage_name %>% 
+      ifelse(. %in% c("Raw influent","Influent post screening"),"Influent",.) %>% 
+      factor(levels =c("Influent", "Activated Sludge Reactor", "Post aeration", 
+                       "Secondary clarifier", "Cell B","Effluent"))
+
+plant_zigFit <- function(mrexp, plant){
+    mrexp_plant <- mrexp[,which(pData(mrexp)$plant_name == plant)]
+    pData(mrexp_plant)$Stage_name <- factor(pData(mrexp_plant)$Stage_name)
+    mrexp_plant <- cumNorm(mrexp_plant, p = 0.75)
+    mrexp_plant <- filterData(mrexp_plant, 
+                              present = floor(dims(mrexp_plant)[2]/2), 
+                              depth = 1)
+    # mrexp_plant <- cumNorm(mrexp_plant, p = 0.75)
+    pd <- pData(mrexp_plant)
+    
+    settings = zigControl(maxit = 1, verbose = FALSE)
+    mod = model.matrix(~Stage_name, data = pd)
+    colnames(mod) = levels(pd$Stage_name)
+
+    res = fitZig(obj = mrexp_plant, mod = mod, control = settings)
+    zigFit = res$fit
+    finalMod = res$fit$design
+    fit2 = eBayes(zigFit)
+    top_tbl <- topTableF(fit2,p.value = 0.075) 
+    top_feat <- top_tbl %>% rownames()
+
+    count_tbl <- MRcounts(mrexp_plant)
+    count_tbl <- count_tbl[rownames(count_tbl) %in% top_feat,]
+    count_df <- count_tbl %>% as.data.frame() %>%
+        rownames_to_column(var = "genus") %>%
+        gather("Seq_ID", "Count",-genus) %>% left_join(pd)
+
+   list(count_df = count_df, top_tbl = top_tbl)
+}
+```
+
+### Figure 4-7
+```{r, fig.height = 10, fig.width = 6}
+make_ww_tp_plot <- function(plant_zig){
+    ggplot(plant_zig$count_df) +
+                geom_point(aes(x = Stage_name, y = Count, color = Stage_name)) +
+                facet_wrap(~genus, nrow = 1) +
+                theme_bw() + scale_y_log10() +
+                labs(y = "Rel. Abu.", color = "Treatment Process") +
+                theme_bw() +
+              theme(axis.text.x = element_blank(),
+                    axis.title.x = element_blank(),
+                    strip.text = element_text(face = "italic"))
+}
+
+ww_tp <- pData(mrexp)$plant_name %>% 
+    .[!grepl("SI", .)] %>% unique() %>% as.character()
+
+ww_tp
+
+ww_tp_plots <- ww_tp %>% set_names(ww_tp) %>% 
+    map(plant_zigFit, mrexp = mrexp) %>% map(make_ww_tp_plot)
+
+ggarrange(ww_tp_plots[[1]], ww_tp_plots[[4]], 
+          ww_tp_plots[[2]], ww_tp_plots[[3]],
+          labels = c("A", "B", "C", "D"),
+          ncol = 1, nrow = 4,legend = "bottom")
+
+ggsave("diff_abu_treat_process.tiff", width = 10, height = 8, dpi = 300)
+```
+
+```{r results = 'asis'}
+for(i in ww_tp){
+    plant_zig <- plant_zigFit(mrexp, i)
+    print(paste("##### ",i))
+    print(kable(plant_zig$top_tbl))
+}
+```
+
+ 
+## WWTP to SI site
+### Supplemental Figure S5 - Alpha diversity
+```{r}
+spray_div <- ww_div_df %>% filter( WW_TP %in% c("MA_TP1","MA_SI1")) %>% 
+    filter(Stage %in% c("Influent","Effluent", "BeforeUVTreatment", 
+                        "AfterUVTreatment","HoldingPondInlet", 
+                        "PumpHouseInlet")) %>% 
+    group_by(plant_name, Stage, StageID, Date, diversity) %>% 
+    summarise(metric = median(metric))
+```
+
+```{r}
+spray_div %>% ungroup() %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Effluent","BeforeUVTreatment", 
+                        "AfterUVTreatment","HoldingPondInlet", 
+                        "PumpHouseInlet"))) %>% 
+    ggplot(aes(x = Stage, y = metric)) +
+        geom_line(aes(group = Date), color = "grey60") +
+        geom_point(aes(x = Stage, y = metric)) +
+        facet_grid(diversity~., scale = "free") +
+        labs(y = "Diversity Metric", color = "WWTP") + theme_bw() +
+        theme(axis.text.x = element_text(angle = 90))
+```
+
+#### Testing for differences
+For shannon and OTU number there are significant differences between influent, effluent, and spray irrigation stages. 
+```{r}
+fit_aov <- function(df) aov(metric~Stage, data = df)
+spray_div_test <- spray_div %>% group_by(diversity) %>% 
+    nest() %>% mutate(aov_mod = map(data, fit_aov))
+
+aov_summary <- spray_div_test$aov_mod %>% map_df(glance) %>% 
+    rename(f_stat = statistic, f_p = p.value) 
+aov_summary$diversity <- spray_div_test$diversity
+
+aov_summary %>% select(diversity, logLik, AIC,BIC, f_stat, f_p) %>% kable()
+```
+
+ANOVA Diagnostic plots
+```{r}
+div_metrics <- c("shannon","simpson","specnumber")
+for(i in 1:3){
+    print(autoplot(spray_div_test$aov_mod[[i]]) + 
+              ggtitle(paste0(div_metrics[i])))
+}
+```
+
+Testing for pairwise differences.
+```{r}
+for(i in c("shannon", "specnumber")){
+    print(i)
+    tukey <- spray_div %>% filter(diversity == i) %>% {aov(metric~Stage, data = .)} %>% TukeyHSD()
+    tidy(tukey) %>% filter(adj.p.value < 0.1) %>% print()
+}
+```
+
+
+### Relative Abundance 
+```{r}
+mrexp_spray <- plantObj[,which(pData(plantObj)$WW_TP %in% c("MA_TP1","MA_SI1") & 
+                              pData(plantObj)$Stage %in% c("RawInfluent","PostScreeningInfluent","Effluent",
+                                                            "BeforeUVTreatment", "AfterUVTreatment",
+                                                            "HoldingPondInlet","PumpHouseInlet"))]
+
+pData(mrexp_spray)$Stage_name <- pData(mrexp_spray)$Stage %>% 
+      ifelse(. %in% c("RawInfluent","PostScreeningInfluent"),"Influent",.) %>% 
+      factor(levels =c("Influent","Effluent", "BeforeUVTreatment", "AfterUVTreatment",
+                       "HoldingPondInlet","PumpHouseInlet"))
+
+mrexp_spray <- aggregateByTaxonomy(mrexp_spray, 
+                                 lvl = "genus", 
+                                 alternate = TRUE, 
+                                 norm = TRUE, log = TRUE)
+
+mrexp_spray <- cumNorm(mrexp_spray, p = 0.75)
+mrexp_spray <- filterData(mrexp_spray, present = 7, depth = 1)
+# mrexp_spray <- cumNorm(mrexp_spray, p = 0.75)
+s <- normFactors(mrexp_spray)
+pd <- pData(mrexp_spray)
+
+settings = zigControl(maxit = 1, verbose = FALSE)
+mod = model.matrix(~Stage_name, data = pd)
+colnames(mod) = levels(pd$Stage_name)
+res = fitZig(obj = mrexp_spray, mod = mod, control = settings)
+zigFit = res$fit
+fit2 <- eBayes(zigFit)
+top_tbl <- topTableF(fit2,p.value = 0.075) 
+top_feat <- top_tbl %>% rownames()
+```
+
+```{r}
+count_tbl <- MRcounts(mrexp_spray)
+count_tbl <- count_tbl[rownames(count_tbl) %in% top_feat,]
+count_df <- count_tbl %>% as.data.frame() %>% 
+    rownames_to_column(var = "genus") %>% 
+    gather("Seq_ID", "Count",-genus) %>% left_join(pd) %>% 
+    mutate(Stage = factor(Stage,levels = c("RawInfluent","Effluent","BeforeUVTreatment", 
+                    "AfterUVTreatment","HoldingPondInlet", 
+                    "PumpHouseInlet")))
+```
+
+```{r}
+kable(top_tbl)
+```
+
+```{r}
+ggplot(count_df) + 
+    geom_line(aes(x = Stage, y = Count, group = Date), color = "grey60") + 
+    geom_point(aes(x = Stage, y = Count)) + 
+    facet_wrap(~genus, nrow = 2) +
+    theme_bw() + scale_y_log10() + labs(y = "Relative Abundance") +
+    theme(axis.text.x = element_text(angle = 90))
+```
+
+ 
+## Session information
+`import_biom2` function form `joe_diversity_function.R` script.  
+```{r}
+import_biom2
+```
+
+```{r}
+s_info <- devtools::session_info()
+print(s_info$platform)
+kable(s_info$packages)
+```

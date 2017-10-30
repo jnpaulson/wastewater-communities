@@ -1,0 +1,66 @@
+---
+title: "Generate Plant MRexperiment"
+author: "Nate Olson"
+date: "10/19/2017"
+output: html_document
+---
+
+Code used to generate `plantObj.rds` used in analysis from metadata and full MRexperiment object. 
+
+Modifications from original MRexperiment object include adding sample metadata and excluding samples not used in the study including samples from spray irrigation samples and samples sequenced as part of the quality control and method development. 
+
+```{r}
+library(tidyverse)
+library(metagenomeSeq)
+```
+
+
+```{r}
+project_dir <- file.path("/Users/nolson/Projects/sapkota_wastewater/wastewater16S/")
+metadata_dir <- file.path(project_dir, "metadata/")
+
+dat_files <- c(
+   env_meta = file.path(metadata_dir, "env_meta.csv"),
+   seq_meta = file.path(metadata_dir, "seq_meta.csv"),
+   id_key = file.path(metadata_dir, "id_keys.csv"),
+   merge_id = file.path(metadata_dir, "merge_id_key.csv"),
+   key_meta = file.path(metadata_dir, "key_meta.csv"),
+   mr_blast_file = file.path(project_dir, "wastewater_blast.rdata")
+)
+
+# metadata
+meta_env_src <- read_csv(dat_files['env_meta'])
+
+
+# Loading blast based OTU count data.
+load(dat_files['mr_blast_file'])
+
+# Only including spray irrigation and treatment plant data in analysis.
+plantObj <- which((pData(wastewaterMRobj_blast)$study_type == "plant" &
+                      pData(wastewaterMRobj_blast)$Stage_name != "Influent post screening") |
+                      pData(wastewaterMRobj_blast)$Region_Site == "MA_SI1"  &
+                      ## excluding plus 16 hour samples
+                      !(pData(wastewaterMRobj_blast)$Seq_ID %in% c("WW.SI1.10.09.AUV.22.plus16hr","WW.SI.10.09.BUV.21.plus16hr"))) %>% 
+            {wastewaterMRobj_blast[,.]} %>% cumNorm(p = 0.75)
+
+ww_meta <- plantObj %>% pData() %>% 
+      as.data.frame %>% mutate(Seq_ID = row.names(.)) %>% 
+      separate(Env_ID,c("Region","TP","Date","Stage"), sep = "_") %>% 
+      unite("WW_TP", Region,TP, sep = "_", remove = F)  %>%
+      mutate(plant_name = paste(ifelse(Region == "MA", 
+                                       "Mid-Atlantic",
+                                       "Midwest"),
+                                ifelse(TP %in% c("TP1","TP2"),
+                                       paste0("WW",TP),TP))) %>% 
+      select(Seq_ID, WW_TP, plant_name, Region, TP, Date, Stage, Stage_name, 
+             study_type, Season, StageID, StageID_all_plants)
+rownames(ww_meta) <- ww_meta$Seq_ID
+      
+pData(plantObj) <- ww_meta
+```
+
+## saving MRexperiment
+```{r}
+saveRDS(plantObj, "plantObj.rds")
+```
+

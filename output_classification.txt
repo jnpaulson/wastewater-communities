@@ -1,0 +1,1983 @@
+58153,131567,cellular organisms,below_root,1.0000
+58153,1224,Proteobacteria,phylum,1.0000
+58153,444,Legionellaceae,family,1.0000
+58153,118969,Legionellales,order,1.0000
+58153,1,root,root,1.0000
+58153,445,Legionella,genus,1.0000
+58153,1236,Gammaproteobacteria,class,1.0000
+58153,2,Bacteria,superkingdom,1.0000
+58155,131567,cellular organisms,below_root,1.0000
+58155,1224,Proteobacteria,phylum,1.0000
+58155,444,Legionellaceae,family,1.0000
+58155,118969,Legionellales,order,1.0000
+58155,1,root,root,1.0000
+58155,1236,Gammaproteobacteria,class,1.0000
+58155,2,Bacteria,superkingdom,1.0000
+502426,201174,Actinobacteria,phylum,1.0000
+502426,131567,cellular organisms,below_root,1.0000
+502426,1762,Mycobacteriaceae,family,1.0000
+502426,1760,Actinobacteria,class,1.0000
+502426,1763,Mycobacterium,genus,1.0000
+502426,85007,Corynebacterineae,suborder,1.0000
+502426,1,root,root,1.0000
+502426,2037,Actinomycetales,order,1.0000
+502426,85003,Actinobacteridae,subclass,1.0000
+502426,2,Bacteria,superkingdom,1.0000
+58152,131567,cellular organisms,below_root,1.0000
+58152,1224,Proteobacteria,phylum,1.0000
+58152,444,Legionellaceae,family,1.0000
+58152,118969,Legionellales,order,1.0000
+58152,1,root,root,1.0000
+58152,445,Legionella,genus,1.0000
+58152,1236,Gammaproteobacteria,class,1.0000
+58152,2,Bacteria,superkingdom,1.0000
+445312,201174,Actinobacteria,phylum,1.0000
+445312,131567,cellular organisms,below_root,1.0000
+445312,1762,Mycobacteriaceae,family,1.0000
+445312,1760,Actinobacteria,class,1.0000
+445312,1763,Mycobacterium,genus,1.0000
+445312,85007,Corynebacterineae,suborder,1.0000
+445312,1,root,root,1.0000
+445312,2037,Actinomycetales,order,1.0000
+445312,85003,Actinobacteridae,subclass,1.0000
+445312,1788,Mycobacterium terrae,species,.9981
+445312,2,Bacteria,superkingdom,1.0000
+445312,1073531,Mycobacterium terrae complex,species_group,1.0000
+58151,131567,cellular organisms,below_root,1.0000
+58151,1224,Proteobacteria,phylum,1.0000
+58151,444,Legionellaceae,family,1.0000
+58151,118969,Legionellales,order,1.0000
+58151,1,root,root,1.0000
+58151,1236,Gammaproteobacteria,class,1.0000
+58151,2,Bacteria,superkingdom,1.0000
+447059,201174,Actinobacteria,phylum,1.0000
+447059,131567,cellular organisms,below_root,1.0000
+447059,1762,Mycobacteriaceae,family,1.0000
+447059,1760,Actinobacteria,class,1.0000
+447059,1763,Mycobacterium,genus,1.0000
+447059,85007,Corynebacterineae,suborder,1.0000
+447059,1,root,root,1.0000
+447059,2037,Actinomycetales,order,1.0000
+447059,85003,Actinobacteridae,subclass,1.0000
+447059,2,Bacteria,superkingdom,1.0000
+447059,1073531,Mycobacterium terrae complex,species_group,1.0000
+36006,777,Coxiella burnetii,species,1.0000
+36006,131567,cellular organisms,below_root,1.0000
+36006,1224,Proteobacteria,phylum,1.0000
+36006,118969,Legionellales,order,1.0000
+36006,1,root,root,1.0000
+36006,776,Coxiella,genus,1.0000
+36006,118968,Coxiellaceae,family,1.0000
+36006,1236,Gammaproteobacteria,class,1.0000
+36006,2,Bacteria,superkingdom,1.0000
+58158,131567,cellular organisms,below_root,1.0000
+58158,1224,Proteobacteria,phylum,1.0000
+58158,444,Legionellaceae,family,1.0000
+58158,118969,Legionellales,order,1.0000
+58158,1,root,root,1.0000
+58158,445,Legionella,genus,1.0000
+58158,45073,Legionella quinlivanii,species,1.0000
+58158,1236,Gammaproteobacteria,class,1.0000
+58158,2,Bacteria,superkingdom,1.0000
+58157,131567,cellular organisms,below_root,1.0000
+58157,1224,Proteobacteria,phylum,1.0000
+58157,444,Legionellaceae,family,1.0000
+58157,118969,Legionellales,order,1.0000
+58157,1,root,root,1.0000
+58157,445,Legionella,genus,1.0000
+58157,1236,Gammaproteobacteria,class,1.0000
+58157,2,Bacteria,superkingdom,1.0000
+35156,131567,cellular organisms,below_root,1.0000
+35156,1224,Proteobacteria,phylum,1.0000
+35156,444,Legionellaceae,family,1.0000
+35156,118969,Legionellales,order,1.0000
+35156,1,root,root,1.0000
+35156,445,Legionella,genus,.9864
+35156,1236,Gammaproteobacteria,class,1.0000
+35156,2,Bacteria,superkingdom,1.0000
+51407,131567,cellular organisms,below_root,1.0000
+51407,1224,Proteobacteria,phylum,1.0000
+51407,444,Legionellaceae,family,1.0000
+51407,118969,Legionellales,order,1.0000
+51407,1,root,root,1.0000
+51407,1236,Gammaproteobacteria,class,1.0000
+51407,2,Bacteria,superkingdom,1.0000
+494832,201174,Actinobacteria,phylum,1.0000
+494832,131567,cellular organisms,below_root,1.0000
+494832,1762,Mycobacteriaceae,family,1.0000
+494832,1760,Actinobacteria,class,1.0000
+494832,1763,Mycobacterium,genus,1.0000
+494832,85007,Corynebacterineae,suborder,1.0000
+494832,1,root,root,1.0000
+494832,2037,Actinomycetales,order,1.0000
+494832,85003,Actinobacteridae,subclass,1.0000
+494832,2,Bacteria,superkingdom,1.0000
+38650,131567,cellular organisms,below_root,1.0000
+38650,1224,Proteobacteria,phylum,1.0000
+38650,444,Legionellaceae,family,1.0000
+38650,118969,Legionellales,order,1.0000
+38650,1,root,root,1.0000
+38650,45070,Legionella nautarum,species,.9857
+38650,445,Legionella,genus,1.0000
+38650,1236,Gammaproteobacteria,class,1.0000
+38650,2,Bacteria,superkingdom,1.0000
+494829,201174,Actinobacteria,phylum,1.0000
+494829,131567,cellular organisms,below_root,1.0000
+494829,1762,Mycobacteriaceae,family,1.0000
+494829,1760,Actinobacteria,class,1.0000
+494829,1,root,root,1.0000
+494829,1763,Mycobacterium,genus,1.0000
+494829,2037,Actinomycetales,order,1.0000
+494829,85003,Actinobacteridae,subclass,1.0000
+494829,85007,Corynebacterineae,suborder,1.0000
+494829,2,Bacteria,superkingdom,1.0000
+494829,319706,Mycobacterium phocaicum,species,.9945
+58043,131567,cellular organisms,below_root,1.0000
+58043,1224,Proteobacteria,phylum,1.0000
+58043,444,Legionellaceae,family,1.0000
+58043,118969,Legionellales,order,1.0000
+58043,1,root,root,1.0000
+58043,453,Legionella feeleii,species,1.0000
+58043,445,Legionella,genus,1.0000
+58043,1236,Gammaproteobacteria,class,1.0000
+58043,2,Bacteria,superkingdom,1.0000
+509979,201174,Actinobacteria,phylum,1.0000
+509979,131567,cellular organisms,below_root,1.0000
+509979,1762,Mycobacteriaceae,family,1.0000
+509979,1760,Actinobacteria,class,1.0000
+509979,1763,Mycobacterium,genus,1.0000
+509979,85007,Corynebacterineae,suborder,1.0000
+509979,1,root,root,1.0000
+509979,2037,Actinomycetales,order,1.0000
+509979,85003,Actinobacteridae,subclass,1.0000
+509979,2,Bacteria,superkingdom,1.0000
+2556,131567,cellular organisms,below_root,1.0000
+2556,1224,Proteobacteria,phylum,1.0000
+2556,444,Legionellaceae,family,1.0000
+2556,118969,Legionellales,order,1.0000
+2556,1,root,root,1.0000
+2556,1236,Gammaproteobacteria,class,1.0000
+2556,2,Bacteria,superkingdom,1.0000
+361750,201174,Actinobacteria,phylum,1.0000
+361750,131567,cellular organisms,below_root,1.0000
+361750,1762,Mycobacteriaceae,family,1.0000
+361750,1760,Actinobacteria,class,1.0000
+361750,1763,Mycobacterium,genus,1.0000
+361750,85007,Corynebacterineae,suborder,1.0000
+361750,1,root,root,1.0000
+361750,2037,Actinomycetales,order,1.0000
+361750,85003,Actinobacteridae,subclass,1.0000
+361750,2,Bacteria,superkingdom,1.0000
+58169,131567,cellular organisms,below_root,1.0000
+58169,1224,Proteobacteria,phylum,1.0000
+58169,444,Legionellaceae,family,1.0000
+58169,118969,Legionellales,order,1.0000
+58169,1,root,root,1.0000
+58169,1236,Gammaproteobacteria,class,1.0000
+58169,2,Bacteria,superkingdom,1.0000
+453156,201174,Actinobacteria,phylum,1.0000
+453156,131567,cellular organisms,below_root,1.0000
+453156,1762,Mycobacteriaceae,family,1.0000
+453156,1760,Actinobacteria,class,1.0000
+453156,342002,Mycobacterium arupense,species,1.0000
+453156,1,root,root,1.0000
+453156,1763,Mycobacterium,genus,1.0000
+453156,2037,Actinomycetales,order,1.0000
+453156,85003,Actinobacteridae,subclass,1.0000
+453156,85007,Corynebacterineae,suborder,1.0000
+453156,2,Bacteria,superkingdom,1.0000
+453156,1073531,Mycobacterium terrae complex,species_group,1.0000
+16970,131567,cellular organisms,below_root,1.0000
+16970,40335,Legionella tucsonensis,species,1.0000
+16970,1224,Proteobacteria,phylum,1.0000
+16970,444,Legionellaceae,family,1.0000
+16970,118969,Legionellales,order,1.0000
+16970,1,root,root,1.0000
+16970,445,Legionella,genus,1.0000
+16970,1236,Gammaproteobacteria,class,1.0000
+16970,2,Bacteria,superkingdom,1.0000
+58055,131567,cellular organisms,below_root,1.0000
+58055,1224,Proteobacteria,phylum,1.0000
+58055,444,Legionellaceae,family,1.0000
+58055,118969,Legionellales,order,1.0000
+58055,1,root,root,1.0000
+58055,445,Legionella,genus,1.0000
+58055,96232,Legionella lytica,species,1.0000
+58055,1236,Gammaproteobacteria,class,1.0000
+58055,2,Bacteria,superkingdom,1.0000
+58175,131567,cellular organisms,below_root,1.0000
+58175,1224,Proteobacteria,phylum,1.0000
+58175,444,Legionellaceae,family,1.0000
+58175,118969,Legionellales,order,1.0000
+58175,1,root,root,1.0000
+58175,445,Legionella,genus,1.0000
+58175,168933,Legionella drancourtii,species,1.0000
+58175,1236,Gammaproteobacteria,class,1.0000
+58175,2,Bacteria,superkingdom,1.0000
+186573,777,Coxiella burnetii,species,1.0000
+186573,131567,cellular organisms,below_root,1.0000
+186573,1224,Proteobacteria,phylum,1.0000
+186573,118969,Legionellales,order,1.0000
+186573,1,root,root,1.0000
+186573,776,Coxiella,genus,1.0000
+186573,118968,Coxiellaceae,family,1.0000
+186573,1236,Gammaproteobacteria,class,1.0000
+186573,2,Bacteria,superkingdom,1.0000
+504747,201174,Actinobacteria,phylum,1.0000
+504747,131567,cellular organisms,below_root,1.0000
+504747,1762,Mycobacteriaceae,family,1.0000
+504747,1760,Actinobacteria,class,1.0000
+504747,1763,Mycobacterium,genus,1.0000
+504747,85007,Corynebacterineae,suborder,1.0000
+504747,1,root,root,1.0000
+504747,2037,Actinomycetales,order,1.0000
+504747,85003,Actinobacteridae,subclass,1.0000
+504747,2,Bacteria,superkingdom,1.0000
+502326,201174,Actinobacteria,phylum,1.0000
+502326,131567,cellular organisms,below_root,1.0000
+502326,1762,Mycobacteriaceae,family,1.0000
+502326,1760,Actinobacteria,class,1.0000
+502326,1763,Mycobacterium,genus,1.0000
+502326,85007,Corynebacterineae,suborder,1.0000
+502326,1,root,root,1.0000
+502326,2037,Actinomycetales,order,1.0000
+502326,85003,Actinobacteridae,subclass,1.0000
+502326,2,Bacteria,superkingdom,1.0000
+480412,201174,Actinobacteria,phylum,1.0000
+480412,131567,cellular organisms,below_root,1.0000
+480412,1762,Mycobacteriaceae,family,1.0000
+480412,1760,Actinobacteria,class,1.0000
+480412,1,root,root,1.0000
+480412,49897,Mycobacterium hodleri,species,1.0000
+480412,1763,Mycobacterium,genus,1.0000
+480412,2037,Actinomycetales,order,1.0000
+480412,85003,Actinobacteridae,subclass,1.0000
+480412,85007,Corynebacterineae,suborder,1.0000
+480412,2,Bacteria,superkingdom,1.0000
+502449,201174,Actinobacteria,phylum,1.0000
+502449,131567,cellular organisms,below_root,1.0000
+502449,1762,Mycobacteriaceae,family,1.0000
+502449,1760,Actinobacteria,class,1.0000
+502449,1,root,root,1.0000
+502449,1763,Mycobacterium,genus,1.0000
+502449,2037,Actinomycetales,order,1.0000
+502449,85003,Actinobacteridae,subclass,1.0000
+502449,85007,Corynebacterineae,suborder,1.0000
+502449,2,Bacteria,superkingdom,1.0000
+57641,131567,cellular organisms,below_root,1.0000
+57641,1224,Proteobacteria,phylum,1.0000
+57641,444,Legionellaceae,family,1.0000
+57641,118969,Legionellales,order,1.0000
+57641,1,root,root,1.0000
+57641,445,Legionella,genus,1.0000
+57641,45075,Legionella shakespearei,species,1.0000
+57641,1236,Gammaproteobacteria,class,1.0000
+57641,2,Bacteria,superkingdom,1.0000
+57762,131567,cellular organisms,below_root,1.0000
+57762,1224,Proteobacteria,phylum,1.0000
+57762,444,Legionellaceae,family,1.0000
+57762,118969,Legionellales,order,1.0000
+57762,1,root,root,1.0000
+57762,445,Legionella,genus,1.0000
+57762,45075,Legionella shakespearei,species,1.0000
+57762,1236,Gammaproteobacteria,class,1.0000
+57762,2,Bacteria,superkingdom,1.0000
+574733,201174,Actinobacteria,phylum,1.0000
+574733,131567,cellular organisms,below_root,1.0000
+574733,1762,Mycobacteriaceae,family,1.0000
+574733,1760,Actinobacteria,class,1.0000
+574733,1763,Mycobacterium,genus,1.0000
+574733,85007,Corynebacterineae,suborder,1.0000
+574733,1,root,root,1.0000
+574733,2037,Actinomycetales,order,1.0000
+574733,85003,Actinobacteridae,subclass,1.0000
+574733,2,Bacteria,superkingdom,1.0000
+502451,201174,Actinobacteria,phylum,1.0000
+502451,131567,cellular organisms,below_root,1.0000
+502451,1762,Mycobacteriaceae,family,1.0000
+502451,1760,Actinobacteria,class,1.0000
+502451,1,root,root,1.0000
+502451,1763,Mycobacterium,genus,1.0000
+502451,2037,Actinomycetales,order,1.0000
+502451,85003,Actinobacteridae,subclass,1.0000
+502451,85007,Corynebacterineae,suborder,1.0000
+502451,2,Bacteria,superkingdom,1.0000
+502451,319706,Mycobacterium phocaicum,species,1.0000
+57643,131567,cellular organisms,below_root,1.0000
+57643,1224,Proteobacteria,phylum,1.0000
+57643,444,Legionellaceae,family,1.0000
+57643,118969,Legionellales,order,1.0000
+57643,1,root,root,1.0000
+57643,445,Legionella,genus,1.0000
+57643,1236,Gammaproteobacteria,class,1.0000
+57643,2,Bacteria,superkingdom,1.0000
+474642,201174,Actinobacteria,phylum,1.0000
+474642,131567,cellular organisms,below_root,1.0000
+474642,1762,Mycobacteriaceae,family,1.0000
+474642,1760,Actinobacteria,class,1.0000
+474642,28047,Mycobacterium confluentis,species,.9855
+474642,1,root,root,1.0000
+474642,1763,Mycobacterium,genus,1.0000
+474642,2037,Actinomycetales,order,1.0000
+474642,85003,Actinobacteridae,subclass,1.0000
+474642,85007,Corynebacterineae,suborder,1.0000
+474642,2,Bacteria,superkingdom,1.0000
+38646,131567,cellular organisms,below_root,1.0000
+38646,1224,Proteobacteria,phylum,1.0000
+38646,444,Legionellaceae,family,1.0000
+38646,118969,Legionellales,order,1.0000
+38646,1,root,root,1.0000
+38646,1236,Gammaproteobacteria,class,1.0000
+38646,2,Bacteria,superkingdom,1.0000
+137652,131567,cellular organisms,below_root,1.0000
+137652,1224,Proteobacteria,phylum,1.0000
+137652,1236,Gammaproteobacteria,class,1.0000
+137652,444,Legionellaceae,family,1.0000
+137652,118969,Legionellales,order,1.0000
+137652,1,root,root,1.0000
+137652,445,Legionella,genus,.9788
+137652,2,Bacteria,superkingdom,1.0000
+16617,131567,cellular organisms,below_root,1.0000
+16617,1224,Proteobacteria,phylum,1.0000
+16617,444,Legionellaceae,family,1.0000
+16617,118969,Legionellales,order,1.0000
+16617,1,root,root,1.0000
+16617,1236,Gammaproteobacteria,class,1.0000
+16617,2,Bacteria,superkingdom,1.0000
+59705,131567,cellular organisms,below_root,1.0000
+59705,1224,Proteobacteria,phylum,1.0000
+59705,444,Legionellaceae,family,1.0000
+59705,118969,Legionellales,order,1.0000
+59705,1,root,root,1.0000
+59705,1236,Gammaproteobacteria,class,1.0000
+59705,2,Bacteria,superkingdom,1.0000
+38649,131567,cellular organisms,below_root,1.0000
+38649,1224,Proteobacteria,phylum,1.0000
+38649,444,Legionellaceae,family,1.0000
+38649,118969,Legionellales,order,1.0000
+38649,1,root,root,1.0000
+38649,445,Legionella,genus,1.0000
+38649,1236,Gammaproteobacteria,class,1.0000
+38649,2,Bacteria,superkingdom,1.0000
+16982,459,Legionella sp.,species,1.0000
+16982,131567,cellular organisms,below_root,1.0000
+16982,1224,Proteobacteria,phylum,1.0000
+16982,444,Legionellaceae,family,1.0000
+16982,118969,Legionellales,order,1.0000
+16982,1,root,root,1.0000
+16982,445,Legionella,genus,1.0000
+16982,1236,Gammaproteobacteria,class,1.0000
+16982,2,Bacteria,superkingdom,1.0000
+58068,131567,cellular organisms,below_root,1.0000
+58068,1224,Proteobacteria,phylum,1.0000
+58068,444,Legionellaceae,family,1.0000
+58068,118969,Legionellales,order,1.0000
+58068,1,root,root,1.0000
+58068,453,Legionella feeleii,species,1.0000
+58068,445,Legionella,genus,1.0000
+58068,1236,Gammaproteobacteria,class,1.0000
+58068,2,Bacteria,superkingdom,1.0000
+58063,131567,cellular organisms,below_root,1.0000
+58063,1224,Proteobacteria,phylum,1.0000
+58063,444,Legionellaceae,family,1.0000
+58063,118969,Legionellales,order,1.0000
+58063,1,root,root,1.0000
+58063,445,Legionella,genus,1.0000
+58063,1236,Gammaproteobacteria,class,1.0000
+58063,2,Bacteria,superkingdom,1.0000
+59713,131567,cellular organisms,below_root,1.0000
+59713,1224,Proteobacteria,phylum,1.0000
+59713,444,Legionellaceae,family,1.0000
+59713,118969,Legionellales,order,1.0000
+59713,1,root,root,1.0000
+59713,445,Legionella,genus,.9690
+59713,1236,Gammaproteobacteria,class,1.0000
+59713,45065,Legionella geestiana,species,.9690
+59713,2,Bacteria,superkingdom,1.0000
+57656,131567,cellular organisms,below_root,1.0000
+57656,1224,Proteobacteria,phylum,1.0000
+57656,444,Legionellaceae,family,1.0000
+57656,118969,Legionellales,order,1.0000
+57656,1,root,root,1.0000
+57656,445,Legionella,genus,1.0000
+57656,1236,Gammaproteobacteria,class,1.0000
+57656,66969,Legionella waltersii,species,1.0000
+57656,2,Bacteria,superkingdom,1.0000
+57657,131567,cellular organisms,below_root,1.0000
+57657,1224,Proteobacteria,phylum,1.0000
+57657,444,Legionellaceae,family,1.0000
+57657,118969,Legionellales,order,1.0000
+57657,1,root,root,1.0000
+57657,1236,Gammaproteobacteria,class,1.0000
+57657,2,Bacteria,superkingdom,1.0000
+502445,201174,Actinobacteria,phylum,1.0000
+502445,131567,cellular organisms,below_root,1.0000
+502445,1762,Mycobacteriaceae,family,1.0000
+502445,1760,Actinobacteria,class,1.0000
+502445,1763,Mycobacterium,genus,1.0000
+502445,85007,Corynebacterineae,suborder,1.0000
+502445,1,root,root,1.0000
+502445,2037,Actinomycetales,order,1.0000
+502445,85003,Actinobacteridae,subclass,1.0000
+502445,2,Bacteria,superkingdom,1.0000
+57651,131567,cellular organisms,below_root,1.0000
+57651,1224,Proteobacteria,phylum,1.0000
+57651,444,Legionellaceae,family,1.0000
+57651,118969,Legionellales,order,1.0000
+57651,1,root,root,1.0000
+57651,453,Legionella feeleii,species,1.0000
+57651,445,Legionella,genus,1.0000
+57651,1236,Gammaproteobacteria,class,1.0000
+57651,2,Bacteria,superkingdom,1.0000
+50341,131567,cellular organisms,below_root,1.0000
+50341,1224,Proteobacteria,phylum,1.0000
+50341,444,Legionellaceae,family,1.0000
+50341,118969,Legionellales,order,1.0000
+50341,1,root,root,1.0000
+50341,445,Legionella,genus,1.0000
+50341,1236,Gammaproteobacteria,class,1.0000
+50341,2,Bacteria,superkingdom,1.0000
+57654,131567,cellular organisms,below_root,1.0000
+57654,1224,Proteobacteria,phylum,1.0000
+57654,444,Legionellaceae,family,1.0000
+57654,118969,Legionellales,order,1.0000
+57654,1,root,root,1.0000
+57654,1236,Gammaproteobacteria,class,1.0000
+57654,2,Bacteria,superkingdom,1.0000
+136696,131567,cellular organisms,below_root,1.0000
+136696,1224,Proteobacteria,phylum,1.0000
+136696,444,Legionellaceae,family,1.0000
+136696,118969,Legionellales,order,1.0000
+136696,1,root,root,1.0000
+136696,1236,Gammaproteobacteria,class,1.0000
+136696,2,Bacteria,superkingdom,1.0000
+58869,131567,cellular organisms,below_root,1.0000
+58869,1224,Proteobacteria,phylum,1.0000
+58869,444,Legionellaceae,family,1.0000
+58869,118969,Legionellales,order,1.0000
+58869,1,root,root,1.0000
+58869,445,Legionella,genus,.9927
+58869,1236,Gammaproteobacteria,class,1.0000
+58869,2,Bacteria,superkingdom,1.0000
+376124,131567,cellular organisms,below_root,1.0000
+376124,1224,Proteobacteria,phylum,1.0000
+376124,1236,Gammaproteobacteria,class,1.0000
+376124,444,Legionellaceae,family,1.0000
+376124,118969,Legionellales,order,1.0000
+376124,1,root,root,1.0000
+376124,2,Bacteria,superkingdom,1.0000
+484792,201174,Actinobacteria,phylum,1.0000
+484792,131567,cellular organisms,below_root,1.0000
+484792,1762,Mycobacteriaceae,family,1.0000
+484792,1760,Actinobacteria,class,1.0000
+484792,1763,Mycobacterium,genus,1.0000
+484792,85007,Corynebacterineae,suborder,1.0000
+484792,1,root,root,1.0000
+484792,2037,Actinomycetales,order,1.0000
+484792,85003,Actinobacteridae,subclass,1.0000
+484792,2,Bacteria,superkingdom,1.0000
+484795,201174,Actinobacteria,phylum,1.0000
+484795,131567,cellular organisms,below_root,1.0000
+484795,1762,Mycobacteriaceae,family,1.0000
+484795,1760,Actinobacteria,class,1.0000
+484795,1,root,root,1.0000
+484795,1763,Mycobacterium,genus,1.0000
+484795,2037,Actinomycetales,order,1.0000
+484795,85003,Actinobacteridae,subclass,1.0000
+484795,146020,Mycobacterium brisbanense,species,.9697
+484795,85007,Corynebacterineae,suborder,1.0000
+484795,2,Bacteria,superkingdom,1.0000
+58078,131567,cellular organisms,below_root,1.0000
+58078,1224,Proteobacteria,phylum,1.0000
+58078,444,Legionellaceae,family,1.0000
+58078,118969,Legionellales,order,1.0000
+58078,1,root,root,1.0000
+58078,445,Legionella,genus,1.0000
+58078,1236,Gammaproteobacteria,class,1.0000
+58078,2,Bacteria,superkingdom,1.0000
+58078,28084,Legionella cherrii,species,1.0000
+59167,131567,cellular organisms,below_root,1.0000
+59167,1224,Proteobacteria,phylum,1.0000
+59167,444,Legionellaceae,family,1.0000
+59167,118969,Legionellales,order,1.0000
+59167,1,root,root,1.0000
+59167,1236,Gammaproteobacteria,class,1.0000
+59167,2,Bacteria,superkingdom,1.0000
+38060,131567,cellular organisms,below_root,1.0000
+38060,1224,Proteobacteria,phylum,1.0000
+38060,444,Legionellaceae,family,1.0000
+38060,118969,Legionellales,order,1.0000
+38060,1,root,root,1.0000
+38060,1236,Gammaproteobacteria,class,1.0000
+38060,2,Bacteria,superkingdom,1.0000
+484798,201174,Actinobacteria,phylum,1.0000
+484798,131567,cellular organisms,below_root,1.0000
+484798,1762,Mycobacteriaceae,family,1.0000
+484798,1760,Actinobacteria,class,1.0000
+484798,1763,Mycobacterium,genus,1.0000
+484798,85007,Corynebacterineae,suborder,1.0000
+484798,1,root,root,1.0000
+484798,2037,Actinomycetales,order,1.0000
+484798,85003,Actinobacteridae,subclass,1.0000
+484798,2,Bacteria,superkingdom,1.0000
+396,201174,Actinobacteria,phylum,1.0000
+396,131567,cellular organisms,below_root,1.0000
+396,1762,Mycobacteriaceae,family,1.0000
+396,1760,Actinobacteria,class,1.0000
+396,1763,Mycobacterium,genus,1.0000
+396,85007,Corynebacterineae,suborder,1.0000
+396,1,root,root,1.0000
+396,2037,Actinomycetales,order,1.0000
+396,85003,Actinobacteridae,subclass,1.0000
+396,2,Bacteria,superkingdom,1.0000
+58755,131567,cellular organisms,below_root,1.0000
+58755,1224,Proteobacteria,phylum,1.0000
+58755,444,Legionellaceae,family,1.0000
+58755,118969,Legionellales,order,1.0000
+58755,1,root,root,1.0000
+58755,1236,Gammaproteobacteria,class,1.0000
+58755,2,Bacteria,superkingdom,1.0000
+493389,201174,Actinobacteria,phylum,1.0000
+493389,131567,cellular organisms,below_root,1.0000
+493389,1762,Mycobacteriaceae,family,1.0000
+493389,1760,Actinobacteria,class,1.0000
+493389,1763,Mycobacterium,genus,1.0000
+493389,85007,Corynebacterineae,suborder,1.0000
+493389,1,root,root,1.0000
+493389,2037,Actinomycetales,order,1.0000
+493389,85003,Actinobacteridae,subclass,1.0000
+493389,2,Bacteria,superkingdom,1.0000
+502115,201174,Actinobacteria,phylum,1.0000
+502115,131567,cellular organisms,below_root,1.0000
+502115,1762,Mycobacteriaceae,family,1.0000
+502115,1760,Actinobacteria,class,1.0000
+502115,1763,Mycobacterium,genus,1.0000
+502115,85007,Corynebacterineae,suborder,1.0000
+502115,1,root,root,1.0000
+502115,2037,Actinomycetales,order,1.0000
+502115,85003,Actinobacteridae,subclass,1.0000
+502115,2,Bacteria,superkingdom,1.0000
+58993,131567,cellular organisms,below_root,1.0000
+58993,1224,Proteobacteria,phylum,1.0000
+58993,444,Legionellaceae,family,1.0000
+58993,118969,Legionellales,order,1.0000
+58993,1,root,root,1.0000
+58993,1236,Gammaproteobacteria,class,1.0000
+58993,2,Bacteria,superkingdom,1.0000
+57664,131567,cellular organisms,below_root,1.0000
+57664,1224,Proteobacteria,phylum,1.0000
+57664,444,Legionellaceae,family,1.0000
+57664,118969,Legionellales,order,1.0000
+57664,1,root,root,1.0000
+57664,445,Legionella,genus,1.0000
+57664,45075,Legionella shakespearei,species,1.0000
+57664,1236,Gammaproteobacteria,class,1.0000
+57664,2,Bacteria,superkingdom,1.0000
+59600,131567,cellular organisms,below_root,1.0000
+59600,1224,Proteobacteria,phylum,1.0000
+59600,444,Legionellaceae,family,1.0000
+59600,118969,Legionellales,order,1.0000
+59600,1,root,root,1.0000
+59600,445,Legionella,genus,1.0000
+59600,1236,Gammaproteobacteria,class,1.0000
+59600,2,Bacteria,superkingdom,1.0000
+51325,131567,cellular organisms,below_root,1.0000
+51325,1224,Proteobacteria,phylum,1.0000
+51325,444,Legionellaceae,family,1.0000
+51325,118969,Legionellales,order,1.0000
+51325,1,root,root,1.0000
+51325,445,Legionella,genus,.9817
+51325,1236,Gammaproteobacteria,class,1.0000
+51325,2,Bacteria,superkingdom,1.0000
+16958,131567,cellular organisms,below_root,1.0000
+16958,1224,Proteobacteria,phylum,1.0000
+16958,444,Legionellaceae,family,1.0000
+16958,118969,Legionellales,order,1.0000
+16958,1,root,root,1.0000
+16958,1236,Gammaproteobacteria,class,1.0000
+16958,2,Bacteria,superkingdom,1.0000
+17006,131567,cellular organisms,below_root,1.0000
+17006,1224,Proteobacteria,phylum,1.0000
+17006,444,Legionellaceae,family,1.0000
+17006,118969,Legionellales,order,1.0000
+17006,1,root,root,1.0000
+17006,1236,Gammaproteobacteria,class,1.0000
+17006,2,Bacteria,superkingdom,1.0000
+361669,201174,Actinobacteria,phylum,1.0000
+361669,131567,cellular organisms,below_root,1.0000
+361669,1762,Mycobacteriaceae,family,1.0000
+361669,1760,Actinobacteria,class,1.0000
+361669,1763,Mycobacterium,genus,1.0000
+361669,85007,Corynebacterineae,suborder,1.0000
+361669,1,root,root,1.0000
+361669,2037,Actinomycetales,order,1.0000
+361669,85003,Actinobacteridae,subclass,1.0000
+361669,2,Bacteria,superkingdom,1.0000
+453126,201174,Actinobacteria,phylum,1.0000
+453126,131567,cellular organisms,below_root,1.0000
+453126,1762,Mycobacteriaceae,family,1.0000
+453126,1760,Actinobacteria,class,1.0000
+453126,1763,Mycobacterium,genus,1.0000
+453126,85007,Corynebacterineae,suborder,1.0000
+453126,1,root,root,1.0000
+453126,2037,Actinomycetales,order,1.0000
+453126,85003,Actinobacteridae,subclass,1.0000
+453126,2,Bacteria,superkingdom,1.0000
+453126,1073531,Mycobacterium terrae complex,species_group,1.0000
+17008,131567,cellular organisms,below_root,1.0000
+17008,1224,Proteobacteria,phylum,1.0000
+17008,444,Legionellaceae,family,1.0000
+17008,118969,Legionellales,order,1.0000
+17008,1,root,root,1.0000
+17008,1236,Gammaproteobacteria,class,1.0000
+17008,2,Bacteria,superkingdom,1.0000
+361667,201174,Actinobacteria,phylum,1.0000
+361667,131567,cellular organisms,below_root,1.0000
+361667,1762,Mycobacteriaceae,family,1.0000
+361667,1760,Actinobacteria,class,1.0000
+361667,1763,Mycobacterium,genus,1.0000
+361667,85007,Corynebacterineae,suborder,1.0000
+361667,1,root,root,1.0000
+361667,2037,Actinomycetales,order,1.0000
+361667,85003,Actinobacteridae,subclass,1.0000
+361667,2,Bacteria,superkingdom,1.0000
+491763,201174,Actinobacteria,phylum,1.0000
+491763,131567,cellular organisms,below_root,1.0000
+491763,1762,Mycobacteriaceae,family,1.0000
+491763,1760,Actinobacteria,class,1.0000
+491763,1,root,root,1.0000
+491763,1763,Mycobacterium,genus,1.0000
+491763,2037,Actinomycetales,order,1.0000
+491763,85003,Actinobacteridae,subclass,1.0000
+491763,1794,Mycobacterium gadium,species,.9608
+491763,85007,Corynebacterineae,suborder,1.0000
+491763,2,Bacteria,superkingdom,1.0000
+54715,131567,cellular organisms,below_root,1.0000
+54715,1224,Proteobacteria,phylum,1.0000
+54715,444,Legionellaceae,family,1.0000
+54715,118969,Legionellales,order,1.0000
+54715,1,root,root,1.0000
+54715,445,Legionella,genus,1.0000
+54715,45075,Legionella shakespearei,species,.9895
+54715,1236,Gammaproteobacteria,class,1.0000
+54715,2,Bacteria,superkingdom,1.0000
+478321,201174,Actinobacteria,phylum,1.0000
+478321,131567,cellular organisms,below_root,1.0000
+478321,1762,Mycobacteriaceae,family,1.0000
+478321,1760,Actinobacteria,class,1.0000
+478321,1763,Mycobacterium,genus,1.0000
+478321,85007,Corynebacterineae,suborder,1.0000
+478321,1,root,root,1.0000
+478321,2037,Actinomycetales,order,1.0000
+478321,85003,Actinobacteridae,subclass,1.0000
+478321,2,Bacteria,superkingdom,1.0000
+38053,131567,cellular organisms,below_root,1.0000
+38053,1224,Proteobacteria,phylum,1.0000
+38053,444,Legionellaceae,family,1.0000
+38053,118969,Legionellales,order,1.0000
+38053,1,root,root,1.0000
+38053,445,Legionella,genus,.9515
+38053,1236,Gammaproteobacteria,class,1.0000
+38053,2,Bacteria,superkingdom,1.0000
+38054,131567,cellular organisms,below_root,1.0000
+38054,1224,Proteobacteria,phylum,1.0000
+38054,444,Legionellaceae,family,1.0000
+38054,118969,Legionellales,order,1.0000
+38054,1,root,root,1.0000
+38054,445,Legionella,genus,1.0000
+38054,1236,Gammaproteobacteria,class,1.0000
+38054,2,Bacteria,superkingdom,1.0000
+38055,131567,cellular organisms,below_root,1.0000
+38055,1224,Proteobacteria,phylum,1.0000
+38055,444,Legionellaceae,family,1.0000
+38055,118969,Legionellales,order,1.0000
+38055,1,root,root,1.0000
+38055,1236,Gammaproteobacteria,class,1.0000
+38055,2,Bacteria,superkingdom,1.0000
+54719,131567,cellular organisms,below_root,1.0000
+54719,1224,Proteobacteria,phylum,1.0000
+54719,444,Legionellaceae,family,1.0000
+54719,118969,Legionellales,order,1.0000
+54719,1,root,root,1.0000
+54719,445,Legionella,genus,1.0000
+54719,96232,Legionella lytica,species,1.0000
+54719,1236,Gammaproteobacteria,class,1.0000
+54719,2,Bacteria,superkingdom,1.0000
+16961,131567,cellular organisms,below_root,1.0000
+16961,1224,Proteobacteria,phylum,1.0000
+16961,444,Legionellaceae,family,1.0000
+16961,118969,Legionellales,order,1.0000
+16961,1,root,root,1.0000
+16961,1236,Gammaproteobacteria,class,1.0000
+16961,2,Bacteria,superkingdom,1.0000
+501806,201174,Actinobacteria,phylum,1.0000
+501806,85006,Micrococcineae,suborder,1.0000
+501806,131567,cellular organisms,below_root,1.0000
+501806,1760,Actinobacteria,class,1.0000
+501806,85023,Microbacteriaceae,family,1.0000
+501806,1,root,root,1.0000
+501806,2037,Actinomycetales,order,1.0000
+501806,85003,Actinobacteridae,subclass,1.0000
+501806,2,Bacteria,superkingdom,1.0000
+38057,131567,cellular organisms,below_root,1.0000
+38057,1224,Proteobacteria,phylum,1.0000
+38057,444,Legionellaceae,family,1.0000
+38057,118969,Legionellales,order,1.0000
+38057,1,root,root,1.0000
+38057,445,Legionella,genus,1.0000
+38057,1236,Gammaproteobacteria,class,1.0000
+38057,2,Bacteria,superkingdom,1.0000
+49984,131567,cellular organisms,below_root,1.0000
+49984,1224,Proteobacteria,phylum,1.0000
+49984,444,Legionellaceae,family,1.0000
+49984,118969,Legionellales,order,1.0000
+49984,1,root,root,1.0000
+49984,1236,Gammaproteobacteria,class,1.0000
+49984,2,Bacteria,superkingdom,1.0000
+484784,201174,Actinobacteria,phylum,1.0000
+484784,131567,cellular organisms,below_root,1.0000
+484784,1762,Mycobacteriaceae,family,1.0000
+484784,1760,Actinobacteria,class,1.0000
+484784,1,root,root,1.0000
+484784,1763,Mycobacterium,genus,1.0000
+484784,2037,Actinomycetales,order,1.0000
+484784,85003,Actinobacteridae,subclass,1.0000
+484784,85007,Corynebacterineae,suborder,1.0000
+484784,2,Bacteria,superkingdom,1.0000
+484783,201174,Actinobacteria,phylum,1.0000
+484783,131567,cellular organisms,below_root,1.0000
+484783,1762,Mycobacteriaceae,family,1.0000
+484783,1760,Actinobacteria,class,1.0000
+484783,1,root,root,1.0000
+484783,1763,Mycobacterium,genus,1.0000
+484783,2037,Actinomycetales,order,1.0000
+484783,85003,Actinobacteridae,subclass,1.0000
+484783,85007,Corynebacterineae,suborder,1.0000
+484783,2,Bacteria,superkingdom,1.0000
+484786,201174,Actinobacteria,phylum,1.0000
+484786,131567,cellular organisms,below_root,1.0000
+484786,1762,Mycobacteriaceae,family,1.0000
+484786,1760,Actinobacteria,class,1.0000
+484786,1763,Mycobacterium,genus,1.0000
+484786,85007,Corynebacterineae,suborder,1.0000
+484786,1,root,root,1.0000
+484786,2037,Actinomycetales,order,1.0000
+484786,85003,Actinobacteridae,subclass,1.0000
+484786,2,Bacteria,superkingdom,1.0000
+500835,201174,Actinobacteria,phylum,1.0000
+500835,131567,cellular organisms,below_root,1.0000
+500835,1762,Mycobacteriaceae,family,1.0000
+500835,1760,Actinobacteria,class,1.0000
+500835,1,root,root,1.0000
+500835,1763,Mycobacterium,genus,1.0000
+500835,2037,Actinomycetales,order,1.0000
+500835,85003,Actinobacteridae,subclass,1.0000
+500835,85007,Corynebacterineae,suborder,1.0000
+500835,2,Bacteria,superkingdom,1.0000
+500835,152142,Mycobacterium holsaticum,species,1.0000
+484788,201174,Actinobacteria,phylum,1.0000
+484788,131567,cellular organisms,below_root,1.0000
+484788,1762,Mycobacteriaceae,family,1.0000
+484788,1760,Actinobacteria,class,1.0000
+484788,1763,Mycobacterium,genus,1.0000
+484788,85007,Corynebacterineae,suborder,1.0000
+484788,1,root,root,1.0000
+484788,2037,Actinomycetales,order,1.0000
+484788,85003,Actinobacteridae,subclass,1.0000
+484788,2,Bacteria,superkingdom,1.0000
+361672,201174,Actinobacteria,phylum,1.0000
+361672,131567,cellular organisms,below_root,1.0000
+361672,1762,Mycobacteriaceae,family,1.0000
+361672,1760,Actinobacteria,class,1.0000
+361672,1763,Mycobacterium,genus,1.0000
+361672,85007,Corynebacterineae,suborder,1.0000
+361672,1,root,root,1.0000
+361672,2037,Actinomycetales,order,1.0000
+361672,85003,Actinobacteridae,subclass,1.0000
+361672,2,Bacteria,superkingdom,1.0000
+493814,201174,Actinobacteria,phylum,1.0000
+493814,131567,cellular organisms,below_root,1.0000
+493814,1762,Mycobacteriaceae,family,1.0000
+493814,1760,Actinobacteria,class,1.0000
+493814,1763,Mycobacterium,genus,1.0000
+493814,85007,Corynebacterineae,suborder,1.0000
+493814,1,root,root,1.0000
+493814,2037,Actinomycetales,order,1.0000
+493814,85003,Actinobacteridae,subclass,1.0000
+493814,2,Bacteria,superkingdom,1.0000
+16962,131567,cellular organisms,below_root,1.0000
+16962,1224,Proteobacteria,phylum,1.0000
+16962,444,Legionellaceae,family,1.0000
+16962,118969,Legionellales,order,1.0000
+16962,1,root,root,1.0000
+16962,445,Legionella,genus,1.0000
+16962,45075,Legionella shakespearei,species,1.0000
+16962,1236,Gammaproteobacteria,class,1.0000
+16962,2,Bacteria,superkingdom,1.0000
+54729,131567,cellular organisms,below_root,1.0000
+54729,1224,Proteobacteria,phylum,1.0000
+54729,444,Legionellaceae,family,1.0000
+54729,118969,Legionellales,order,1.0000
+54729,1,root,root,1.0000
+54729,445,Legionella,genus,.9886
+54729,1236,Gammaproteobacteria,class,1.0000
+54729,2,Bacteria,superkingdom,1.0000
+16967,131567,cellular organisms,below_root,1.0000
+16967,1224,Proteobacteria,phylum,1.0000
+16967,444,Legionellaceae,family,1.0000
+16967,118969,Legionellales,order,1.0000
+16967,1,root,root,1.0000
+16967,1236,Gammaproteobacteria,class,1.0000
+16967,2,Bacteria,superkingdom,1.0000
+54726,131567,cellular organisms,below_root,1.0000
+54726,272624,Legionella pneumophila subsp. pneumophila str. Philadelphia 1,below_subspecies,1.0000
+54726,1224,Proteobacteria,phylum,1.0000
+54726,91891,Legionella pneumophila subsp. pneumophila,subspecies,1.0000
+54726,444,Legionellaceae,family,1.0000
+54726,118969,Legionellales,order,1.0000
+54726,1,root,root,1.0000
+54726,445,Legionella,genus,1.0000
+54726,446,Legionella pneumophila,species,1.0000
+54726,1236,Gammaproteobacteria,class,1.0000
+54726,2,Bacteria,superkingdom,1.0000
+484779,201174,Actinobacteria,phylum,1.0000
+484779,131567,cellular organisms,below_root,1.0000
+484779,1762,Mycobacteriaceae,family,1.0000
+484779,1760,Actinobacteria,class,1.0000
+484779,1,root,root,1.0000
+484779,49897,Mycobacterium hodleri,species,1.0000
+484779,1763,Mycobacterium,genus,1.0000
+484779,2037,Actinomycetales,order,1.0000
+484779,85003,Actinobacteridae,subclass,1.0000
+484779,85007,Corynebacterineae,suborder,1.0000
+484779,2,Bacteria,superkingdom,1.0000
+484778,201174,Actinobacteria,phylum,1.0000
+484778,131567,cellular organisms,below_root,1.0000
+484778,1762,Mycobacteriaceae,family,1.0000
+484778,1760,Actinobacteria,class,1.0000
+484778,1763,Mycobacterium,genus,1.0000
+484778,85007,Corynebacterineae,suborder,1.0000
+484778,1,root,root,1.0000
+484778,2037,Actinomycetales,order,1.0000
+484778,85003,Actinobacteridae,subclass,1.0000
+484778,2,Bacteria,superkingdom,1.0000
+49734,131567,cellular organisms,below_root,1.0000
+49734,1224,Proteobacteria,phylum,1.0000
+49734,444,Legionellaceae,family,1.0000
+49734,118969,Legionellales,order,1.0000
+49734,1,root,root,1.0000
+49734,45076,Legionella worsleiensis,species,.9586
+49734,445,Legionella,genus,1.0000
+49734,1236,Gammaproteobacteria,class,1.0000
+49734,2,Bacteria,superkingdom,1.0000
+49732,131567,cellular organisms,below_root,1.0000
+49732,1224,Proteobacteria,phylum,1.0000
+49732,444,Legionellaceae,family,1.0000
+49732,118969,Legionellales,order,1.0000
+49732,1,root,root,1.0000
+49732,450200,Legionella dresdenensis,species,.9609
+49732,445,Legionella,genus,1.0000
+49732,1236,Gammaproteobacteria,class,1.0000
+49732,2,Bacteria,superkingdom,1.0000
+500745,201174,Actinobacteria,phylum,1.0000
+500745,131567,cellular organisms,below_root,1.0000
+500745,1762,Mycobacteriaceae,family,1.0000
+500745,1760,Actinobacteria,class,1.0000
+500745,28047,Mycobacterium confluentis,species,1.0000
+500745,1,root,root,1.0000
+500745,1763,Mycobacterium,genus,1.0000
+500745,2037,Actinomycetales,order,1.0000
+500745,85003,Actinobacteridae,subclass,1.0000
+500745,85007,Corynebacterineae,suborder,1.0000
+500745,2,Bacteria,superkingdom,1.0000
+484771,201174,Actinobacteria,phylum,1.0000
+484771,131567,cellular organisms,below_root,1.0000
+484771,1762,Mycobacteriaceae,family,1.0000
+484771,1760,Actinobacteria,class,1.0000
+484771,1763,Mycobacterium,genus,1.0000
+484771,85007,Corynebacterineae,suborder,1.0000
+484771,1,root,root,1.0000
+484771,2037,Actinomycetales,order,1.0000
+484771,85003,Actinobacteridae,subclass,1.0000
+484771,2,Bacteria,superkingdom,1.0000
+502008,201174,Actinobacteria,phylum,1.0000
+502008,131567,cellular organisms,below_root,1.0000
+502008,1762,Mycobacteriaceae,family,1.0000
+502008,1760,Actinobacteria,class,1.0000
+502008,1,root,root,1.0000
+502008,1763,Mycobacterium,genus,1.0000
+502008,2037,Actinomycetales,order,1.0000
+502008,85003,Actinobacteridae,subclass,1.0000
+502008,85007,Corynebacterineae,suborder,1.0000
+502008,2,Bacteria,superkingdom,1.0000
+484776,201174,Actinobacteria,phylum,1.0000
+484776,131567,cellular organisms,below_root,1.0000
+484776,1762,Mycobacteriaceae,family,1.0000
+484776,1760,Actinobacteria,class,1.0000
+484776,1,root,root,1.0000
+484776,1763,Mycobacterium,genus,1.0000
+484776,2037,Actinomycetales,order,1.0000
+484776,85003,Actinobacteridae,subclass,1.0000
+484776,85007,Corynebacterineae,suborder,1.0000
+484776,2,Bacteria,superkingdom,1.0000
+59742,131567,cellular organisms,below_root,1.0000
+59742,1224,Proteobacteria,phylum,1.0000
+59742,1236,Gammaproteobacteria,class,1.0000
+59742,444,Legionellaceae,family,1.0000
+59742,118969,Legionellales,order,1.0000
+59742,1,root,root,1.0000
+59742,2,Bacteria,superkingdom,1.0000
+502010,201174,Actinobacteria,phylum,1.0000
+502010,131567,cellular organisms,below_root,1.0000
+502010,1762,Mycobacteriaceae,family,1.0000
+502010,1760,Actinobacteria,class,1.0000
+502010,1,root,root,1.0000
+502010,1763,Mycobacterium,genus,1.0000
+502010,2037,Actinomycetales,order,1.0000
+502010,85003,Actinobacteridae,subclass,1.0000
+502010,85007,Corynebacterineae,suborder,1.0000
+502010,2,Bacteria,superkingdom,1.0000
+504795,201174,Actinobacteria,phylum,1.0000
+504795,131567,cellular organisms,below_root,1.0000
+504795,1762,Mycobacteriaceae,family,1.0000
+504795,1760,Actinobacteria,class,1.0000
+504795,1763,Mycobacterium,genus,1.0000
+504795,85007,Corynebacterineae,suborder,1.0000
+504795,1,root,root,1.0000
+504795,2037,Actinomycetales,order,1.0000
+504795,85003,Actinobacteridae,subclass,1.0000
+504795,2,Bacteria,superkingdom,1.0000
+39139,131567,cellular organisms,below_root,1.0000
+39139,1224,Proteobacteria,phylum,1.0000
+39139,1236,Gammaproteobacteria,class,1.0000
+39139,444,Legionellaceae,family,1.0000
+39139,118969,Legionellales,order,1.0000
+39139,1,root,root,1.0000
+39139,445,Legionella,genus,1.0000
+39139,2,Bacteria,superkingdom,1.0000
+139232,201174,Actinobacteria,phylum,1.0000
+139232,131567,cellular organisms,below_root,1.0000
+139232,1762,Mycobacteriaceae,family,1.0000
+139232,1760,Actinobacteria,class,1.0000
+139232,1763,Mycobacterium,genus,1.0000
+139232,85007,Corynebacterineae,suborder,1.0000
+139232,1,root,root,1.0000
+139232,2037,Actinomycetales,order,1.0000
+139232,85003,Actinobacteridae,subclass,1.0000
+139232,2,Bacteria,superkingdom,1.0000
+59199,131567,cellular organisms,below_root,1.0000
+59199,1224,Proteobacteria,phylum,1.0000
+59199,444,Legionellaceae,family,1.0000
+59199,118969,Legionellales,order,1.0000
+59199,1,root,root,1.0000
+59199,1236,Gammaproteobacteria,class,1.0000
+59199,2,Bacteria,superkingdom,1.0000
+489656,201174,Actinobacteria,phylum,1.0000
+489656,131567,cellular organisms,below_root,1.0000
+489656,1762,Mycobacteriaceae,family,1.0000
+489656,1760,Actinobacteria,class,1.0000
+489656,1,root,root,1.0000
+489656,49897,Mycobacterium hodleri,species,1.0000
+489656,1763,Mycobacterium,genus,1.0000
+489656,2037,Actinomycetales,order,1.0000
+489656,85003,Actinobacteridae,subclass,1.0000
+489656,85007,Corynebacterineae,suborder,1.0000
+489656,2,Bacteria,superkingdom,1.0000
+500731,201174,Actinobacteria,phylum,1.0000
+500731,131567,cellular organisms,below_root,1.0000
+500731,1762,Mycobacteriaceae,family,1.0000
+500731,1760,Actinobacteria,class,1.0000
+500731,1763,Mycobacterium,genus,1.0000
+500731,85007,Corynebacterineae,suborder,1.0000
+500731,1,root,root,1.0000
+500731,2037,Actinomycetales,order,1.0000
+500731,85003,Actinobacteridae,subclass,1.0000
+500731,2,Bacteria,superkingdom,1.0000
+500737,201174,Actinobacteria,phylum,1.0000
+500737,131567,cellular organisms,below_root,1.0000
+500737,1762,Mycobacteriaceae,family,1.0000
+500737,1760,Actinobacteria,class,1.0000
+500737,1763,Mycobacterium,genus,1.0000
+500737,85007,Corynebacterineae,suborder,1.0000
+500737,1,root,root,1.0000
+500737,2037,Actinomycetales,order,1.0000
+500737,85003,Actinobacteridae,subclass,1.0000
+500737,2,Bacteria,superkingdom,1.0000
+480962,201174,Actinobacteria,phylum,1.0000
+480962,131567,cellular organisms,below_root,1.0000
+480962,1762,Mycobacteriaceae,family,1.0000
+480962,1760,Actinobacteria,class,1.0000
+480962,1,root,root,1.0000
+480962,1763,Mycobacterium,genus,1.0000
+480962,2037,Actinomycetales,order,1.0000
+480962,85003,Actinobacteridae,subclass,1.0000
+480962,85007,Corynebacterineae,suborder,1.0000
+480962,2,Bacteria,superkingdom,1.0000
+51230,131567,cellular organisms,below_root,1.0000
+51230,1224,Proteobacteria,phylum,1.0000
+51230,444,Legionellaceae,family,1.0000
+51230,118969,Legionellales,order,1.0000
+51230,1,root,root,1.0000
+51230,1236,Gammaproteobacteria,class,1.0000
+51230,2,Bacteria,superkingdom,1.0000
+58428,131567,cellular organisms,below_root,1.0000
+58428,1224,Proteobacteria,phylum,1.0000
+58428,444,Legionellaceae,family,1.0000
+58428,118969,Legionellales,order,1.0000
+58428,1,root,root,1.0000
+58428,1236,Gammaproteobacteria,class,1.0000
+58428,2,Bacteria,superkingdom,1.0000
+491053,201174,Actinobacteria,phylum,1.0000
+491053,131567,cellular organisms,below_root,1.0000
+491053,1762,Mycobacteriaceae,family,1.0000
+491053,1760,Actinobacteria,class,1.0000
+491053,1,root,root,1.0000
+491053,1763,Mycobacterium,genus,1.0000
+491053,2037,Actinomycetales,order,1.0000
+491053,85003,Actinobacteridae,subclass,1.0000
+491053,85007,Corynebacterineae,suborder,1.0000
+491053,2,Bacteria,superkingdom,1.0000
+500860,201174,Actinobacteria,phylum,1.0000
+500860,131567,cellular organisms,below_root,1.0000
+500860,1762,Mycobacteriaceae,family,1.0000
+500860,1760,Actinobacteria,class,1.0000
+500860,1,root,root,1.0000
+500860,49897,Mycobacterium hodleri,species,1.0000
+500860,1763,Mycobacterium,genus,1.0000
+500860,2037,Actinomycetales,order,1.0000
+500860,85003,Actinobacteridae,subclass,1.0000
+500860,85007,Corynebacterineae,suborder,1.0000
+500860,2,Bacteria,superkingdom,1.0000
+491052,201174,Actinobacteria,phylum,1.0000
+491052,131567,cellular organisms,below_root,1.0000
+491052,1762,Mycobacteriaceae,family,1.0000
+491052,1760,Actinobacteria,class,1.0000
+491052,1,root,root,1.0000
+491052,1763,Mycobacterium,genus,1.0000
+491052,2037,Actinomycetales,order,1.0000
+491052,85003,Actinobacteridae,subclass,1.0000
+491052,85007,Corynebacterineae,suborder,1.0000
+491052,2,Bacteria,superkingdom,1.0000
+20085,131567,cellular organisms,below_root,1.0000
+20085,1224,Proteobacteria,phylum,1.0000
+20085,444,Legionellaceae,family,1.0000
+20085,118969,Legionellales,order,1.0000
+20085,1,root,root,1.0000
+20085,1236,Gammaproteobacteria,class,1.0000
+20085,2,Bacteria,superkingdom,1.0000
+51358,131567,cellular organisms,below_root,1.0000
+51358,1224,Proteobacteria,phylum,1.0000
+51358,444,Legionellaceae,family,1.0000
+51358,118969,Legionellales,order,1.0000
+51358,1,root,root,1.0000
+51358,1236,Gammaproteobacteria,class,1.0000
+51358,2,Bacteria,superkingdom,1.0000
+16947,131567,cellular organisms,below_root,1.0000
+16947,1224,Proteobacteria,phylum,1.0000
+16947,444,Legionellaceae,family,1.0000
+16947,118969,Legionellales,order,1.0000
+16947,1,root,root,1.0000
+16947,1236,Gammaproteobacteria,class,1.0000
+16947,2,Bacteria,superkingdom,1.0000
+16946,131567,cellular organisms,below_root,1.0000
+16946,1224,Proteobacteria,phylum,1.0000
+16946,444,Legionellaceae,family,1.0000
+16946,118969,Legionellales,order,1.0000
+16946,1,root,root,1.0000
+16946,445,Legionella,genus,1.0000
+16946,45075,Legionella shakespearei,species,1.0000
+16946,1236,Gammaproteobacteria,class,1.0000
+16946,2,Bacteria,superkingdom,1.0000
+480957,201174,Actinobacteria,phylum,1.0000
+480957,131567,cellular organisms,below_root,1.0000
+480957,1762,Mycobacteriaceae,family,1.0000
+480957,1760,Actinobacteria,class,1.0000
+480957,1763,Mycobacterium,genus,1.0000
+480957,85007,Corynebacterineae,suborder,1.0000
+480957,1,root,root,1.0000
+480957,2037,Actinomycetales,order,1.0000
+480957,85003,Actinobacteridae,subclass,1.0000
+480957,2,Bacteria,superkingdom,1.0000
+40104,131567,cellular organisms,below_root,1.0000
+40104,1224,Proteobacteria,phylum,1.0000
+40104,444,Legionellaceae,family,1.0000
+40104,118969,Legionellales,order,1.0000
+40104,1,root,root,1.0000
+40104,445,Legionella,genus,1.0000
+40104,96232,Legionella lytica,species,1.0000
+40104,1236,Gammaproteobacteria,class,1.0000
+40104,2,Bacteria,superkingdom,1.0000
+480955,201174,Actinobacteria,phylum,1.0000
+480955,131567,cellular organisms,below_root,1.0000
+480955,1762,Mycobacteriaceae,family,1.0000
+480955,1760,Actinobacteria,class,1.0000
+480955,1763,Mycobacterium,genus,1.0000
+480955,85007,Corynebacterineae,suborder,1.0000
+480955,1,root,root,1.0000
+480955,2037,Actinomycetales,order,1.0000
+480955,85003,Actinobacteridae,subclass,1.0000
+480955,2,Bacteria,superkingdom,1.0000
+500764,201174,Actinobacteria,phylum,1.0000
+500764,131567,cellular organisms,below_root,1.0000
+500764,1762,Mycobacteriaceae,family,1.0000
+500764,1760,Actinobacteria,class,1.0000
+500764,1763,Mycobacterium,genus,1.0000
+500764,85007,Corynebacterineae,suborder,1.0000
+500764,1,root,root,1.0000
+500764,2037,Actinomycetales,order,1.0000
+500764,85003,Actinobacteridae,subclass,1.0000
+500764,2,Bacteria,superkingdom,1.0000
+51360,131567,cellular organisms,below_root,1.0000
+51360,1224,Proteobacteria,phylum,1.0000
+51360,444,Legionellaceae,family,1.0000
+51360,118969,Legionellales,order,1.0000
+51360,1,root,root,1.0000
+51360,1236,Gammaproteobacteria,class,1.0000
+51360,2,Bacteria,superkingdom,1.0000
+35437,131567,cellular organisms,below_root,1.0000
+35437,1224,Proteobacteria,phylum,1.0000
+35437,1236,Gammaproteobacteria,class,1.0000
+35437,444,Legionellaceae,family,1.0000
+35437,118969,Legionellales,order,1.0000
+35437,1,root,root,1.0000
+35437,445,Legionella,genus,1.0000
+35437,2,Bacteria,superkingdom,1.0000
+473857,201174,Actinobacteria,phylum,1.0000
+473857,131567,cellular organisms,below_root,1.0000
+473857,1762,Mycobacteriaceae,family,1.0000
+473857,1760,Actinobacteria,class,1.0000
+473857,1763,Mycobacterium,genus,1.0000
+473857,85007,Corynebacterineae,suborder,1.0000
+473857,1,root,root,1.0000
+473857,2037,Actinomycetales,order,1.0000
+473857,85003,Actinobacteridae,subclass,1.0000
+473857,2,Bacteria,superkingdom,1.0000
+51362,131567,cellular organisms,below_root,1.0000
+51362,1224,Proteobacteria,phylum,1.0000
+51362,444,Legionellaceae,family,1.0000
+51362,118969,Legionellales,order,1.0000
+51362,1,root,root,1.0000
+51362,1236,Gammaproteobacteria,class,1.0000
+51362,2,Bacteria,superkingdom,1.0000
+51361,131567,cellular organisms,below_root,1.0000
+51361,1224,Proteobacteria,phylum,1.0000
+51361,444,Legionellaceae,family,1.0000
+51361,118969,Legionellales,order,1.0000
+51361,1,root,root,1.0000
+51361,1236,Gammaproteobacteria,class,1.0000
+51361,2,Bacteria,superkingdom,1.0000
+473855,201174,Actinobacteria,phylum,1.0000
+473855,131567,cellular organisms,below_root,1.0000
+473855,1762,Mycobacteriaceae,family,1.0000
+473855,1760,Actinobacteria,class,1.0000
+473855,1763,Mycobacterium,genus,1.0000
+473855,85007,Corynebacterineae,suborder,1.0000
+473855,1,root,root,1.0000
+473855,2037,Actinomycetales,order,1.0000
+473855,85003,Actinobacteridae,subclass,1.0000
+473855,2,Bacteria,superkingdom,1.0000
+59643,131567,cellular organisms,below_root,1.0000
+59643,1224,Proteobacteria,phylum,1.0000
+59643,444,Legionellaceae,family,1.0000
+59643,118969,Legionellales,order,1.0000
+59643,1,root,root,1.0000
+59643,1236,Gammaproteobacteria,class,1.0000
+59643,2,Bacteria,superkingdom,1.0000
+51366,131567,cellular organisms,below_root,1.0000
+51366,1224,Proteobacteria,phylum,1.0000
+51366,1236,Gammaproteobacteria,class,1.0000
+51366,444,Legionellaceae,family,1.0000
+51366,118969,Legionellales,order,1.0000
+51366,1,root,root,1.0000
+51366,445,Legionella,genus,1.0000
+51366,2,Bacteria,superkingdom,1.0000
+480959,201174,Actinobacteria,phylum,1.0000
+480959,131567,cellular organisms,below_root,1.0000
+480959,1762,Mycobacteriaceae,family,1.0000
+480959,1760,Actinobacteria,class,1.0000
+480959,1763,Mycobacterium,genus,1.0000
+480959,85007,Corynebacterineae,suborder,1.0000
+480959,1,root,root,1.0000
+480959,2037,Actinomycetales,order,1.0000
+480959,85003,Actinobacteridae,subclass,1.0000
+480959,2,Bacteria,superkingdom,1.0000
+51369,131567,cellular organisms,below_root,1.0000
+51369,1224,Proteobacteria,phylum,1.0000
+51369,444,Legionellaceae,family,1.0000
+51369,118969,Legionellales,order,1.0000
+51369,1,root,root,1.0000
+51369,1236,Gammaproteobacteria,class,1.0000
+51369,2,Bacteria,superkingdom,1.0000
+473854,201174,Actinobacteria,phylum,1.0000
+473854,131567,cellular organisms,below_root,1.0000
+473854,1762,Mycobacteriaceae,family,1.0000
+473854,1760,Actinobacteria,class,1.0000
+473854,1763,Mycobacterium,genus,1.0000
+473854,85007,Corynebacterineae,suborder,1.0000
+473854,1,root,root,1.0000
+473854,2037,Actinomycetales,order,1.0000
+473854,85003,Actinobacteridae,subclass,1.0000
+473854,2,Bacteria,superkingdom,1.0000
+1979,131567,cellular organisms,below_root,1.0000
+1979,1224,Proteobacteria,phylum,1.0000
+1979,444,Legionellaceae,family,1.0000
+1979,118969,Legionellales,order,1.0000
+1979,1,root,root,1.0000
+1979,1236,Gammaproteobacteria,class,1.0000
+1979,2,Bacteria,superkingdom,1.0000
+473853,201174,Actinobacteria,phylum,1.0000
+473853,131567,cellular organisms,below_root,1.0000
+473853,1762,Mycobacteriaceae,family,1.0000
+473853,1760,Actinobacteria,class,1.0000
+473853,1,root,root,1.0000
+473853,1763,Mycobacterium,genus,1.0000
+473853,2037,Actinomycetales,order,1.0000
+473853,85003,Actinobacteridae,subclass,1.0000
+473853,85007,Corynebacterineae,suborder,1.0000
+473853,2,Bacteria,superkingdom,1.0000
+473852,201174,Actinobacteria,phylum,1.0000
+473852,131567,cellular organisms,below_root,1.0000
+473852,1762,Mycobacteriaceae,family,1.0000
+473852,1760,Actinobacteria,class,1.0000
+473852,1,root,root,1.0000
+473852,49897,Mycobacterium hodleri,species,1.0000
+473852,1763,Mycobacterium,genus,1.0000
+473852,2037,Actinomycetales,order,1.0000
+473852,85003,Actinobacteridae,subclass,1.0000
+473852,85007,Corynebacterineae,suborder,1.0000
+473852,2,Bacteria,superkingdom,1.0000
+457700,201174,Actinobacteria,phylum,1.0000
+457700,131567,cellular organisms,below_root,1.0000
+457700,1762,Mycobacteriaceae,family,1.0000
+457700,1760,Actinobacteria,class,1.0000
+457700,1763,Mycobacterium,genus,1.0000
+457700,85007,Corynebacterineae,suborder,1.0000
+457700,1,root,root,1.0000
+457700,2037,Actinomycetales,order,1.0000
+457700,85003,Actinobacteridae,subclass,1.0000
+457700,2,Bacteria,superkingdom,1.0000
+43043,131567,cellular organisms,below_root,1.0000
+43043,1224,Proteobacteria,phylum,1.0000
+43043,444,Legionellaceae,family,1.0000
+43043,118969,Legionellales,order,1.0000
+43043,1,root,root,1.0000
+43043,1236,Gammaproteobacteria,class,1.0000
+43043,2,Bacteria,superkingdom,1.0000
+48611,131567,cellular organisms,below_root,1.0000
+48611,1224,Proteobacteria,phylum,1.0000
+48611,444,Legionellaceae,family,1.0000
+48611,118969,Legionellales,order,1.0000
+48611,1,root,root,1.0000
+48611,445,Legionella,genus,1.0000
+48611,1236,Gammaproteobacteria,class,1.0000
+48611,2,Bacteria,superkingdom,1.0000
+481914,201174,Actinobacteria,phylum,1.0000
+481914,131567,cellular organisms,below_root,1.0000
+481914,1762,Mycobacteriaceae,family,1.0000
+481914,1760,Actinobacteria,class,1.0000
+481914,1,root,root,1.0000
+481914,49897,Mycobacterium hodleri,species,1.0000
+481914,1763,Mycobacterium,genus,1.0000
+481914,2037,Actinomycetales,order,1.0000
+481914,85003,Actinobacteridae,subclass,1.0000
+481914,85007,Corynebacterineae,suborder,1.0000
+481914,2,Bacteria,superkingdom,1.0000
+457706,201174,Actinobacteria,phylum,1.0000
+457706,131567,cellular organisms,below_root,1.0000
+457706,1762,Mycobacteriaceae,family,1.0000
+457706,1760,Actinobacteria,class,1.0000
+457706,1763,Mycobacterium,genus,1.0000
+457706,85007,Corynebacterineae,suborder,1.0000
+457706,1,root,root,1.0000
+457706,2037,Actinomycetales,order,1.0000
+457706,85003,Actinobacteridae,subclass,1.0000
+457706,2,Bacteria,superkingdom,1.0000
+457707,201174,Actinobacteria,phylum,1.0000
+457707,131567,cellular organisms,below_root,1.0000
+457707,1762,Mycobacteriaceae,family,1.0000
+457707,1760,Actinobacteria,class,1.0000
+457707,1,root,root,1.0000
+457707,1778,Mycobacterium gordonae,species,1.0000
+457707,1763,Mycobacterium,genus,1.0000
+457707,2037,Actinomycetales,order,1.0000
+457707,85003,Actinobacteridae,subclass,1.0000
+457707,85007,Corynebacterineae,suborder,1.0000
+457707,2,Bacteria,superkingdom,1.0000
+480946,201174,Actinobacteria,phylum,1.0000
+480946,131567,cellular organisms,below_root,1.0000
+480946,1762,Mycobacteriaceae,family,1.0000
+480946,1760,Actinobacteria,class,1.0000
+480946,1763,Mycobacterium,genus,1.0000
+480946,85007,Corynebacterineae,suborder,1.0000
+480946,1,root,root,1.0000
+480946,2037,Actinomycetales,order,1.0000
+480946,85003,Actinobacteridae,subclass,1.0000
+480946,2,Bacteria,superkingdom,1.0000
+480942,201174,Actinobacteria,phylum,1.0000
+480942,131567,cellular organisms,below_root,1.0000
+480942,1762,Mycobacteriaceae,family,1.0000
+480942,1760,Actinobacteria,class,1.0000
+480942,1,root,root,1.0000
+480942,1763,Mycobacterium,genus,1.0000
+480942,2037,Actinomycetales,order,1.0000
+480942,85003,Actinobacteridae,subclass,1.0000
+480942,85007,Corynebacterineae,suborder,1.0000
+480942,2,Bacteria,superkingdom,1.0000
+1987,459,Legionella sp.,species,.9888
+1987,131567,cellular organisms,below_root,1.0000
+1987,1224,Proteobacteria,phylum,1.0000
+1987,444,Legionellaceae,family,1.0000
+1987,118969,Legionellales,order,1.0000
+1987,1,root,root,1.0000
+1987,445,Legionella,genus,1.0000
+1987,1236,Gammaproteobacteria,class,1.0000
+1987,2,Bacteria,superkingdom,1.0000
+502388,201174,Actinobacteria,phylum,1.0000
+502388,131567,cellular organisms,below_root,1.0000
+502388,1762,Mycobacteriaceae,family,1.0000
+502388,1760,Actinobacteria,class,1.0000
+502388,1763,Mycobacterium,genus,1.0000
+502388,85007,Corynebacterineae,suborder,1.0000
+502388,1,root,root,1.0000
+502388,2037,Actinomycetales,order,1.0000
+502388,85003,Actinobacteridae,subclass,1.0000
+502388,2,Bacteria,superkingdom,1.0000
+51370,131567,cellular organisms,below_root,1.0000
+51370,1224,Proteobacteria,phylum,1.0000
+51370,444,Legionellaceae,family,1.0000
+51370,118969,Legionellales,order,1.0000
+51370,1,root,root,1.0000
+51370,1236,Gammaproteobacteria,class,1.0000
+51370,2,Bacteria,superkingdom,1.0000
+1986,131567,cellular organisms,below_root,1.0000
+1986,1224,Proteobacteria,phylum,1.0000
+1986,444,Legionellaceae,family,1.0000
+1986,118969,Legionellales,order,1.0000
+1986,1,root,root,1.0000
+1986,453,Legionella feeleii,species,1.0000
+1986,445,Legionella,genus,1.0000
+1986,1236,Gammaproteobacteria,class,1.0000
+1986,2,Bacteria,superkingdom,1.0000
+500762,201174,Actinobacteria,phylum,1.0000
+500762,131567,cellular organisms,below_root,1.0000
+500762,1762,Mycobacteriaceae,family,1.0000
+500762,1760,Actinobacteria,class,1.0000
+500762,1,root,root,1.0000
+500762,49897,Mycobacterium hodleri,species,1.0000
+500762,1763,Mycobacterium,genus,1.0000
+500762,2037,Actinomycetales,order,1.0000
+500762,85003,Actinobacteridae,subclass,1.0000
+500762,85007,Corynebacterineae,suborder,1.0000
+500762,2,Bacteria,superkingdom,1.0000
+500761,201174,Actinobacteria,phylum,1.0000
+500761,131567,cellular organisms,below_root,1.0000
+500761,1762,Mycobacteriaceae,family,1.0000
+500761,1760,Actinobacteria,class,1.0000
+500761,1763,Mycobacterium,genus,1.0000
+500761,85007,Corynebacterineae,suborder,1.0000
+500761,1,root,root,1.0000
+500761,2037,Actinomycetales,order,1.0000
+500761,85003,Actinobacteridae,subclass,1.0000
+500761,2,Bacteria,superkingdom,1.0000
+51376,131567,cellular organisms,below_root,1.0000
+51376,1224,Proteobacteria,phylum,1.0000
+51376,444,Legionellaceae,family,1.0000
+51376,118969,Legionellales,order,1.0000
+51376,1,root,root,1.0000
+51376,1236,Gammaproteobacteria,class,1.0000
+51376,2,Bacteria,superkingdom,1.0000
+480947,201174,Actinobacteria,phylum,1.0000
+480947,131567,cellular organisms,below_root,1.0000
+480947,1762,Mycobacteriaceae,family,1.0000
+480947,1760,Actinobacteria,class,1.0000
+480947,1,root,root,1.0000
+480947,49897,Mycobacterium hodleri,species,1.0000
+480947,1763,Mycobacterium,genus,1.0000
+480947,2037,Actinomycetales,order,1.0000
+480947,85003,Actinobacteridae,subclass,1.0000
+480947,85007,Corynebacterineae,suborder,1.0000
+480947,2,Bacteria,superkingdom,1.0000
+51378,131567,cellular organisms,below_root,1.0000
+51378,1224,Proteobacteria,phylum,1.0000
+51378,444,Legionellaceae,family,1.0000
+51378,118969,Legionellales,order,1.0000
+51378,1,root,root,1.0000
+51378,1236,Gammaproteobacteria,class,1.0000
+51378,2,Bacteria,superkingdom,1.0000
+51259,131567,cellular organisms,below_root,1.0000
+51259,1224,Proteobacteria,phylum,1.0000
+51259,444,Legionellaceae,family,1.0000
+51259,118969,Legionellales,order,1.0000
+51259,1,root,root,1.0000
+51259,1236,Gammaproteobacteria,class,1.0000
+51259,2,Bacteria,superkingdom,1.0000
+503350,280871,Mycobacterium llatzerense,species,.9604
+503350,201174,Actinobacteria,phylum,1.0000
+503350,131567,cellular organisms,below_root,1.0000
+503350,1762,Mycobacteriaceae,family,1.0000
+503350,1760,Actinobacteria,class,1.0000
+503350,1,root,root,1.0000
+503350,1763,Mycobacterium,genus,1.0000
+503350,2037,Actinomycetales,order,1.0000
+503350,85003,Actinobacteridae,subclass,1.0000
+503350,85007,Corynebacterineae,suborder,1.0000
+503350,2,Bacteria,superkingdom,1.0000
+1988,131567,cellular organisms,below_root,1.0000
+1988,1224,Proteobacteria,phylum,1.0000
+1988,444,Legionellaceae,family,1.0000
+1988,118969,Legionellales,order,1.0000
+1988,1,root,root,1.0000
+1988,445,Legionella,genus,.9742
+1988,1236,Gammaproteobacteria,class,1.0000
+1988,2,Bacteria,superkingdom,1.0000
+501758,201174,Actinobacteria,phylum,1.0000
+501758,131567,cellular organisms,below_root,1.0000
+501758,1762,Mycobacteriaceae,family,1.0000
+501758,1760,Actinobacteria,class,1.0000
+501758,1763,Mycobacterium,genus,1.0000
+501758,85007,Corynebacterineae,suborder,1.0000
+501758,1,root,root,1.0000
+501758,2037,Actinomycetales,order,1.0000
+501758,85003,Actinobacteridae,subclass,1.0000
+501758,2,Bacteria,superkingdom,1.0000
+481585,201174,Actinobacteria,phylum,1.0000
+481585,131567,cellular organisms,below_root,1.0000
+481585,1762,Mycobacteriaceae,family,1.0000
+481585,1760,Actinobacteria,class,1.0000
+481585,1771,Mycobacterium phlei,species,.9855
+481585,1,root,root,1.0000
+481585,1763,Mycobacterium,genus,1.0000
+481585,2037,Actinomycetales,order,1.0000
+481585,85003,Actinobacteridae,subclass,1.0000
+481585,85007,Corynebacterineae,suborder,1.0000
+481585,2,Bacteria,superkingdom,1.0000
+501997,201174,Actinobacteria,phylum,1.0000
+501997,131567,cellular organisms,below_root,1.0000
+501997,1762,Mycobacteriaceae,family,1.0000
+501997,1760,Actinobacteria,class,1.0000
+501997,1763,Mycobacterium,genus,1.0000
+501997,85007,Corynebacterineae,suborder,1.0000
+501997,1,root,root,1.0000
+501997,2037,Actinomycetales,order,1.0000
+501997,85003,Actinobacteridae,subclass,1.0000
+501997,2,Bacteria,superkingdom,1.0000
+481586,201174,Actinobacteria,phylum,1.0000
+481586,131567,cellular organisms,below_root,1.0000
+481586,1762,Mycobacteriaceae,family,1.0000
+481586,1760,Actinobacteria,class,1.0000
+481586,1763,Mycobacterium,genus,1.0000
+481586,85007,Corynebacterineae,suborder,1.0000
+481586,1,root,root,1.0000
+481586,2037,Actinomycetales,order,1.0000
+481586,85003,Actinobacteridae,subclass,1.0000
+481586,2,Bacteria,superkingdom,1.0000
+501757,201174,Actinobacteria,phylum,1.0000
+501757,131567,cellular organisms,below_root,1.0000
+501757,1762,Mycobacteriaceae,family,1.0000
+501757,1760,Actinobacteria,class,1.0000
+501757,319707,Mycobacterium aubagnense,species,1.0000
+501757,1,root,root,1.0000
+501757,1763,Mycobacterium,genus,1.0000
+501757,2037,Actinomycetales,order,1.0000
+501757,85003,Actinobacteridae,subclass,1.0000
+501757,85007,Corynebacterineae,suborder,1.0000
+501757,2,Bacteria,superkingdom,1.0000
+58219,131567,cellular organisms,below_root,1.0000
+58219,1224,Proteobacteria,phylum,1.0000
+58219,444,Legionellaceae,family,1.0000
+58219,118969,Legionellales,order,1.0000
+58219,1,root,root,1.0000
+58219,445,Legionella,genus,1.0000
+58219,1236,Gammaproteobacteria,class,1.0000
+58219,2,Bacteria,superkingdom,1.0000
+490293,201174,Actinobacteria,phylum,1.0000
+490293,131567,cellular organisms,below_root,1.0000
+490293,1762,Mycobacteriaceae,family,1.0000
+490293,1760,Actinobacteria,class,1.0000
+490293,1763,Mycobacterium,genus,1.0000
+490293,85007,Corynebacterineae,suborder,1.0000
+490293,1,root,root,1.0000
+490293,2037,Actinomycetales,order,1.0000
+490293,85003,Actinobacteridae,subclass,1.0000
+490293,2,Bacteria,superkingdom,1.0000
+58212,131567,cellular organisms,below_root,1.0000
+58212,1224,Proteobacteria,phylum,1.0000
+58212,444,Legionellaceae,family,1.0000
+58212,118969,Legionellales,order,1.0000
+58212,1,root,root,1.0000
+58212,445,Legionella,genus,1.0000
+58212,1034943,Legionella massiliensis,species,1.0000
+58212,1236,Gammaproteobacteria,class,1.0000
+58212,2,Bacteria,superkingdom,1.0000
+59788,131567,cellular organisms,below_root,1.0000
+59788,1224,Proteobacteria,phylum,1.0000
+59788,444,Legionellaceae,family,1.0000
+59788,118969,Legionellales,order,1.0000
+59788,1,root,root,1.0000
+59788,1236,Gammaproteobacteria,class,1.0000
+59788,2,Bacteria,superkingdom,1.0000
+501881,201174,Actinobacteria,phylum,1.0000
+501881,131567,cellular organisms,below_root,1.0000
+501881,1762,Mycobacteriaceae,family,1.0000
+501881,1760,Actinobacteria,class,1.0000
+501881,1,root,root,1.0000
+501881,49897,Mycobacterium hodleri,species,1.0000
+501881,1763,Mycobacterium,genus,1.0000
+501881,2037,Actinomycetales,order,1.0000
+501881,85003,Actinobacteridae,subclass,1.0000
+501881,85007,Corynebacterineae,suborder,1.0000
+501881,2,Bacteria,superkingdom,1.0000
+502052,201174,Actinobacteria,phylum,1.0000
+502052,131567,cellular organisms,below_root,1.0000
+502052,1762,Mycobacteriaceae,family,1.0000
+502052,1760,Actinobacteria,class,1.0000
+502052,1763,Mycobacterium,genus,1.0000
+502052,85007,Corynebacterineae,suborder,1.0000
+502052,1,root,root,1.0000
+502052,2037,Actinomycetales,order,1.0000
+502052,85003,Actinobacteridae,subclass,1.0000
+502052,2,Bacteria,superkingdom,1.0000
+56714,131567,cellular organisms,below_root,1.0000
+56714,1224,Proteobacteria,phylum,1.0000
+56714,444,Legionellaceae,family,1.0000
+56714,118969,Legionellales,order,1.0000
+56714,1,root,root,1.0000
+56714,1236,Gammaproteobacteria,class,1.0000
+56714,2,Bacteria,superkingdom,1.0000
+57926,131567,cellular organisms,below_root,1.0000
+57926,1224,Proteobacteria,phylum,1.0000
+57926,444,Legionellaceae,family,1.0000
+57926,118969,Legionellales,order,1.0000
+57926,1,root,root,1.0000
+57926,445,Legionella,genus,1.0000
+57926,96232,Legionella lytica,species,1.0000
+57926,1236,Gammaproteobacteria,class,1.0000
+57926,2,Bacteria,superkingdom,1.0000
+484605,201174,Actinobacteria,phylum,1.0000
+484605,131567,cellular organisms,below_root,1.0000
+484605,1762,Mycobacteriaceae,family,1.0000
+484605,1760,Actinobacteria,class,1.0000
+484605,1,root,root,1.0000
+484605,49897,Mycobacterium hodleri,species,1.0000
+484605,1763,Mycobacterium,genus,1.0000
+484605,2037,Actinomycetales,order,1.0000
+484605,85003,Actinobacteridae,subclass,1.0000
+484605,85007,Corynebacterineae,suborder,1.0000
+484605,2,Bacteria,superkingdom,1.0000
+502712,201174,Actinobacteria,phylum,1.0000
+502712,131567,cellular organisms,below_root,1.0000
+502712,1762,Mycobacteriaceae,family,1.0000
+502712,1760,Actinobacteria,class,1.0000
+502712,1763,Mycobacterium,genus,1.0000
+502712,85007,Corynebacterineae,suborder,1.0000
+502712,1,root,root,1.0000
+502712,2037,Actinomycetales,order,1.0000
+502712,85003,Actinobacteridae,subclass,1.0000
+502712,2,Bacteria,superkingdom,1.0000
+58106,131567,cellular organisms,below_root,1.0000
+58106,1224,Proteobacteria,phylum,1.0000
+58106,444,Legionellaceae,family,1.0000
+58106,118969,Legionellales,order,1.0000
+58106,1,root,root,1.0000
+58106,1236,Gammaproteobacteria,class,1.0000
+58106,2,Bacteria,superkingdom,1.0000
+493795,201174,Actinobacteria,phylum,1.0000
+493795,131567,cellular organisms,below_root,1.0000
+493795,1762,Mycobacteriaceae,family,1.0000
+493795,1760,Actinobacteria,class,1.0000
+493795,1763,Mycobacterium,genus,1.0000
+493795,85007,Corynebacterineae,suborder,1.0000
+493795,1,root,root,1.0000
+493795,2037,Actinomycetales,order,1.0000
+493795,85003,Actinobacteridae,subclass,1.0000
+493795,2,Bacteria,superkingdom,1.0000
+58108,131567,cellular organisms,below_root,1.0000
+58108,1224,Proteobacteria,phylum,1.0000
+58108,444,Legionellaceae,family,1.0000
+58108,118969,Legionellales,order,1.0000
+58108,1,root,root,1.0000
+58108,1236,Gammaproteobacteria,class,1.0000
+58108,2,Bacteria,superkingdom,1.0000
+503497,201174,Actinobacteria,phylum,1.0000
+503497,131567,cellular organisms,below_root,1.0000
+503497,1762,Mycobacteriaceae,family,1.0000
+503497,1760,Actinobacteria,class,1.0000
+503497,1763,Mycobacterium,genus,1.0000
+503497,85007,Corynebacterineae,suborder,1.0000
+503497,1,root,root,1.0000
+503497,2037,Actinomycetales,order,1.0000
+503497,85003,Actinobacteridae,subclass,1.0000
+503497,2,Bacteria,superkingdom,1.0000
+32814,131567,cellular organisms,below_root,1.0000
+32814,1224,Proteobacteria,phylum,1.0000
+32814,444,Legionellaceae,family,1.0000
+32814,118969,Legionellales,order,1.0000
+32814,1,root,root,1.0000
+32814,1236,Gammaproteobacteria,class,1.0000
+32814,2,Bacteria,superkingdom,1.0000
+502041,201174,Actinobacteria,phylum,1.0000
+502041,131567,cellular organisms,below_root,1.0000
+502041,1762,Mycobacteriaceae,family,1.0000
+502041,1760,Actinobacteria,class,1.0000
+502041,1,root,root,1.0000
+502041,1763,Mycobacterium,genus,1.0000
+502041,2037,Actinomycetales,order,1.0000
+502041,85003,Actinobacteridae,subclass,1.0000
+502041,85007,Corynebacterineae,suborder,1.0000
+502041,2,Bacteria,superkingdom,1.0000
+493677,201174,Actinobacteria,phylum,1.0000
+493677,131567,cellular organisms,below_root,1.0000
+493677,1762,Mycobacteriaceae,family,1.0000
+493677,1760,Actinobacteria,class,1.0000
+493677,1763,Mycobacterium,genus,1.0000
+493677,85007,Corynebacterineae,suborder,1.0000
+493677,1,root,root,1.0000
+493677,2037,Actinomycetales,order,1.0000
+493677,85003,Actinobacteridae,subclass,1.0000
+493677,2,Bacteria,superkingdom,1.0000
+59682,131567,cellular organisms,below_root,1.0000
+59682,1224,Proteobacteria,phylum,1.0000
+59682,1236,Gammaproteobacteria,class,1.0000
+59682,444,Legionellaceae,family,1.0000
+59682,118969,Legionellales,order,1.0000
+59682,1,root,root,1.0000
+59682,445,Legionella,genus,1.0000
+59682,2,Bacteria,superkingdom,1.0000
+58111,131567,cellular organisms,below_root,1.0000
+58111,1224,Proteobacteria,phylum,1.0000
+58111,1236,Gammaproteobacteria,class,1.0000
+58111,444,Legionellaceae,family,1.0000
+58111,118969,Legionellales,order,1.0000
+58111,1,root,root,1.0000
+58111,445,Legionella,genus,1.0000
+58111,2,Bacteria,superkingdom,1.0000
+456929,201174,Actinobacteria,phylum,1.0000
+456929,131567,cellular organisms,below_root,1.0000
+456929,1762,Mycobacteriaceae,family,1.0000
+456929,1760,Actinobacteria,class,1.0000
+456929,1,root,root,1.0000
+456929,1778,Mycobacterium gordonae,species,1.0000
+456929,1763,Mycobacterium,genus,1.0000
+456929,2037,Actinomycetales,order,1.0000
+456929,85003,Actinobacteridae,subclass,1.0000
+456929,85007,Corynebacterineae,suborder,1.0000
+456929,2,Bacteria,superkingdom,1.0000
+501897,201174,Actinobacteria,phylum,1.0000
+501897,131567,cellular organisms,below_root,1.0000
+501897,1762,Mycobacteriaceae,family,1.0000
+501897,1760,Actinobacteria,class,1.0000
+501897,1,root,root,1.0000
+501897,1763,Mycobacterium,genus,1.0000
+501897,2037,Actinomycetales,order,1.0000
+501897,85003,Actinobacteridae,subclass,1.0000
+501897,85007,Corynebacterineae,suborder,1.0000
+501897,2,Bacteria,superkingdom,1.0000
+502745,201174,Actinobacteria,phylum,1.0000
+502745,131567,cellular organisms,below_root,1.0000
+502745,1762,Mycobacteriaceae,family,1.0000
+502745,1760,Actinobacteria,class,1.0000
+502745,1763,Mycobacterium,genus,1.0000
+502745,85007,Corynebacterineae,suborder,1.0000
+502745,1,root,root,1.0000
+502745,2037,Actinomycetales,order,1.0000
+502745,85003,Actinobacteridae,subclass,1.0000
+502745,2,Bacteria,superkingdom,1.0000
+58114,459,Legionella sp.,species,1.0000
+58114,131567,cellular organisms,below_root,1.0000
+58114,1224,Proteobacteria,phylum,1.0000
+58114,444,Legionellaceae,family,1.0000
+58114,118969,Legionellales,order,1.0000
+58114,1,root,root,1.0000
+58114,445,Legionella,genus,1.0000
+58114,1236,Gammaproteobacteria,class,1.0000
+58114,2,Bacteria,superkingdom,1.0000
+40098,131567,cellular organisms,below_root,1.0000
+40098,1224,Proteobacteria,phylum,1.0000
+40098,444,Legionellaceae,family,1.0000
+40098,118969,Legionellales,order,1.0000
+40098,1,root,root,1.0000
+40098,1236,Gammaproteobacteria,class,1.0000
+40098,2,Bacteria,superkingdom,1.0000
+481316,201174,Actinobacteria,phylum,1.0000
+481316,131567,cellular organisms,below_root,1.0000
+481316,1762,Mycobacteriaceae,family,1.0000
+481316,1760,Actinobacteria,class,1.0000
+481316,1,root,root,1.0000
+481316,49897,Mycobacterium hodleri,species,1.0000
+481316,1763,Mycobacterium,genus,1.0000
+481316,2037,Actinomycetales,order,1.0000
+481316,85003,Actinobacteridae,subclass,1.0000
+481316,85007,Corynebacterineae,suborder,1.0000
+481316,2,Bacteria,superkingdom,1.0000
+481317,201174,Actinobacteria,phylum,1.0000
+481317,131567,cellular organisms,below_root,1.0000
+481317,1762,Mycobacteriaceae,family,1.0000
+481317,1760,Actinobacteria,class,1.0000
+481317,1763,Mycobacterium,genus,1.0000
+481317,85007,Corynebacterineae,suborder,1.0000
+481317,1,root,root,1.0000
+481317,2037,Actinomycetales,order,1.0000
+481317,85003,Actinobacteridae,subclass,1.0000
+481317,2,Bacteria,superkingdom,1.0000
+481318,201174,Actinobacteria,phylum,1.0000
+481318,131567,cellular organisms,below_root,1.0000
+481318,1762,Mycobacteriaceae,family,1.0000
+481318,1760,Actinobacteria,class,1.0000
+481318,1763,Mycobacterium,genus,1.0000
+481318,85007,Corynebacterineae,suborder,1.0000
+481318,1,root,root,1.0000
+481318,2037,Actinomycetales,order,1.0000
+481318,85003,Actinobacteridae,subclass,1.0000
+481318,2,Bacteria,superkingdom,1.0000
+41624,131567,cellular organisms,below_root,1.0000
+41624,1224,Proteobacteria,phylum,1.0000
+41624,444,Legionellaceae,family,1.0000
+41624,118969,Legionellales,order,1.0000
+41624,1,root,root,1.0000
+41624,1236,Gammaproteobacteria,class,1.0000
+41624,2,Bacteria,superkingdom,1.0000
+59210,131567,cellular organisms,below_root,1.0000
+59210,1224,Proteobacteria,phylum,1.0000
+59210,444,Legionellaceae,family,1.0000
+59210,118969,Legionellales,order,1.0000
+59210,1,root,root,1.0000
+59210,445,Legionella,genus,.9685
+59210,1236,Gammaproteobacteria,class,1.0000
+59210,2,Bacteria,superkingdom,1.0000
+500434,201174,Actinobacteria,phylum,1.0000
+500434,131567,cellular organisms,below_root,1.0000
+500434,1762,Mycobacteriaceae,family,1.0000
+500434,1760,Actinobacteria,class,1.0000
+500434,1763,Mycobacterium,genus,1.0000
+500434,85007,Corynebacterineae,suborder,1.0000
+500434,1,root,root,1.0000
+500434,2037,Actinomycetales,order,1.0000
+500434,85003,Actinobacteridae,subclass,1.0000
+500434,2,Bacteria,superkingdom,1.0000
+194345,777,Coxiella burnetii,species,1.0000
+194345,131567,cellular organisms,below_root,1.0000
+194345,1224,Proteobacteria,phylum,1.0000
+194345,118969,Legionellales,order,1.0000
+194345,1,root,root,1.0000
+194345,776,Coxiella,genus,1.0000
+194345,118968,Coxiellaceae,family,1.0000
+194345,1236,Gammaproteobacteria,class,1.0000
+194345,2,Bacteria,superkingdom,1.0000
+474913,201174,Actinobacteria,phylum,1.0000
+474913,131567,cellular organisms,below_root,1.0000
+474913,1762,Mycobacteriaceae,family,1.0000
+474913,1760,Actinobacteria,class,1.0000
+474913,1763,Mycobacterium,genus,1.0000
+474913,85007,Corynebacterineae,suborder,1.0000
+474913,1,root,root,1.0000
+474913,2037,Actinomycetales,order,1.0000
+474913,85003,Actinobacteridae,subclass,1.0000
+474913,2,Bacteria,superkingdom,1.0000
+493773,201174,Actinobacteria,phylum,1.0000
+493773,131567,cellular organisms,below_root,1.0000
+493773,1762,Mycobacteriaceae,family,1.0000
+493773,1760,Actinobacteria,class,1.0000
+493773,1763,Mycobacterium,genus,1.0000
+493773,85007,Corynebacterineae,suborder,1.0000
+493773,1,root,root,1.0000
+493773,2037,Actinomycetales,order,1.0000
+493773,85003,Actinobacteridae,subclass,1.0000
+493773,2,Bacteria,superkingdom,1.0000
+574765,201174,Actinobacteria,phylum,1.0000
+574765,131567,cellular organisms,below_root,1.0000
+574765,1762,Mycobacteriaceae,family,1.0000
+574765,1760,Actinobacteria,class,1.0000
+574765,1763,Mycobacterium,genus,1.0000
+574765,85007,Corynebacterineae,suborder,1.0000
+574765,1,root,root,1.0000
+574765,2037,Actinomycetales,order,1.0000
+574765,85003,Actinobacteridae,subclass,1.0000
+574765,2,Bacteria,superkingdom,1.0000
+58124,131567,cellular organisms,below_root,1.0000
+58124,1224,Proteobacteria,phylum,1.0000
+58124,444,Legionellaceae,family,1.0000
+58124,118969,Legionellales,order,1.0000
+58124,1,root,root,1.0000
+58124,445,Legionella,genus,.9725
+58124,1236,Gammaproteobacteria,class,1.0000
+58124,2,Bacteria,superkingdom,1.0000
+36834,131567,cellular organisms,below_root,1.0000
+36834,1224,Proteobacteria,phylum,1.0000
+36834,444,Legionellaceae,family,1.0000
+36834,118969,Legionellales,order,1.0000
+36834,1,root,root,1.0000
+36834,1236,Gammaproteobacteria,class,1.0000
+36834,2,Bacteria,superkingdom,1.0000
+16770,131567,cellular organisms,below_root,1.0000
+16770,1224,Proteobacteria,phylum,1.0000
+16770,444,Legionellaceae,family,1.0000
+16770,118969,Legionellales,order,1.0000
+16770,1,root,root,1.0000
+16770,445,Legionella,genus,1.0000
+16770,1236,Gammaproteobacteria,class,1.0000
+16770,2,Bacteria,superkingdom,1.0000
+641183,201174,Actinobacteria,phylum,1.0000
+641183,131567,cellular organisms,below_root,1.0000
+641183,1762,Mycobacteriaceae,family,1.0000
+641183,1760,Actinobacteria,class,1.0000
+641183,1763,Mycobacterium,genus,1.0000
+641183,85007,Corynebacterineae,suborder,1.0000
+641183,1,root,root,1.0000
+641183,2037,Actinomycetales,order,1.0000
+641183,85003,Actinobacteridae,subclass,1.0000
+641183,2,Bacteria,superkingdom,1.0000
+16773,131567,cellular organisms,below_root,1.0000
+16773,1224,Proteobacteria,phylum,1.0000
+16773,1236,Gammaproteobacteria,class,1.0000
+16773,444,Legionellaceae,family,1.0000
+16773,118969,Legionellales,order,1.0000
+16773,1,root,root,1.0000
+16773,445,Legionella,genus,1.0000
+16773,2,Bacteria,superkingdom,1.0000
+16772,131567,cellular organisms,below_root,1.0000
+16772,1224,Proteobacteria,phylum,1.0000
+16772,444,Legionellaceae,family,1.0000
+16772,118969,Legionellales,order,1.0000
+16772,1,root,root,1.0000
+16772,1236,Gammaproteobacteria,class,1.0000
+16772,2,Bacteria,superkingdom,1.0000
+361729,201174,Actinobacteria,phylum,1.0000
+361729,131567,cellular organisms,below_root,1.0000
+361729,1762,Mycobacteriaceae,family,1.0000
+361729,1760,Actinobacteria,class,1.0000
+361729,1763,Mycobacterium,genus,1.0000
+361729,85007,Corynebacterineae,suborder,1.0000
+361729,1,root,root,1.0000
+361729,2037,Actinomycetales,order,1.0000
+361729,85003,Actinobacteridae,subclass,1.0000
+361729,2,Bacteria,superkingdom,1.0000
+474690,201174,Actinobacteria,phylum,1.0000
+474690,131567,cellular organisms,below_root,1.0000
+474690,1762,Mycobacteriaceae,family,1.0000
+474690,1760,Actinobacteria,class,1.0000
+474690,1763,Mycobacterium,genus,1.0000
+474690,85007,Corynebacterineae,suborder,1.0000
+474690,1,root,root,1.0000
+474690,2037,Actinomycetales,order,1.0000
+474690,85003,Actinobacteridae,subclass,1.0000
+474690,2,Bacteria,superkingdom,1.0000
+50095,131567,cellular organisms,below_root,1.0000
+50095,1224,Proteobacteria,phylum,1.0000
+50095,444,Legionellaceae,family,1.0000
+50095,118969,Legionellales,order,1.0000
+50095,1,root,root,1.0000
+50095,1236,Gammaproteobacteria,class,1.0000
+50095,2,Bacteria,superkingdom,1.0000
+35610,131567,cellular organisms,below_root,1.0000
+35610,1224,Proteobacteria,phylum,1.0000
+35610,444,Legionellaceae,family,1.0000
+35610,118969,Legionellales,order,1.0000
+35610,1,root,root,1.0000
+35610,445,Legionella,genus,1.0000
+35610,45075,Legionella shakespearei,species,1.0000
+35610,1236,Gammaproteobacteria,class,1.0000
+35610,2,Bacteria,superkingdom,1.0000
+493881,201174,Actinobacteria,phylum,1.0000
+493881,131567,cellular organisms,below_root,1.0000
+493881,1762,Mycobacteriaceae,family,1.0000
+493881,1760,Actinobacteria,class,1.0000
+493881,1763,Mycobacterium,genus,1.0000
+493881,85007,Corynebacterineae,suborder,1.0000
+493881,1,root,root,1.0000
+493881,2037,Actinomycetales,order,1.0000
+493881,85003,Actinobacteridae,subclass,1.0000
+493881,2,Bacteria,superkingdom,1.0000
+58137,131567,cellular organisms,below_root,1.0000
+58137,1224,Proteobacteria,phylum,1.0000
+58137,444,Legionellaceae,family,1.0000
+58137,118969,Legionellales,order,1.0000
+58137,1,root,root,1.0000
+58137,445,Legionella,genus,1.0000
+58137,1236,Gammaproteobacteria,class,1.0000
+58137,2,Bacteria,superkingdom,1.0000
+4820,131567,cellular organisms,below_root,1.0000
+4820,1224,Proteobacteria,phylum,1.0000
+4820,444,Legionellaceae,family,1.0000
+4820,118969,Legionellales,order,1.0000
+4820,1,root,root,1.0000
+4820,1236,Gammaproteobacteria,class,1.0000
+4820,2,Bacteria,superkingdom,1.0000
+490136,201174,Actinobacteria,phylum,1.0000
+490136,131567,cellular organisms,below_root,1.0000
+490136,1762,Mycobacteriaceae,family,1.0000
+490136,1760,Actinobacteria,class,1.0000
+490136,1763,Mycobacterium,genus,1.0000
+490136,85007,Corynebacterineae,suborder,1.0000
+490136,1,root,root,1.0000
+490136,2037,Actinomycetales,order,1.0000
+490136,85003,Actinobacteridae,subclass,1.0000
+490136,2,Bacteria,superkingdom,1.0000
+484804,201174,Actinobacteria,phylum,1.0000
+484804,131567,cellular organisms,below_root,1.0000
+484804,1762,Mycobacteriaceae,family,1.0000
+484804,1760,Actinobacteria,class,1.0000
+484804,1763,Mycobacterium,genus,1.0000
+484804,85007,Corynebacterineae,suborder,1.0000
+484804,1,root,root,1.0000
+484804,2037,Actinomycetales,order,1.0000
+484804,85003,Actinobacteridae,subclass,1.0000
+484804,2,Bacteria,superkingdom,1.0000
+58142,131567,cellular organisms,below_root,1.0000
+58142,1224,Proteobacteria,phylum,1.0000
+58142,444,Legionellaceae,family,1.0000
+58142,118969,Legionellales,order,1.0000
+58142,1,root,root,1.0000
+58142,1236,Gammaproteobacteria,class,1.0000
+58142,2,Bacteria,superkingdom,1.0000
+504812,201174,Actinobacteria,phylum,1.0000
+504812,131567,cellular organisms,below_root,1.0000
+504812,1762,Mycobacteriaceae,family,1.0000
+504812,1760,Actinobacteria,class,1.0000
+504812,1763,Mycobacterium,genus,1.0000
+504812,85007,Corynebacterineae,suborder,1.0000
+504812,1,root,root,1.0000
+504812,2037,Actinomycetales,order,1.0000
+504812,85003,Actinobacteridae,subclass,1.0000
+504812,2,Bacteria,superkingdom,1.0000
+58140,131567,cellular organisms,below_root,1.0000
+58140,1224,Proteobacteria,phylum,1.0000
+58140,444,Legionellaceae,family,1.0000
+58140,118969,Legionellales,order,1.0000
+58140,1,root,root,1.0000
+58140,1236,Gammaproteobacteria,class,1.0000
+58140,2,Bacteria,superkingdom,1.0000
+501673,201174,Actinobacteria,phylum,1.0000
+501673,131567,cellular organisms,below_root,1.0000
+501673,1762,Mycobacteriaceae,family,1.0000
+501673,1760,Actinobacteria,class,1.0000
+501673,1763,Mycobacterium,genus,1.0000
+501673,85007,Corynebacterineae,suborder,1.0000
+501673,1,root,root,1.0000
+501673,2037,Actinomycetales,order,1.0000
+501673,85003,Actinobacteridae,subclass,1.0000
+501673,2,Bacteria,superkingdom,1.0000
+361739,201174,Actinobacteria,phylum,1.0000
+361739,131567,cellular organisms,below_root,1.0000
+361739,1762,Mycobacteriaceae,family,1.0000
+361739,1760,Actinobacteria,class,1.0000
+361739,1763,Mycobacterium,genus,1.0000
+361739,85007,Corynebacterineae,suborder,1.0000
+361739,1,root,root,1.0000
+361739,2037,Actinomycetales,order,1.0000
+361739,85003,Actinobacteridae,subclass,1.0000
+361739,2,Bacteria,superkingdom,1.0000
+59917,131567,cellular organisms,below_root,1.0000
+59917,1224,Proteobacteria,phylum,1.0000
+59917,444,Legionellaceae,family,1.0000
+59917,118969,Legionellales,order,1.0000
+59917,1,root,root,1.0000
+59917,445,Legionella,genus,1.0000
+59917,1236,Gammaproteobacteria,class,1.0000
+59917,2,Bacteria,superkingdom,1.0000
+59916,131567,cellular organisms,below_root,1.0000
+59916,1224,Proteobacteria,phylum,1.0000
+59916,444,Legionellaceae,family,1.0000
+59916,118969,Legionellales,order,1.0000
+59916,1,root,root,1.0000
+59916,1236,Gammaproteobacteria,class,1.0000
+59916,2,Bacteria,superkingdom,1.0000

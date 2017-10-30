@@ -1,0 +1,166 @@
+---
+author: "Nate Olson"
+date: '`r Sys.Date()`'
+output: html_notebook
+---
+
+## Objective
+Extract _Mycobacteria_ and _Legionella_ sequences from dataset for more in-depth taxonomic analysis. 
+```{r message = FALSE, warning = FALSE}
+library(metagenomeSeq)
+library(Biostrings)
+library(tidyverse)
+library(stringr)
+library(ggtree)
+```
+
+Loading project data - OTU table
+```{r warning=FALSE, message=FALSE}
+project_dir <- file.path("/Users/nolson/Projects/sapkota_wastewater/wastewater16S/")
+metadata_dir <- file.path(project_dir, "metadata/")
+
+dat_files <- c(
+   env_meta = file.path(metadata_dir, "env_meta.csv"),
+   seq_meta = file.path(metadata_dir, "seq_meta.csv"),
+   id_key = file.path(metadata_dir, "id_keys.csv"),
+   merge_id = file.path(metadata_dir, "merge_id_key.csv"),
+   key_meta = file.path(metadata_dir, "key_meta.csv"),
+   mr_blast_file = file.path(project_dir, "wastewater_blast.rdata")
+)
+
+# metadata
+meta_env_src <- read_csv(dat_files['env_meta'])
+
+
+# Loading blast based OTU count data.
+load(dat_files['mr_blast_file'])
+
+# Only including spray irrigation and treatment plant data in analysis.
+plantObj <- which((pData(wastewaterMRobj_blast)$study_type == "plant" &
+                  pData(wastewaterMRobj_blast)$Stage_name != "Influent post screening") | pData(wastewaterMRobj_blast)$Region_Site == "MA_SI1") %>% 
+    {wastewaterMRobj_blast[,.]} %>% cumNorm(p = 0.75)
+
+ww_meta <- plantObj %>% pData() %>% 
+      as.data.frame %>% mutate(Seq_ID = row.names(.)) %>% 
+      separate(Env_ID,c("Region","TP","Date","Stage"), sep = "_") %>% 
+      unite("WW_TP", Region,TP, sep = "_", remove = F)  %>%
+      mutate(plant_name = paste(ifelse(Region == "MA", 
+                                       "Mid-Atlantic",
+                                       "Midwest"),
+                                ifelse(TP %in% c("TP1","TP2"),
+                                       paste0("WW",TP),TP))) %>% 
+      select(Seq_ID, WW_TP, plant_name, Region, TP, Date, Stage, Stage_name, 
+             study_type, Season, StageID, StageID_all_plants)
+rownames(ww_meta) <- ww_meta$Seq_ID
+      
+pData(plantObj) <- ww_meta
+```
+
+Extracting _Legionella_ and _Mycobacterium_ OTUs
+```{r}
+myco_leg_otus <- fData(plantObj) %>% 
+    filter(genus %in% c("Legionella", "Mycobacterium")) %>% 
+    select(OTU, genus, species)
+```
+
+Number of OTUs by genus
+```{r}
+myco_leg_otus %>% group_by(genus) %>% summarise(count = n())
+```
+
+Number of species by genus
+```{r}
+myco_leg_otus %>% select(-OTU) %>% unique() %>% group_by(genus) %>% summarise(count = n())
+```
+
+Sequence ids for myco and legionella seqs
+```{r}
+otu_df <- read_tsv("/Users/nolson/Projects/sapkota_wastewater/wastewater_analysis_pop/16S/Analysis/MiSeq_Amy_WasteWater.otustats.csv") %>% 
+    dplyr::rename(OTU = `OTU ID`) %>% select(OTU, Center)
+myco_leg_otus <- myco_leg_otus %>% left_join(otu_df)
+```
+```{r}
+myco_leg_otus
+```
+
+
+Load and subset representative cluster sequences
+```{r}
+rep_seqs <- readDNAStringSet("/Users/nolson/Projects/sapkota_wastewater/wastewater_analysis_pop/16S/Analysis/MiSeq_Amy_WasteWater.filtered.centers.fna")
+```
+
+```{r}
+myco_leg_seqs <- rep_seqs[which(names(rep_seqs) %in% myco_leg_otus$Center)]
+
+## Name order sanity check
+sum(names(myco_leg_seqs) != myco_leg_otus$Center)
+
+## Renaming as OTUs
+names(myco_leg_seqs) <- myco_leg_otus$OTU
+```
+
+
+```{r}
+myco_leg_seqs
+```
+
+Writing sequences to file
+```{r}
+writeXStringSet(myco_leg_seqs,filepath = "mycobacteria_legionella_otus.fasta")
+```
+
+Sanity Check - Web-based BLAST result for OTU 396 consistent with species assignment
+```{r}
+myco_leg_otus %>% filter(OTU == 396)
+```
+
+Phylogenetic placement unable to assign sequences - need to reverse complement sequences
+
+Reverse complement sequences
+```{r}
+myco_leg_seqs_rc <- reverseComplement(myco_leg_seqs)
+writeXStringSet(myco_leg_seqs_rc,filepath = "mycobacteria_legionella_otus_rc.fasta")
+```
+
+
+Phylogenetic placement used to obtain high confidence taxonomic assignment for Mycobacterium and Legionella sequences. 
+The `waste_tipp.sh` script was used to run TIPP using the myco and legion seqs. 
+
+```{r}
+## Loading phylogenetic placement results
+class_file <- "../wastewater_tipp/output_classification.txt" 
+tipp_class <- read_csv(class_file, col_names = c("Center","id","taxa","level","conf")) 
+
+## Rearranging data for analysis
+species_conf <- tipp_class %>% filter(level == "species") %>% 
+    select(Center, conf) %>% dplyr::rename(species_conf = conf)
+genus_conf <- tipp_class %>% filter(level == "genus") %>% 
+    select(Center, conf) %>% dplyr::rename(genus_conf = conf)
+conf_df <- full_join(species_conf, genus_conf)
+
+tipp_class_wide <- tipp_class %>% select(-id, -conf) %>% spread(level, taxa, fill = NA) %>% 
+    left_join(conf_df) 
+
+class_df <- tipp_class_wide %>% 
+    select(Center, family, genus, species_group, species, subspecies, below_subspecies, genus_conf, species_conf)
+
+## Total OTU abundance across all samples 
+total_abu <- MRcounts(plantObj) %>% rowSums()
+total_count_df <- data_frame(Center = as.numeric(rownames(plantObj)),
+                             total_abu)
+### Generating Data Frame for exploring phylogenetic placement taxonomic assignments 
+class_df <- total_count_df %>% right_join(class_df)
+```
+
+
+```{r}
+class_df %>% arrange(-total_abu)
+```
+
+Writing to file
+```{r}
+write_excel_csv(class_df %>% arrange(-total_abu),"myco_legion_tipp_classifications.csv")
+```
+
+
+

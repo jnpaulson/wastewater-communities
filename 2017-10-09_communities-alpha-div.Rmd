@@ -1,0 +1,316 @@
+---
+title: "Waterwater Communities Alpha Diversity Revisited"
+author: "Nate Olson"
+date: '`r Sys.Date()`'
+output: html_notebook
+---
+
+## Objective
+Re-evaluate $\alpha$-diversity analysis included in communities manuscript using more robust/ statistically sound methods to verify conclusions. 
+
+## Approach  
+* alpha diversity methods  
+    * Rarefaction curves using the iNEXT package  
+    * bootstrap estimates with confidence intervals - using vegegarian package  
+    * breakaway diversity estimates  - using breakaway package  
+* Diversity comparisons  
+    * Influent across sites  
+    * Influent-Effluent pairs  
+    * Across treatment process by site  
+    * WWTP to SI site  
+
+```{r warning=FALSE, message=FALSE, echo = FALSE}
+source("joe_diversity_functions.R")
+library(tidyverse)
+library(stringr)
+library(metagenomeSeq)
+library(vegan)
+library(vegetarian)
+library(iNEXT)
+library(breakaway)
+```
+
+## Load and Tidy data 
+```{r warning=FALSE, message=FALSE}
+project_dir <- file.path("/Users/nolson/Projects/sapkota_wastewater/wastewater16S/")
+metadata_dir <- file.path(project_dir, "metadata/")
+
+dat_files <- c(
+   env_meta = file.path(metadata_dir, "env_meta.csv"),
+   seq_meta = file.path(metadata_dir, "seq_meta.csv"),
+   id_key = file.path(metadata_dir, "id_keys.csv"),
+   merge_id = file.path(metadata_dir, "merge_id_key.csv"),
+   key_meta = file.path(metadata_dir, "key_meta.csv"),
+   mr_blast_file = file.path(project_dir, "wastewater_blast.rdata")
+)
+
+# metadata
+meta_env_src <- read_csv(dat_files['env_meta'])
+
+
+# Loading blast based OTU count data.
+load(dat_files['mr_blast_file'])
+
+# Only including spray irrigation and treatment plant data in analysis.
+plantObj <- which((pData(wastewaterMRobj_blast)$study_type == "plant" &
+                       pData(wastewaterMRobj_blast)$Stage_name != "Influent post screening") |
+                      pData(wastewaterMRobj_blast)$Region_Site == "MA_SI1") %>% 
+                      {wastewaterMRobj_blast[,.]} # %>% cumNorm(p = 0.75)
+
+ww_meta <- plantObj %>% pData() %>% 
+      as.data.frame %>% mutate(Seq_ID = row.names(.)) %>% 
+      separate(Env_ID,c("Region","TP","Date","Stage"), sep = "_") %>% 
+      unite("WW_TP", Region,TP, sep = "_", remove = F)  %>%
+      mutate(plant_name = paste(ifelse(Region == "MA", 
+                                       "Mid-Atlantic",
+                                       "Midwest"),
+                                ifelse(TP %in% c("TP1","TP2"),
+                                       paste0("WW",TP),TP))) %>% 
+  mutate(Stage = if_else(Stage == "RawInfluent", "Influent", Stage))%>%
+  mutate(Stage = if_else(Stage == "AfterUVTreatment", "After UV", Stage))%>%
+  mutate(Stage = if_else(Stage == "BeforeUVTreatment", "Before UV", Stage))%>%
+  mutate(Stage = if_else(Stage == "HoldingPondInlet", "Pond", Stage))%>%
+  mutate(Stage = if_else(Stage == "PumpHouseInlet", "Inlet to Pumphouse", Stage))%>%
+  mutate(Stage = if_else(Stage == "ActivatedSludgeReactor", "Activated Sludge Reactor", Stage))%>%
+  mutate(Stage = if_else(Stage == "SecondaryClarifier", "Secondary Clarifier", Stage))%>%
+  mutate(Stage = if_else(Stage == "CellB", "Cell B", Stage))%>%
+  mutate(Stage = if_else(Stage == "PostAeration", "Post Aeration", Stage))%>%
+      select(Seq_ID, WW_TP, plant_name, Region, TP, Date, Stage, Stage_name, 
+             study_type, Season, StageID, StageID_all_plants)
+
+rownames(ww_meta) <- ww_meta$Seq_ID
+      
+pData(plantObj) <- ww_meta 
+
+## filtering samples with less than 100 reads
+plantObj <- which(colSums(plantObj) > 100) %>% {plantObj[, .]} 
+
+## Count Matrix for diversity estimates
+count_mat <- plantObj@assayData$counts
+sam_dat <- pData(plantObj) %>% rownames_to_column(var = "samID")
+```
+
+
+### iNEXT Diversity
+```{r}
+# sim_q0 <- iNEXT(sim_mat)
+```
+
+```{r}
+# ggiNEXT(sim_q0)
+```
+
+```{r}
+# sim_q1 <- iNEXT(sim_mat,q = 1)
+```
+
+```{r}
+# ggiNEXT(sim_q1)
+```
+
+```{r}
+# sim_q2 <- iNEXT(sim_mat,q = 2)
+```
+
+```{r}
+# ggiNEXT(sim_q2)
+```
+
+How do the asypototic estimates for the three evenness metrics Shannon, Simpson, and Inverse Simpson differ for q-values (should be the same)?
+```{r}
+# q0 <- sim_q0$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
+# q1 <- sim_q1$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
+# q2 <- sim_q2$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
+# sim_inext_df <- bind_rows(q0, q1, q2,.id = "qval")
+```
+
+```{r}
+# sim_inext_df %>% mutate(samples = factor(samples), qval = factor(qval),
+#                         sample_x = as.numeric(samples) + (as.numeric(qval)-2)/4) %>% 
+#   ggplot(aes(x = samples, y = Estimator, color = qval)) +
+#   geom_point(aes(x = samples)) + geom_point(aes(x = sample_x)) +
+#   geom_errorbar(aes(x = sample_x, ymin = LCL, ymax = UCL), width = 0.15) + facet_wrap(~Diversity)
+```
+
+
+### Bootstrap uncertainty estimates 
+Diversity metric uncertainty values were estimated using bootstrap resampling (500 replicates) with the `vegetarian` package.  
+
+```{r}
+count_list <- as.list(1:ncol(count_mat)) %>% set_names(colnames(count_mat)) %>% 
+  map(~count_mat[,.]) %>% map(matrix, nrow = 1)
+
+q1 <- count_list %>%
+  map(d, lev = "alpha", q = 1, boot = TRUE, boot.arg=list(num.iter=500)) %>% 
+  map_df(as_data_frame, .id = "samID")
+
+q2 <- count_list %>% 
+  map(d, lev = "alpha", q = 2, boot = TRUE, boot.arg=list(num.iter=500)) %>% 
+  map_df(as_data_frame, .id = "samID")
+
+div_df <- bind_rows(q1, q2, .id = "qval") %>% left_join(sam_dat)
+```
+
+Small uncertianty estimates are unexpected. 
+```{r}
+div_df %>% filter(Stage == "Influent") %>% 
+    ggplot(aes(x = samID, y = D.Value, color = plant_name)) + 
+    geom_errorbar(aes(ymin = D.Value - StdErr,
+                      ymax = D.Value + StdErr,
+                      color = plant_name,
+                      width = 0.5)) +
+    geom_point() + 
+    facet_grid(qval~plant_name, scales = "free") +
+    theme_bw() +
+    labs(x = "Wastewater Treatment Plant", y = "Diversity Metric", color = "") +
+    theme(axis.text.x = element_blank(), legend.position = "bottom")
+```
+
+
+## Breakaway Richness Estimates
+Breakaway using a statisticall modeling approach to infer the number of unobserved OTUs (OTUs with counts of 0). 
+Predicted values are not observed and open circles are not defined in legend. 
+
+```{r}
+count_vec <- count_list[[2]] 
+count_tbl <- count_vec[count_vec > 1] %>% table() %>% as.data.frame() 
+colnames(count_tbl) <- c("freq","count")
+
+breakaway_nof1(count_tbl)
+```
+
+
+```{r}
+freq_df <- count_mat %>% as_data_frame() %>% rownames_to_column(var = "otuID")  %>% 
+  gather("samID","abundance",-otuID) %>% group_by(samID, abundance) %>% 
+  summarise(freq = n()) %>% filter(abundance > 1) %>% group_by(samID) %>% nest() 
+
+break_fit <- freq_df$data %>% map(as.data.frame) %>%
+  map(breakaway_nof1, print = FALSE, answer = TRUE,
+      plot = FALSE, force = TRUE)
+
+break_est <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$est) %>%
+  keep(is_numeric) %>% as_tibble() %>% gather("samID","est")
+break_seest <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$seest) %>%
+  keep(is_numeric) %>% as_tibble() %>% gather("samID","seest")
+break_ci <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$ci) %>%
+  keep(is_numeric) %>% as_tibble() %>% mutate(ci = c("lower","upper")) %>%
+  gather("samID","value",-ci) %>% spread(ci, value)
+break_df <- left_join(break_est, break_seest) %>% left_join(break_ci) %>% 
+    left_join(sam_mat)
+```
+
+### Influent Across Sites
+```{r}
+break_df %>% filter(Stage == "Influent") %>% 
+    ggplot(aes(x =samID, y = est, color = plant_name)) +
+    geom_errorbar(aes(ymin = lower, ymax = upper)) +
+    geom_point() + scale_y_log10() + 
+    facet_wrap(~plant_name,nrow = 1, scales = "free_x")
+```
+
+
+### Influent-Effluent Pairs 
+
+```{r}
+break_df %>% filter(Stage %in% c("Influent","Effluent")) %>% 
+    # mutate(Stage = factor(Stage, levels = c("Influent","Effluent")),
+           # Date = paste(plant_name, Date)) %>% 
+    mutate(Stage = factor(Stage, levels = c("Influent","Effluent"))) %>% 
+    ggplot(aes(x = Stage, y = est)) +
+        geom_path(aes(group = Date), color = "grey60") +
+        geom_point(aes(color = plant_name)) +
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+        labs(y = "Richness Estimate", color = "WWTP") + theme_bw() +
+      theme(legend.position = "bottom") + 
+    facet_wrap(~Date) + 
+    scale_y_log10()
+# ggsave("Figure2_sept28.tiff", dpi = 300)
+```
+
+
+
+
+
+
+
+## Treatment Process
+```{r}
+ break_df %>% filter(study_type == "plant", WW_TP == "MA_TP1") %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
+                                           "Post Aeration","Secondary Clarifier",
+                                           "CellB","Effluent"))) %>% 
+    ggplot(aes(x = samID, y = est, color = Date)) +
+     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+        geom_point() +
+        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
+        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
+        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
+    scale_y_log10() 
+```
+
+```{r}
+ break_df %>% filter(study_type == "plant", WW_TP == "MA_TP2") %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
+                                           "Post Aeration","Secondary Clarifier",
+                                           "CellB","Effluent"))) %>% 
+    ggplot(aes(x = samID, y = est, color = Date)) +
+     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+        geom_point() +
+        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
+        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
+        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
+    scale_y_log10() 
+```
+
+```{r}
+ break_df %>% filter(study_type == "plant", WW_TP == "MW_TP1") %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
+                                           "Post Aeration","Secondary Clarifier",
+                                           "CellB","Effluent"))) %>% 
+    ggplot(aes(x = samID, y = est, color = Date)) +
+     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+        geom_point() +
+        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
+        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
+        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
+    scale_y_log10() 
+```
+
+
+```{r}
+ break_df %>% filter(study_type == "plant", WW_TP == "MW_TP2") %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
+                                           "Post Aeration","Secondary Clarifier",
+                                           "CellB","Effluent"))) %>% 
+    ggplot(aes(x = samID, y = est, color = Date)) +
+     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+        geom_point() +
+        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
+        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
+        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
+    scale_y_log10() 
+```
+
+
+### Influent to Spray
+
+```{r}
+pd <- position_dodge(width = 0.1)
+
+break_df %>% filter( WW_TP %in% c("MA_TP1","MA_SI1")) %>% 
+    filter(Stage %in% c("Influent","Effluent", "Before UV", 
+                        "After UV","Pond", 
+                        "Inlet to Pumphouse")) %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Effluent","Before UV", 
+                                           "After UV","Pond", 
+                                           "Inlet to Pumphouse"))) %>% 
+    ggplot(aes(x = samID, y = est,  color = Date)) +
+    # geom_line(aes(group = Date), color = "grey60") +
+    geom_point() +
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
+labs(y = "Diversity Metric", color = "WWTP") + theme_bw() +
+    theme(axis.text.x = element_blank()) + 
+    scale_y_log10() + 
+    facet_wrap(~Stage, scales = "free_x", nrow = 1)
+```

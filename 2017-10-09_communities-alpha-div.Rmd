@@ -1,28 +1,35 @@
 ---
 title: "Waterwater Communities Alpha Diversity Revisited"
 author: "Nate Olson"
-date: '`r Sys.Date()`'
-output: html_notebook
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 ## Objective
 Re-evaluate $\alpha$-diversity analysis included in communities manuscript using more robust/ statistically sound methods to verify conclusions. 
 
 ## Approach  
-* alpha diversity methods  
-    * Rarefaction curves using the iNEXT package  
-    * bootstrap estimates with confidence intervals - using vegegarian package  
-    * breakaway diversity estimates  - using breakaway package  
+* use breakaway to estimate richness  - using breakaway package  
 * Diversity comparisons  
     * Influent across sites  
     * Influent-Effluent pairs  
     * Across treatment process by site  
     * WWTP to SI site  
 
+## Summary
+Large range in richness estimates for all samples. 
+Because breakaway only provides estimates, standard errors, upper, and lower limits, we cannot use the same statistical test that we used prevously. 
+The breakaway package has a statistical test that I don't fully understand the statistical test and some of the resutls are not consistent with my expectation. 
+For example the influent estimate for MWTP1 is only consistent with one of the three samples. 
+Additionally, the pairs plots cannot be used when we have range and point estimates. 
+
 ```{r warning=FALSE, message=FALSE, echo = FALSE}
 source("joe_diversity_functions.R")
 library(tidyverse)
 library(stringr)
+library(forcats)
 library(metagenomeSeq)
 library(vegan)
 library(vegetarian)
@@ -66,15 +73,15 @@ ww_meta <- plantObj %>% pData() %>%
                                        "Midwest"),
                                 ifelse(TP %in% c("TP1","TP2"),
                                        paste0("WW",TP),TP))) %>% 
-  mutate(Stage = if_else(Stage == "RawInfluent", "Influent", Stage))%>%
-  mutate(Stage = if_else(Stage == "AfterUVTreatment", "After UV", Stage))%>%
-  mutate(Stage = if_else(Stage == "BeforeUVTreatment", "Before UV", Stage))%>%
-  mutate(Stage = if_else(Stage == "HoldingPondInlet", "Pond", Stage))%>%
-  mutate(Stage = if_else(Stage == "PumpHouseInlet", "Inlet to Pumphouse", Stage))%>%
-  mutate(Stage = if_else(Stage == "ActivatedSludgeReactor", "Activated Sludge Reactor", Stage))%>%
-  mutate(Stage = if_else(Stage == "SecondaryClarifier", "Secondary Clarifier", Stage))%>%
-  mutate(Stage = if_else(Stage == "CellB", "Cell B", Stage))%>%
-  mutate(Stage = if_else(Stage == "PostAeration", "Post Aeration", Stage))%>%
+  mutate(Stage = if_else(Stage == "RawInfluent", "Influent", Stage)) %>%
+  mutate(Stage = if_else(Stage == "AfterUVTreatment", "After UV", Stage)) %>%
+  mutate(Stage = if_else(Stage == "BeforeUVTreatment", "Before UV", Stage)) %>%
+  mutate(Stage = if_else(Stage == "HoldingPondInlet", "Pond", Stage)) %>%
+  mutate(Stage = if_else(Stage == "PumpHouseInlet", "Inlet to Pumphouse", Stage)) %>%
+  mutate(Stage = if_else(Stage == "ActivatedSludgeReactor", "Activated Sludge Reactor", Stage)) %>%
+  mutate(Stage = if_else(Stage == "SecondaryClarifier", "Secondary Clarifier", Stage)) %>%
+  mutate(Stage = if_else(Stage == "CellB", "Cell B", Stage)) %>%
+  mutate(Stage = if_else(Stage == "PostAeration", "Post Aeration", Stage)) %>%
       select(Seq_ID, WW_TP, plant_name, Region, TP, Date, Stage, Stage_name, 
              study_type, Season, StageID, StageID_all_plants)
 
@@ -90,105 +97,36 @@ count_mat <- plantObj@assayData$counts
 sam_dat <- pData(plantObj) %>% rownames_to_column(var = "samID")
 ```
 
-
-### iNEXT Diversity
-```{r}
-# sim_q0 <- iNEXT(sim_mat)
-```
-
-```{r}
-# ggiNEXT(sim_q0)
-```
-
-```{r}
-# sim_q1 <- iNEXT(sim_mat,q = 1)
-```
-
-```{r}
-# ggiNEXT(sim_q1)
-```
-
-```{r}
-# sim_q2 <- iNEXT(sim_mat,q = 2)
-```
-
-```{r}
-# ggiNEXT(sim_q2)
-```
-
-How do the asypototic estimates for the three evenness metrics Shannon, Simpson, and Inverse Simpson differ for q-values (should be the same)?
-```{r}
-# q0 <- sim_q0$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
-# q1 <- sim_q1$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
-# q2 <- sim_q2$AsyEst %>% mutate(samples = rep(colnames(sim_mat), each = 3))
-# sim_inext_df <- bind_rows(q0, q1, q2,.id = "qval")
-```
-
-```{r}
-# sim_inext_df %>% mutate(samples = factor(samples), qval = factor(qval),
-#                         sample_x = as.numeric(samples) + (as.numeric(qval)-2)/4) %>% 
-#   ggplot(aes(x = samples, y = Estimator, color = qval)) +
-#   geom_point(aes(x = samples)) + geom_point(aes(x = sample_x)) +
-#   geom_errorbar(aes(x = sample_x, ymin = LCL, ymax = UCL), width = 0.15) + facet_wrap(~Diversity)
-```
-
-
-### Bootstrap uncertainty estimates 
-Diversity metric uncertainty values were estimated using bootstrap resampling (500 replicates) with the `vegetarian` package.  
-
-```{r}
-count_list <- as.list(1:ncol(count_mat)) %>% set_names(colnames(count_mat)) %>% 
-  map(~count_mat[,.]) %>% map(matrix, nrow = 1)
-
-q1 <- count_list %>%
-  map(d, lev = "alpha", q = 1, boot = TRUE, boot.arg=list(num.iter=500)) %>% 
-  map_df(as_data_frame, .id = "samID")
-
-q2 <- count_list %>% 
-  map(d, lev = "alpha", q = 2, boot = TRUE, boot.arg=list(num.iter=500)) %>% 
-  map_df(as_data_frame, .id = "samID")
-
-div_df <- bind_rows(q1, q2, .id = "qval") %>% left_join(sam_dat)
-```
-
-Small uncertianty estimates are unexpected. 
-```{r}
-div_df %>% filter(Stage == "Influent") %>% 
-    ggplot(aes(x = samID, y = D.Value, color = plant_name)) + 
-    geom_errorbar(aes(ymin = D.Value - StdErr,
-                      ymax = D.Value + StdErr,
-                      color = plant_name,
-                      width = 0.5)) +
-    geom_point() + 
-    facet_grid(qval~plant_name, scales = "free") +
-    theme_bw() +
-    labs(x = "Wastewater Treatment Plant", y = "Diversity Metric", color = "") +
-    theme(axis.text.x = element_blank(), legend.position = "bottom")
-```
-
-
 ## Breakaway Richness Estimates
 Breakaway using a statisticall modeling approach to infer the number of unobserved OTUs (OTUs with counts of 0). 
 Predicted values are not observed and open circles are not defined in legend. 
 
 ```{r}
-count_vec <- count_list[[2]] 
-count_tbl <- count_vec[count_vec > 1] %>% table() %>% as.data.frame() 
-colnames(count_tbl) <- c("freq","count")
-
-breakaway_nof1(count_tbl)
+# count_vec <- count_list[[2]] 
+# count_tbl <- count_vec[count_vec > 1] %>% table() %>% as.data.frame() 
+# colnames(count_tbl) <- c("freq","count")
+# 
+# breakaway_nof1(count_tbl)
 ```
-
+Check warning message....
 
 ```{r}
-freq_df <- count_mat %>% as_data_frame() %>% rownames_to_column(var = "otuID")  %>% 
-  gather("samID","abundance",-otuID) %>% group_by(samID, abundance) %>% 
-  summarise(freq = n()) %>% filter(abundance > 1) %>% group_by(samID) %>% nest() 
+freq_df <- count_mat %>% 
+    as_data_frame() %>% 
+    rownames_to_column(var = "otuID")  %>% 
+    gather("samID","abundance",-otuID) %>% 
+    group_by(samID, abundance) %>% 
+    summarise(freq = n()) %>% 
+    filter(abundance > 1) %>% 
+    group_by(samID) %>% 
+    nest() 
 
-break_fit <- freq_df$data %>% map(as.data.frame) %>%
-  map(breakaway_nof1, print = FALSE, answer = TRUE,
-      plot = FALSE, force = TRUE)
+break_fit <- freq_df$data %>% 
+    map(as.data.frame) %>%
+    map(breakaway_nof1, answer = TRUE,
+        plot = FALSE, force = TRUE)
 
+## is_numeric is deprecated
 break_est <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$est) %>%
   keep(is_numeric) %>% as_tibble() %>% gather("samID","est")
 break_seest <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$seest) %>%
@@ -196,102 +134,376 @@ break_seest <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$seest) %>%
 break_ci <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$ci) %>%
   keep(is_numeric) %>% as_tibble() %>% mutate(ci = c("lower","upper")) %>%
   gather("samID","value",-ci) %>% spread(ci, value)
-break_df <- left_join(break_est, break_seest) %>% left_join(break_ci) %>% 
-    left_join(sam_mat)
+break_df <- left_join(break_est, break_seest) %>% 
+    left_join(break_ci) %>% 
+    rename(Seq_ID = samID) %>% 
+    left_join(ww_meta) %>% 
+    rename(samID = Seq_ID)
 ```
 
 ### Influent Across Sites
+
 ```{r}
-break_df %>% filter(Stage == "Influent") %>% 
-    ggplot(aes(x =samID, y = est, color = plant_name)) +
-    geom_errorbar(aes(ymin = lower, ymax = upper)) +
-    geom_point() + scale_y_log10() + 
-    facet_wrap(~plant_name,nrow = 1, scales = "free_x")
+inf_df <- filter(break_df, Stage == "Influent") %>% 
+    mutate(plant_name = factor(plant_name)) 
+    
+           
+plant_fac <- inf_df$plant_name
+
+design_mat <- model.matrix(~ plant_fac + 0)
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("plant_fac","")
+inf_betta <- betta(chats = inf_df$est, ses = inf_df$seest, X = design_mat)
 ```
+
+__Take these results with a grain of salt.__ The math used in the statistical test is beyond me. 
+
+Results from the betta statistical test. Results indicate that the MATP1 estimate is significantly different from zero and that MATP2 and MWTP1 but MWTP2 are significantly different from MATP1. 
+The one sample MWTP1 sample with the lower estimate is driving the MWTP1 estimate, and therefore a statistical artifact. 
+When the one sample is excluded MWTP1 is no longer significantly different from WWTP1. 
+
+```{r}
+inf_betta$table
+```
+
+```{r}
+inf_df_v2 <- filter(break_df, Stage == "Influent", 
+                 est > 200, plant_name != "Midwest WWTP2") %>% 
+    mutate(plant_name = factor(plant_name)) 
+    
+           
+plant_fac <- inf_df_v2$plant_name
+
+design_mat <- model.matrix(~ plant_fac + 0)
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("plant_fac","")
+inf_betta_v2 <- betta(chats = inf_df_v2$est, ses = inf_df_v2$seest, X = design_mat)
+```
+
+```{r}
+inf_betta_v2$table
+```
+
+Plot below shows the point estimates and ranges (upper and lower estimate) for influent sample by treatment plant. Black point and error bars indicate the richness estiamte +/- standard errors for individual treatment plants calculated using the `betta` function in breakaway. 
+```{r}
+inf_tbl <- inf_betta$table %>% 
+    as.data.frame() %>% 
+    rownames_to_column(var = "plant_name") %>% 
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+
+inf_df %>% 
+    group_by(plant_name) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(plant_name),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = plant_name)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = plant_name), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = plant_name)) + 
+    geom_point(data = inf_tbl, aes(x = plant_name, y = Estimates)) + 
+    geom_errorbar(data = inf_tbl, aes(x = plant_name, ymax = ymax, ymin = ymin),
+                  width = 0.1) + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Treatment Plant", y = "Richness Estimate")
+```
+
+Same plot without plant estimates - this is the one I prefer
+```{r}
+inf_df %>% 
+    group_by(plant_name) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(plant_name),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = plant_name)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = plant_name), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, fill = plant_name), shape = 21) + 
+    labs(x = "Samples", y = "Richness Estimate") + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Treatment Plant")
+```
+
+
+
 
 
 ### Influent-Effluent Pairs 
+Interpretation of statistical test results, Influent is significantly different from 0. 
+Effluent is significantly different with a lower abundance from influent.
 
+Sorry we lost the pair info. I can try to generate a new plot with pairs but pair information is not included in the statistical test.
 ```{r}
-break_df %>% filter(Stage %in% c("Influent","Effluent")) %>% 
-    # mutate(Stage = factor(Stage, levels = c("Influent","Effluent")),
-           # Date = paste(plant_name, Date)) %>% 
-    mutate(Stage = factor(Stage, levels = c("Influent","Effluent"))) %>% 
-    ggplot(aes(x = Stage, y = est)) +
-        geom_path(aes(group = Date), color = "grey60") +
-        geom_point(aes(color = plant_name)) +
-    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
-        labs(y = "Richness Estimate", color = "WWTP") + theme_bw() +
-      theme(legend.position = "bottom") + 
-    facet_wrap(~Date) + 
-    scale_y_log10()
-# ggsave("Figure2_sept28.tiff", dpi = 300)
+df <- filter(break_df, Stage %in% c("Influent","Effluent")) %>% 
+    mutate(Stage = factor(Stage, level = c("Influent","Effluent")))
+stage_fac <- df$Stage
+
+design_mat <- model.matrix(~ stage_fac + 0)
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>% 
+    as.data.frame() %>% 
+    rownames_to_column(var = "Stage") %>% 
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
 ```
 
 
+
+```{r}
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.025 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.025 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
+```
 
 
 
 
 
 ## Treatment Process
+### MA_TP1
 ```{r}
- break_df %>% filter(study_type == "plant", WW_TP == "MA_TP1") %>% 
-    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
-                                           "Post Aeration","Secondary Clarifier",
-                                           "CellB","Effluent"))) %>% 
-    ggplot(aes(x = samID, y = est, color = Date)) +
-     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
-        geom_point() +
-        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
-        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
-        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
-    scale_y_log10() 
-```
+df <- break_df %>% 
+    filter(study_type == "plant", WW_TP == "MA_TP1") %>% 
+    # mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
+    #                                        "Post Aeration","Secondary Clarifier",
+    #                                        "CellB","Effluent"))) 
+    ## Excluding Post Aeration and CellB as richness estimates were not obtianed for these samples
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor","Secondary Clarifier","Effluent"))) 
 
-```{r}
- break_df %>% filter(study_type == "plant", WW_TP == "MA_TP2") %>% 
-    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
-                                           "Post Aeration","Secondary Clarifier",
-                                           "CellB","Effluent"))) %>% 
-    ggplot(aes(x = samID, y = est, color = Date)) +
-     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
-        geom_point() +
-        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
-        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
-        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
-    scale_y_log10() 
-```
+stage_fac <- df$Stage
 
-```{r}
- break_df %>% filter(study_type == "plant", WW_TP == "MW_TP1") %>% 
-    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
-                                           "Post Aeration","Secondary Clarifier",
-                                           "CellB","Effluent"))) %>% 
-    ggplot(aes(x = samID, y = est, color = Date)) +
-     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
-        geom_point() +
-        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
-        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
-        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
-    scale_y_log10() 
+design_mat <- model.matrix(~ stage_fac + 0)
+
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>% 
+    as.data.frame() %>% 
+    rownames_to_column(var = "Stage") %>% 
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
 ```
 
 
+
 ```{r}
- break_df %>% filter(study_type == "plant", WW_TP == "MW_TP2") %>% 
-    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor", 
-                                           "Post Aeration","Secondary Clarifier",
-                                           "CellB","Effluent"))) %>% 
-    ggplot(aes(x = samID, y = est, color = Date)) +
-     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0) +
-        geom_point() +
-        facet_wrap(~Stage, nrow = 1, scales = "free_x") +
-        labs(y = "Diversity Metric", color = "Date Collected") + theme_bw() +
-        theme(axis.text.x = element_blank(), legend.position = "bottom") + 
-    scale_y_log10() 
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
 ```
 
+### MA_TP2
+```{r}
+df <- break_df %>% 
+    filter(study_type == "plant", WW_TP == "MA_TP2") %>% 
+    # mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor",
+    #                                        "Post Aeration","Secondary Clarifier",
+    #                                        "CellB","Effluent")))
+    ## Excluding Post Aeration and CellB as richness estimates were not obtianed for these samples
+    mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor","Secondary Clarifier")))
+
+stage_fac <- df$Stage
+
+design_mat <- model.matrix(~ stage_fac + 0)
+
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>% 
+    as.data.frame() %>% 
+    rownames_to_column(var = "Stage") %>% 
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
+```
+
+```{r}
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
+```
+
+### MW_TP1
+```{r}
+df <- break_df %>% 
+    filter(study_type == "plant", WW_TP == "MW_TP1") %>% 
+    # mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor",
+    #                                        "Post Aeration","Secondary Clarifier",
+    #                                        "CellB","Effluent")))
+    ## Excluding Post Aeration and CellB as richness estimates were not obtianed for these samples
+    mutate(Stage = factor(Stage,levels = c("Influent", "Post Aeration","Secondary Clarifier", "Effluent")))
+
+stage_fac <- df$Stage
+
+design_mat <- model.matrix(~ stage_fac + 0)
+
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>% 
+    as.data.frame() %>% 
+    rownames_to_column(var = "Stage") %>% 
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
+```
+
+```{r}
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) + 
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
+```
+
+
+### MW_TP2
+```{r}
+df <- break_df %>% 
+    filter(study_type == "plant", WW_TP == "MW_TP2") %>% 
+    # mutate(Stage = factor(Stage,levels = c("Influent","Activated Sludge Reactor",
+    #                                        "Post Aeration","Secondary Clarifier",
+    #                                        "CellB","Effluent")))
+    ## Only including stages with samples with richness estimtates
+    mutate(Stage = factor(Stage,levels = c("Influent", "Cell B","Effluent")))
+
+stage_fac <- df$Stage
+
+## Unable to perform test - too few samples, I think ....
+design_mat <- model.matrix(~ stage_fac + 0)
+
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "Stage") %>%
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
+```
+
+
+```{r}
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) +
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) +
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
+```
 
 ### Influent to Spray
 
@@ -314,3 +526,64 @@ labs(y = "Diversity Metric", color = "WWTP") + theme_bw() +
     scale_y_log10() + 
     facet_wrap(~Stage, scales = "free_x", nrow = 1)
 ```
+
+```{r}
+df <- break_df %>% 
+    filter( WW_TP %in% c("MA_TP1","MA_SI1")) %>% 
+    filter(Stage %in% c("Influent","Effluent", "Before UV", 
+                        "After UV","Pond", 
+                        "Inlet to Pumphouse")) %>% 
+    mutate(Stage = factor(Stage,levels = c("Influent","Effluent","Before UV", 
+                                           "After UV","Pond", 
+                                           "Inlet to Pumphouse")))
+
+stage_fac <- df$Stage
+
+## Unable to perform test - too few samples, I think ....
+design_mat <- model.matrix(~ stage_fac + 0)
+
+colnames(design_mat) <- colnames(design_mat) %>% str_replace("stage_fac","")
+
+df_betta <- betta(chats = df$est, ses = df$seest, X = design_mat)
+
+df_tbl <- df_betta$table %>%
+    as.data.frame() %>%
+    rownames_to_column(var = "Stage") %>%
+    mutate(ymin = Estimates - `Standard Errors`,
+           ymax = Estimates + `Standard Errors`,
+           ymin = if_else(ymin < 0, 1, ymin))
+df_tbl
+```
+
+
+```{r}
+df %>% 
+    group_by(Stage) %>% 
+    mutate( sam_num = 1:n(), mid_sam = median(sam_num), 
+            x_pos = as.numeric(Stage),
+            x_pos = if_else(sam_num >= mid_sam, 
+                            x_pos + 0.05 * (sam_num - floor(mid_sam)),  
+                            x_pos - 0.05 * sam_num)) %>% 
+    ggplot(aes(x = Stage)) + 
+    geom_blank() + 
+    geom_segment(aes(x = x_pos, xend = x_pos, 
+                     y = lower, yend = upper, 
+                     color = Stage), lwd = 1) +
+    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) +
+    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+                  width = 0.1) +
+    scale_y_log10() + 
+    annotation_logticks(sides = "l") + 
+    theme_bw() + 
+    theme(legend.position = "none") + 
+    labs(x = "Stage", y = "Richness Estimate")
+```
+
+```{r}
+## Need to provide est and ssest estimates from breakaway no 1
+# shannon_est <- freq_df$data %>% 
+#     map(as.data.frame) %>%
+#     map(shannon_better)
+```
+

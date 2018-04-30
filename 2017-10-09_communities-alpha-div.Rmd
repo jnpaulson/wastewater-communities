@@ -125,21 +125,38 @@ break_fit <- freq_df$data %>%
     map(as.data.frame) %>%
     map(breakaway_nof1, answer = TRUE,
         plot = FALSE, force = TRUE)
-
+```
+Generate a data frame with breakaway richness estimates (est), standard error (seest), and confidence interval (lower, upper).
+```{r}
 ## is_numeric is deprecated
 break_est <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$est) %>%
-  keep(is_numeric) %>% as_tibble() %>% gather("samID","est")
+  keep(is.numeric) %>% as_tibble() %>% gather("samID","est")
 break_seest <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$seest) %>%
-  keep(is_numeric) %>% as_tibble() %>% gather("samID","seest")
+  keep(is.numeric) %>% as_tibble() %>% gather("samID","seest")
 break_ci <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$ci) %>%
-  keep(is_numeric) %>% as_tibble() %>% mutate(ci = c("lower","upper")) %>%
+  keep(is.numeric) %>% as_tibble() %>% mutate(ci = c("lower","upper")) %>%
   gather("samID","value",-ci) %>% spread(ci, value)
+break_model <- break_fit %>% set_names(freq_df$samID)  %>% map(~.$name) %>% 
+    keep(is.character) %>% as_tibble() %>% gather("samID","model")
 break_df <- left_join(break_est, break_seest) %>% 
-    left_join(break_ci) %>% 
+    left_join(break_ci) %>% left_join(break_model) %>% 
     rename(Seq_ID = samID) %>% 
     left_join(ww_meta) %>% 
     rename(samID = Seq_ID)
 ```
+
+Breakdown of the number of samples each model was used for the richness estimate. 
+```{r}
+break_df %>% ggplot() + geom_bar(aes(x = model))
+```
+
+
+Breakaway richness failed for two samples.
+```{r}
+break_fit %>% set_names(freq_df$samID)  %>% map(~.$est) %>%
+  keep(~!is.numeric(.))
+```
+
 
 ### Influent Across Sites
 
@@ -408,7 +425,7 @@ df <- break_df %>%
     #                                        "Post Aeration","Secondary Clarifier",
     #                                        "CellB","Effluent")))
     ## Excluding Post Aeration and CellB as richness estimates were not obtianed for these samples
-    mutate(Stage = factor(Stage,levels = c("Influent", "Post Aeration","Secondary Clarifier", "Effluent")))
+    mutate(Stage = factor(Stage, levels = c("Influent", "Post Aeration","Secondary Clarifier", "Effluent")))
 
 stage_fac <- df$Stage
 
@@ -440,10 +457,11 @@ df %>%
     geom_segment(aes(x = x_pos, xend = x_pos, 
                      y = lower, yend = upper, 
                      color = Stage), lwd = 1) +
-    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
-    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
-    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
-                  width = 0.1) + 
+    geom_point(aes(x = x_pos, y = est, fill = Stage), shape = 21) + 
+    # geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    # geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) + 
+    # geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+    #               width = 0.1) + 
     scale_y_log10() + 
     annotation_logticks(sides = "l") + 
     theme_bw() + 
@@ -494,10 +512,11 @@ df %>%
     geom_segment(aes(x = x_pos, xend = x_pos, 
                      y = lower, yend = upper, 
                      color = Stage), lwd = 1) +
-    geom_point(aes(x = x_pos, y = est, color = Stage)) + 
-    geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) +
-    geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
-                  width = 0.1) +
+    geom_point(aes(x = x_pos, y = est, fill = Stage), shape = 21) + 
+    # geom_point(aes(x = x_pos, y = est, color = Stage)) + 
+    # geom_point(data = df_tbl, aes(x = Stage, y = Estimates)) +
+    # geom_errorbar(data = df_tbl, aes(x = Stage, ymax = ymax, ymin = ymin),
+    #               width = 0.1) +
     scale_y_log10() + 
     annotation_logticks(sides = "l") + 
     theme_bw() + 
@@ -580,7 +599,11 @@ df %>%
     labs(x = "Stage", y = "Richness Estimate")
 ```
 
+
+Use for shannon with breakaway
 ```{r}
+# freq_df %>% left_join(break_df) %>% filter(!is.na(est))
+
 ## Need to provide est and ssest estimates from breakaway no 1
 # shannon_est <- freq_df$data %>% 
 #     map(as.data.frame) %>%

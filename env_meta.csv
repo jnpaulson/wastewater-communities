@@ -1,0 +1,77 @@
+Env_ID,WWTPID,StageID,StageID_all_plants,Stage_name,Stage_name_all_plants,Season,Sample_Type,Sample_Description,Location,Region_Site,Collection_Date,Num_Replicates,Env_Notes
+MA_TP1_05-21-09_RawInfluent,1,1,1,Raw influent,Raw influent,Spring,1_Influent,Wastewater-raw influent coming into screen house,WWTP1,MA_TP1,21/5/09,NA,NA
+MA_TP1_05-21-09_PostScreeningInfluent,1,1,2,Influent post screening,Influent post screening,Spring,2_Influent,Wastewater-influent after screening and grit removal,WWTP1,MA_TP1,21/5/09,NA,NA
+MA_TP1_05-21-09_Effluent,1,4,5,Effluent,Effluent,Spring,Effluent,Wastewater-effluent taken from E. coli testing spot,WWTP1,MA_TP1,21/5/09,NA,NA
+MA_SI1_05-21-09_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Spring,Pond,Irrigation Water Holding Pond,SI1,MA_SI1,21/5/09,NA,NA
+MA_TP1_08-03-09_RawInfluent,1,1,1,Raw influent,Raw influent,Summer,1_Influent,Wastewater-raw influent coming into screen house,WWTP1,MA_TP1,3/8/09,NA,NA
+MA_TP1_08-03-09_PostScreeningInfluent,1,1,2,Influent post screening,Influent post screening,Summer,2_Influent,Wastewater-influent after screening and grit removal,WWTP1,MA_TP1,3/8/09,NA,NA
+MA_TP1_08-03-09_Effluent,1,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-effluent  taken from E. coli testing spout,WWTP1,MA_TP1,3/8/09,NA,NA
+MA_TP1_08-17-09_RawInfluent,1,1,1,Raw influent,Raw influent,Summer,1_Influent,Wastewater-raw influent coming into screen house,WWTP1,MA_TP1,17/8/09,NA,NA
+MA_TP1_08-17-09_PostScreeningInfluent,1,1,2,Influent post screening,Influent post screening,Summer,2_Influent,Wastewater-influent after screening and grit removal,WWTP1,MA_TP1,17/8/09,NA,NA
+MA_SI1_08-17-09_AfterUVTreatment,0,0,7,Spray Irrigation Site,After UV treatment at spray irrigation site,Summer,After_UV,Spray irrigation water-after ultraviolet treatment,SI1,MA_SI1,17/8/09,NA,NA
+MA_SI1_08-17-09_BeforeUVTreatment,0,0,6,Spray Irrigation Site,Before UV treatment at spray irrigation site,Summer,Before_UV,Spray irrigation water-before ultraviolet treatment,SI1,MA_SI1,17/8/09,NA,NA
+MA_TP1_08-17-09_Effluent,1,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-effluent taken from E. coli testing spot,WWTP1,MA_TP1,17/8/09,NA,NA
+MA_SI1_08-17-09_PumpHouseInlet,0,0,9,Spray Irrigation Site,At the inlet to the pumphouse at spray irrigation site,Summer,Inlet_pumphouse,Spray irrigation-inlet into pumphouse,SI1,MA_SI1,17/8/09,NA,NA
+MA_SI1_08-17-09_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Summer,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,17/8/09,NA,NA
+MA_SI1_08-17-09_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Summer,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,17/8/09,NA,NA
+MA_TP1_10-22-09_RawInfluent,1,1,1,Raw influent,Raw influent,Fall,1_Influent,Wastewater-raw influent coming into screen house,WWTP1,MA_TP1,22/10/09,NA,NA
+MA_TP1_10-22-09_SecondaryClarifier,1,3,4,Secondary clarifier,Secondary clarifier,Fall,2_Clar,Wastewater-secondary clarifier sample taken from bridge,WWTP1,MA_TP1,22/10/09,NA,NA
+MA_TP1_10-22-09_ActivatedSludgeReactor,1,2,3,Activated Sludge Reactor,Activated Sludge Reactor,Fall,ASR,Wastewater-activated sludge reactor sample,WWTP1,MA_TP1,22/10/09,NA,NA
+MA_TP1_10-22-09_Effluent,1,4,5,Effluent,Effluent,Fall,Effluent,Wastewater-effluent-taken from E. coli testing spot,WWTP1,MA_TP1,22/10/09,NA,NA
+MA_SI1_10-27-09_AfterUVTreatment,0,0,7,Spray Irrigation Site,After UV treatment at spray irrigation site,Fall,After_UV,Spray irrigation water-after ultraviolet treatment,SI1,MA_SI1,27/10/09,NA,NA
+MA_SI1_10-27-09_BeforeUVTreatment,0,0,6,Spray Irrigation Site,Before UV treatment at spray irrigation site,Fall,Before_UV,Spray irrigation water-before ultraviolet treatment,SI1,MA_SI1,27/10/09,NA,NA
+MA_SI1_10-27-09_PumpHouseInlet,0,0,9,Spray Irrigation Site,At the inlet to the pumphouse at spray irrigation site,Fall,Inlet_pumphouse,Spray irrigation water-inlet to pumphouse for spray heads,SI1,MA_SI1,27/10/09,NA,NA
+MA_SI1_10-27-09_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Fall,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,27/10/09,NA,NA
+MA_TP1_12-08-09_RawInfluent,1,1,1,Raw influent,Raw influent,Fall,1_Influent,Wastewater-raw influent coming into screen house,WWTP1,MA_TP1,8/12/09,NA,NA
+MA_TP1_12-08-09_SecondaryClarifier,1,3,4,Secondary clarifier,Secondary clarifier,Fall,2_Clar,Wastewater-secondary clarifier sample taken from bridge,WWTP1,MA_TP1,8/12/09,NA,NA
+MA_TP1_12-08-09_ActivatedSludgeReactor,1,2,3,Activated Sludge Reactor,Activated Sludge Reactor,Fall,ASR,Wastewater-activated sludge reactor sample,WWTP1,MA_TP1,8/12/09,NA,NA
+UNK_UNK_12-08-09_Effluent,1,4,5,Effluent,Effluent,Fall,Effluent,999,999,999,8/12/09,NA,NA
+MA_TP1_12-08-09_Effluent,1,4,5,Effluent,Effluent,Fall,Effluent,Wastewater-effluent-taken from E. coli testing spot,WWTP1,MA_TP1,8/12/09,NA,NA
+MA_SI1_06-22-10_AfterUVTreatment,0,0,7,Spray Irrigation Site,After UV treatment at spray irrigation site,Summer,After_UV,Spray irrigation water-after ultraviolet treatment,SI1,MA_SI1,22/6/10,2,NA
+MA_SI1_06-22-10_BeforeUVTreatment,0,0,6,Spray Irrigation Site,Before UV treatment at spray irrigation site,Summer,Before_UV,Spray irrigation water-before ultraviolet treatment,SI1,MA_SI1,22/6/10,2,NA
+MA_SI1_06-22-10_PumpHouseInlet,0,0,9,Spray Irrigation Site,At the inlet to the pumphouse at spray irrigation site,Summer,Inlet_pumphouse,Spray irrigation-inlet into pumphouse,SI1,MA_SI1,22/6/10,2,NA
+MA_SI1_06-22-10_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Summer,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,22/6/10,2,NA
+MW_TP1_07-03-10_RawInfluent,3,1,1,Raw influent,Raw influent,Summer,1_Influent,Wastewater-Influent,NE1_WWTP,MW_TP1,3/7/10,NA,NA
+MW_TP1_07-03-10_SecondaryClarifier,3,3,4,Secondary clarifier,Secondary clarifier,Summer,2_Clar,Wastewater- secondary clarifier,NE1_WWTP,MW_TP1,3/7/10,NA,NA
+MW_TP1_07-03-10_Effluent,3,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-Effluent,NE1_WWTP,MW_TP1,3/7/10,NA,NA
+MW_SI1_07-03-10_GolfCoursePond,0,0,0,Spray Irrigation Site,At the golf course pond at the spray irrigation site,Summer,Pond,Golf Course-Pond,NE1_Golf Course,MW_SI1,3/7/10,NA,NA
+MW_TP1_07-03-10_PostAeration,3,2,3,Post aeration,Post aeration,Summer,Post_aer,Wastewater- Post Aeration,NE1_WWTP,MW_TP1,3/7/10,NA,NA
+MW_TP2_07-10-10_RawInfluent,4,1,1,Raw influent,Raw influent,Summer,1_Influent,Wastewater-Influent,NE2_WWTP2,MW_TP2,10/7/10,NA,NA
+MW_TP2_07-10-10_CellB,4,3,3,Cell B,In lagoon B at spray irrigation site,Summer,Cell_B,Wastewater-Cell B,NE2_WWTP2,MW_TP2,10/7/10,NA,NA
+MW_TP2_07-10-10_Effluent,4,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-Effluent,NE2_WWTP2,MW_TP2,10/7/10,NA,NA
+MW_SI2_07-10-10_GolfCourseHose,0,0,0,Spray Irrigation Site,At golf course hose at spray irrigation site,Summer,Hose,Golf Course 2- hose,NE2_Golf Course,MW_SI2,10/7/10,NA,NA
+MA_SI1_07-19-10_AfterUVTreatment,0,0,7,Spray Irrigation Site,After UV treatment at spray irrigation site,Summer,After_UV,Spray irrigation water-after ultraviolet treatment,SI1,MA_SI1,19/7/10,2,NA
+MA_SI1_07-19-10_BeforeUVTreatment,0,0,6,Spray Irrigation Site,Before UV treatment at spray irrigation site,Summer,Before_UV,Spray irrigation water-before ultraviolet treatment,SI1,MA_SI1,19/7/10,2,NA
+MA_SI1_07-19-10_PumpHouseInlet,0,0,9,Spray Irrigation Site,At the inlet to the pumphouse at spray irrigation site,Summer,Inlet_pumphouse,Spray irrigation water- inlet to pumphouse,SI1,MA_SI1,19/7/10,2,NA
+MA_SI1_07-19-10_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Summer,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,19/7/10,2,NA
+MW_SI2_08-01-10_AgriculturalSitePump,0,0,0,Spray Irrigation Site,At agricultural pump at spray irrigation site,Summer,Ag_pump,Agricultural site -pump,NE2-AGR1,MW_SI2,1/8/10,NA,NA
+MW_TP2_08-01-10_CellB,4,3,3,Cell B,In lagoon B at spray irrigation site,Summer,Cell_B,Wastewater-Cell B,NE2_WWTP2,MW_TP2,1/8/10,NA,NA
+MW_TP2_08-01-10_Effluent,4,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-Effluent,NE2_WWTP2,MW_TP2,1/8/10,NA,NA
+MW_SI2_08-01-10_GolfCourseHose,0,0,0,Spray Irrigation Site,At golf course hose at spray irrigation site,Summer,Hose,Golf Course 2- hose,NE2_Golf Course,MW_SI2,1/8/10,NA,NA
+MW_TP2_08-01-10_RawInfluent,4,1,1,Raw influent,Raw influent,Summer,Influent,Wastewater-Influent,NE2_WWTP,MW_TP2,1/8/10,NA,NA
+MW_TP1_09-01-10_RawInfluent,3,1,1,Raw influent,Raw influent,Summer,1_Influent,Wastewater-Influent,NE1_WWTP,MW_TP1,1/9/10,NA,NA
+MW_TP2_09-01-10_CellB,4,3,3,Cell B,In lagoon B at spray irrigation site,Summer,Cell_B,Wastewater-Cell B,NE2_WWTP2,MW_TP2,1/9/10,NA,NA
+MW_TP2_09-01-10_Effluent,4,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-Effluent,NE2_WWTP2,MW_TP2,1/9/10,NA,NA
+MW_TP1_09-01-10_Effluent,3,4,5,Effluent,Effluent,Summer,Effluent,Wastewater-Effluent,NE1_WWTP,MW_TP1,1/9/10,NA,NA
+MW_SI2_09-01-10_GolfCourseHose,0,0,0,Spray Irrigation Site,At golf course hose at spray irrigation site,Summer,Hose,Golf Course 2- pump,NE2_Golf Course,MW_SI2,1/9/10,NA,WWTPID was listed as a 4 is actually a 0
+MW_TP2_09-01-10_RawInfluent,4,1,1,Raw influent,Raw influent,Summer,Influent,Wastewater-Influent,NE2_WWTP,MW_TP2,1/9/10,NA,NA
+MW_SI1_09-01-10_GolfCoursePond,0,0,0,Spray Irrigation Site,At the golf course pond at the spray irrigation site,Summer,Pond,Golf Course Pond,NE2_Golf Course,MW_SI1,1/9/10,NA,NA
+MW_TP1_09-01-10_PostAeration,3,2,3,Post aeration,Post aeration,Summer,Post_aer,Wastewater- Post Aeration,NE1_WWTP,MW_TP1,1/9/10,NA,NA
+MA_SI1_09-02-10_AfterUVTreatment,0,0,7,Spray Irrigation Site,After UV treatment at spray irrigation site,Summer,After_UV,Spray irrigation water-after ultraviolet treatment,SI1,MA_SI1,9/2/10,2,NA
+MA_SI1_09-02-10_BeforeUVTreatment,0,0,6,Spray Irrigation Site,Before UV treatment at spray irrigation site,Summer,Before_UV,Spray irrigation water-before ultraviolet treatment,SI1,MA_SI1,9/2/10,2,NA
+MA_SI1_09-02-10_PumpHouseInlet,0,0,9,Spray Irrigation Site,At the inlet to the pumphouse at spray irrigation site,Summer,Inlet_pumphouse,Spray irrigation water- inlet to pumphouse,SI1,MA_SI1,9/2/10,2,NA
+MA_SI1_09-02-10_HoldingPondInlet,0,0,8,Spray Irrigation Site,At the holding pond inlet at the spray irrigation site,Summer,Pond,Spray irrigation water-inlet to holding pond,SI1,MA_SI1,9/2/10,2,NA
+MW_TP2_10-01-10_RawInfluent,4,1,1,Raw influent,Raw influent,Fall,1_Influent,Wastewater-Influent,NE2_WWTP,MW_TP2,1/10/10,NA,Changed back to MW TP2. That was correct. MW tP1 and MW tp2 samples were collected on the same day
+MW_TP1_10-01-10_RawInfluent,3,1,1,Raw influent,Raw influent,Fall,1_Influent,Wastewater-Influent,NE1_WWTP,MW_TP1,1/10/10,NA,NA
+MW_TP1_10-01-10_SecondaryClarifier,3,3,4,Secondary clarifier,Secondary clarifier,Fall,2_Clar,Wastewater- secondary clarifier,NE1_WWTP,MW_TP1,1/10/10,NA,NA
+MW_TP2_10-01-10_CellB,4,3,3,Cell B,In lagoon B at spray irrigation site,Fall,Cell_B,Wastewater-Cell B,NE1_WWTP,MW_TP1,1/10/10,NA,NA
+MW_TP2_10-01-10_Effluent,4,4,5,Effluent,Effluent,Fall,Effluent,Wastewater-Effluent,NE2_WWTP,MW_TP2,1/10/10,NA,All columns now align to MW TP2 some columns listed this sample as being from MW tp1 while others stated it was from MWtp2
+MW_TP1_10-01-10_Effluent,3,4,5,Effluent,Effluent,Fall,Effluent,Wastewater-Effluent,NE1_WWTP,MW_TP1,1/10/10,NA,NA
+MW_SI2_10-01-10_GolfCourseHose,0,0,0,Spray Irrigation Site,At golf course hose at spray irrigation site,Fall,Hose,Golf Course 2- hose,NE2_Golf Course,MW_SI2,1/10/10,NA,WWTPID was listed as 4 is actually 0
+MW_SI2_10-01-10_GolfCourseHose,0,0,0,Spray Irrigation Site,At golf course hose at spray irrigation site,Fall,Hose,Golf Course 2- hose,NE2_Golf Course,MW_SI2,1/10/10,NA,NA
+MW_SI1_10-01-10_GolfCoursePond,0,0,0,Spray Irrigation Site,At the golf course pond at the spray irrigation site,Fall,Pond,Golf Course- Pond,NE1_Golf Course,MW_SI1,1/10/10,NA,WWTPID was listed as a 3 is actually a 0
+MW_TP1_10-01-10_PostAeration,3,2,3,Post aeration,Post aeration,Fall,Post_aer,Wastewater- Post Aeration,NE1_WWTP,MW_TP1,1/10/10,NA,NA
+MA_TP2_10-19-10_RawInfluent,2,1,1,Raw influent,Raw influent,Fall,1_Influent,Wastewater-raw influent coming into screen house,WW2,MA_TP2,19/10/10,2,NA
+MA_TP2_10-19-10_SecondaryClarifier,2,3,4,Secondary clarifier,Secondary clarifier,Fall,2_Clar,Wastewater- secondary clarifier sample taken from edge of clarifier,WW2,MA_TP2,19/10/10,2,NA
+MA_TP2_10-19-10_ActivatedSludgeReactor,2,2,3,Activated Sludge Reactor,Activated Sludge Reactor,Fall,ASR,Wastewater- activated sludeg reactor sample taken from aerators,WW2,MA_TP2,19/10/10,2,NA
+MA_TP2_10-19-10_Effluent,2,4,5,Effluent,Effluent,Fall,Effluent,Wastewater- effluent taken after chlorination and dechlorination before sent to spray irrigation site,WW2,MA_TP2,19/10/10,2,NA
